@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import Sidebar from "./Sidebar/Sidebar";
 
@@ -6,14 +7,14 @@ function Layout() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(true);
 
   return (
-    <div
-      className={`min-h-screen transition-all duration-500 bg-gradient-to-br ${
-        isSideBarOpen ? "from-gray-500 to-gray-200" : "from-gray-50 to-gray-100"
-      }`}
-    >
+    <div className={`min-h-screen transition-all duration-500 bg-gray-50`}>
       <Navbar onToggleSidebar={() => setIsSideBarOpen((a) => !a)} />
       <div className="flex">
-        <Sidebar isOpen={isSideBarOpen} setIsOpten={setIsSideBarOpen} />
+        <Sidebar isOpen={isSideBarOpen} setIsOpen={setIsSideBarOpen} />
+        
+        <main className="flex-1 overflow-auto">
+          <Outlet />
+        </main>
       </div>
     </div>
   );

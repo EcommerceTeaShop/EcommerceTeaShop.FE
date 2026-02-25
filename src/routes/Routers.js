@@ -15,9 +15,8 @@ const Routers = () => {
   const isAdmin = user?.role === "admin";
 
   const routing = useRoutes([
-    // --- CUSTOMER / PUBLIC ROUTES ---
     {
-      path: "/",
+      path: "/customer",
       element: <CustomerLayout />,
       children: [
         { index: true, element: <Home /> },
@@ -26,7 +25,6 @@ const Routers = () => {
       ],
     },
 
-    // --- AUTH ROUTES ---
     {
       path: "/login",
       element: !isAuthenticated ? <Login /> : <Navigate to="/" />,
@@ -34,7 +32,6 @@ const Routers = () => {
     { path: "/register", element: <Register /> },
     { path: "/forgot-password", element: <ForgotPassword /> },
 
-    // --- FALLBACK ---
     { path: "*", element: <Navigate house to="/" /> },
   ]);
 

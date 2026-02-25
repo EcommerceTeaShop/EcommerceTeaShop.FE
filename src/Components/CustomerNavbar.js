@@ -15,9 +15,9 @@ const CustomerNavbar = () => {
               <h2 className="text-xl font-bold leading-tight tracking-tight group-hover:text-primary transition-colors">Tea vault</h2>
             </Link>
             <nav className="hidden md:flex items-center gap-8">
-              <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Shop</Link>
+              <Link to="/shop" className="text-sm font-medium hover:text-primary transition-colors">Shop</Link>
               <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Journal</Link>
-              <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">About</Link>
+              <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">About</Link>
               <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Contact Us</Link>
             </nav>
           </div>
@@ -32,9 +32,9 @@ const CustomerNavbar = () => {
               </div>
             </div>
             <div className="flex gap-4 items-center">
-              <button className="flex items-center justify-center rounded-lg w-10 h-10 bg-surface-light hover:bg-primary/20 hover:text-primary transition-all text-[#0d1b10]">
+              <Link to="/cart" className="flex items-center justify-center rounded-lg w-10 h-10 bg-surface-light hover:bg-primary/20 hover:text-primary transition-all text-[#0d1b10]">
                 <span className="material-symbols-outlined">shopping_cart</span>
-              </button>
+              </Link>
               
               <Link to="/login" className="flex items-center justify-center rounded-lg px-4 h-10 bg-surface-light hover:bg-primary/20 hover:text-primary transition-all text-[#0d1b10] text-sm font-bold">
                 Sign In | Log In

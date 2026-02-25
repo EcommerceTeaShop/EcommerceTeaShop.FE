@@ -9,6 +9,9 @@ import ProfileOverview from "./Pages/ProfileOverview.js";
 import EditProfile from "./Pages/EditProfile.js";
 import Shop from "./Pages/Shop.js";
 import ProductDetail from "./Pages/ProductDetail.js";
+import Cart from "./Pages/Cart.js";
+import About from "./Pages/About.js";
+import Checkout from "./Pages/Checkout.js";
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <Route path="profile/edit" element={<EditProfile />} />
           <Route path="shop" element={<Shop />} />
           <Route path="product/:id" element={<ProductDetail />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="about" element={<About />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
 
         <Route path="/admin" element={<Layout />}>

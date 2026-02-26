@@ -15,6 +15,7 @@ import Contact from "../Pages/Contact/Contact";
 import FAQ from "../Pages/FAQ/FAQ";
 import ProductDetail from "../Pages/Product/ProductDetail";
 import Shop from "../Pages/Shop/Shop";
+import NotFoundPage from "../Pages/NotFound/NotFoundPage";
 
 const Routers = () => {
   const { isAuthenticated, user } = useSelector(

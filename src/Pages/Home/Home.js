@@ -67,9 +67,10 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {categories.map((cat, i) => (
-            <div
+            <Link
+              to="/shop"
               key={i}
-              className="group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square shadow-md cursor-pointer hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-square shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 block"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
@@ -81,7 +82,7 @@ const Home = () => {
                   {cat.name}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -96,17 +97,20 @@ const Home = () => {
               Curated selection for the perfect brew.
             </p>
           </div>
-          <button className="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all">
+          <Link
+            to="/shop"
+            className="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"
+          >
             View All{" "}
             <span className="material-symbols-outlined text-sm">
               arrow_forward
             </span>
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {favorites.map((item, i) => (
-            <div key={i} className="flex flex-col gap-3 group">
+            <Link to="/product/1" key={i} className="flex flex-col gap-3 group">
               <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-light">
                 {item.tag && (
                   <span
@@ -130,7 +134,7 @@ const Home = () => {
                 </div>
                 <p className="text-sm text-gray-500">{item.desc}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -180,9 +184,11 @@ const Home = () => {
                   Fair Trade Practices
                 </li>
               </ul>
-              <button className="mt-4 px-8 py-3 bg-[#0d1b10] text-white font-bold rounded-lg hover:bg-opacity-80 transition-opacity">
-                Read Our Mission
-              </button>
+              <Link to="/about">
+                <button className="mt-4 px-8 py-3 bg-[#0d1b10] text-white font-bold rounded-lg hover:bg-opacity-80 transition-opacity">
+                  Read Our Mission
+                </button>
+              </Link>
             </div>
           </div>
         </div>

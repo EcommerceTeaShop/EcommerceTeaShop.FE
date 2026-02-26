@@ -8,7 +8,7 @@ const CustomerNavbar = () => {
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-8">
             <Link
-              to="/"
+              to="/home"
               className="flex items-center gap-2 text-[#0d1b10] group"
             >
               <div className="w-8 h-8 bg-primary/20 text-primary flex items-center justify-center rounded-md font-bold tracking-tighter">
@@ -26,7 +26,7 @@ const CustomerNavbar = () => {
                 Shop
               </Link>
               <Link
-                to="/"
+                to="/journal"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
                 Journal
@@ -36,6 +36,12 @@ const CustomerNavbar = () => {
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
                 About
+              </Link>
+              <Link
+                to="/contact"
+                className="text-sm font-medium hover:text-primary transition-colors"
+              >
+                Contact Us
               </Link>
             </nav>
           </div>

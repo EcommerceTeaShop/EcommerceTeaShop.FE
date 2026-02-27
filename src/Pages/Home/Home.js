@@ -193,37 +193,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="w-full py-20 px-4 md:px-10 bg-background-light">
-        <div className="max-w-[960px] mx-auto bg-gradient-to-br from-surface-light to-transparent rounded-3xl p-8 md:p-16 text-center border border-primary/20">
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm text-primary">
-            <span className="material-symbols-outlined text-3xl">mail</span>
-          </div>
-          <h2 className="text-3xl font-bold mb-4">
-            Join the Tea Soul Community
-          </h2>
-          <p className="text-gray-600 mb-8 max-w-lg mx-auto">
-            Subscribe for exclusive offers, brewing tips, and early access to
-            new harvests. Get 10% off your first order.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 rounded-lg border-none bg-white px-4 py-3 focus:ring-2 focus:ring-primary outline-none shadow-sm"
-            />
-            <button
-              type="button"
-              className="bg-primary hover:bg-primary/90 text-[#0d1b10] font-bold px-6 py-3 rounded-lg transition-colors whitespace-nowrap"
-            >
-              Subscribe
-            </button>
-          </form>
-          <p className="text-xs text-gray-400 mt-4">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
-        </div>
-      </section>
     </div>
   );
 };

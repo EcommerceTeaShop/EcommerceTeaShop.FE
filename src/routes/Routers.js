@@ -22,6 +22,7 @@ import TeaVerification from "../Pages/TeaVerification/TeaVerification";
 import TeaExperts from "../Pages/TeaExperts/TeaExperts";
 import ShippingPolicy from "../Pages/ShippingPolicy/ShippingPolicy";
 import ReturnsRefund from "../Pages/ReturnsRefund/ReturnsRefund";
+import JournalDetails from "../Pages/Journal/JournalDetails/JournalDetails";
 
 const Routers = () => {
   const { isAuthenticated, user } = useSelector(
@@ -41,6 +42,7 @@ const Routers = () => {
         { path: "about", element: <About /> },
         { path: "checkout", element: <Checkout /> },
         { path: "journal", element: <Journal /> },
+        { path: "journal/:id", element: <JournalDetails /> },
         { path: "contact", element: <Contact /> },
         { path: "faq", element: <FAQ /> },
         { path: "product/:id", element: <ProductDetail /> },
@@ -51,7 +53,6 @@ const Routers = () => {
         { path: "tea-experts", element: <TeaExperts /> },
         { path: "shipping-policy", element: <ShippingPolicy /> },
         { path: "returns-refund", element: <ReturnsRefund /> },
-        
       ],
     },
 

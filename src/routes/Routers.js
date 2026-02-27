@@ -16,6 +16,10 @@ import FAQ from "../Pages/FAQ/FAQ";
 import ProductDetail from "../Pages/Product/ProductDetail";
 import Shop from "../Pages/Shop/Shop";
 import NotFoundPage from "../Pages/NotFound/NotFoundPage";
+import OurStory from "../Pages/OurStory/OurStory";
+import Sustainability from "../Pages/Sustainability/Sustainability";
+import TeaVerification from "../Pages/TeaVerification/TeaVerification";
+import TeaExperts from "../Pages/TeaExperts/TeaExperts";
 
 const Routers = () => {
   const { isAuthenticated, user } = useSelector(
@@ -39,6 +43,10 @@ const Routers = () => {
         { path: "faq", element: <FAQ /> },
         { path: "product/:id", element: <ProductDetail /> },
         { path: "shop", element: <Shop /> },
+        { path: "our-story", element: <OurStory /> },
+        { path: "sustainability", element: <Sustainability /> },
+        { path: "tea-verification", element: <TeaVerification /> },
+        { path: "tea-experts", element: <TeaExperts /> },
       ],
     },
 

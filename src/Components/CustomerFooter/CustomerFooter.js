@@ -30,12 +30,12 @@ const CustomerFooter = () => {
         <div className="col-span-1">
           <h3 className="font-bold mb-4 text-lg">Shop</h3>
           <ul className="flex flex-col gap-3 text-sm text-gray-500 font-medium">
-            <li><Link to="/" className="hover:text-primary transition-colors">All Teas</Link></li>
-            <li><Link to="/" className="hover:text-primary transition-colors">Our Story</Link></li>
-            <li><Link to="/" className="hover:text-primary transition-colors">Tea Verification</Link></li>
-            <li><Link to="/" className="hover:text-primary transition-colors">Sustainability</Link></li>
-            <li><Link to="/" className="hover:text-primary transition-colors">The Vault Journal</Link></li>
-            <li><Link to="/" className="hover:text-primary transition-colors">Tea Experts</Link></li>
+            <li><Link to="/shop" className="hover:text-primary transition-colors">All Teas</Link></li>
+            <li><Link to="/our-story" className="hover:text-primary transition-colors">Our Story</Link></li>
+            <li><Link to="/tea-verification" className="hover:text-primary transition-colors">Tea Verification</Link></li>
+            <li><Link to="/sustainability" className="hover:text-primary transition-colors">Sustainability</Link></li>
+            <li><Link to="/journal" className="hover:text-primary transition-colors">The Vault Journal</Link></li>
+            <li><Link to="/tea-experts" className="hover:text-primary transition-colors">Tea Experts</Link></li>
           </ul>
         </div>
 

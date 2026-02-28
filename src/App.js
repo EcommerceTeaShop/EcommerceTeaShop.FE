@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { store, persistor } from "./redux/store"; // Adjust paths accordingly
+import { store, persistor } from "./redux/store/store"; // Adjust paths accordingly
 import Routers from "./routes/Routers";
 function App() {
   return (

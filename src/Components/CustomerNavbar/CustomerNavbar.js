@@ -1,7 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux"; // 1. Import useSelector
 
 const CustomerNavbar = () => {
+  // 2. Access the products array from Redux
+  const products = useSelector((state) => state.cart.products) || [];
+
+  // 3. Calculate total quantity across all products and their variants
+  const totalItems = products.reduce((total, product) => {
+    const productTotal =
+      product.productDetails?.reduce(
+        (sum, detail) => sum + (detail.quantity || 0),
+        0,
+      ) || 0;
+    return total + productTotal;
+  }, 0);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-surface-light bg-background-light/95 backdrop-blur-sm">
       <div className="px-4 md:px-10 py-3 mx-auto max-w-[1440px]">
@@ -18,6 +32,7 @@ const CustomerNavbar = () => {
                 Tea vault
               </h2>
             </Link>
+
             <nav className="hidden md:flex items-center gap-8">
               <Link
                 to="/shop"
@@ -60,12 +75,21 @@ const CustomerNavbar = () => {
                 />
               </div>
             </div>
+
             <div className="flex gap-4 items-center">
+              {/* CART ICON WITH BADGE */}
               <Link
                 to="/cart"
-                className="flex items-center justify-center rounded-lg w-10 h-10 bg-surface-light hover:bg-primary/20 hover:text-primary transition-all text-[#0d1b10]"
+                className="relative flex items-center justify-center rounded-lg w-10 h-10 bg-surface-light hover:bg-primary/20 hover:text-primary transition-all text-[#0d1b10]"
               >
                 <span className="material-symbols-outlined">shopping_cart</span>
+
+                {/* 4. Only show the badge if there are items */}
+                {totalItems > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-black text-[#0d1b10] shadow-sm animate-in zoom-in duration-300">
+                    {totalItems}
+                  </span>
+                )}
               </Link>
 
               <Link

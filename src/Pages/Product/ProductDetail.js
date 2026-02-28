@@ -1,23 +1,140 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import Description from "./Description";
 import Origin from "./Origin";
 import Reviews from "./Reviews";
+import { useDispatch } from "react-redux";
+import { addToCart, removeItem } from "../../redux/cartSlice/cartSlice.js"; // Adjust paths accordingly
 
-const thumbnails = [
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDEy5SGb1GoJxVolf_VV1JBcRC0xUgcv-Rnd59svi8y8pYh9wb7wTv69LD6QpDZy4kVYcCYXr03WGkHpXAMydPgfkmCcD77WCWLeM4jGdZP-UDSOw7FcajWa6AVChxPXrMjAWFq6H7jzB5n2VjhgvPAwhiOaJpFz6xVAqU8SF37LYFXjrcu568cXvfRtJ5ySNOE_4ytShAlBpuPvCFgjZQOPj-pP8njxZEAHSFhLync2cSXHXjp0jARPdjvpQreZr-5anGUr96tDCsx",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBhr9MKfge7rKsRy4-67IG7PaCQ-xIiFA-n-ifJ6E7mmWmx0wHP3oRvAP1l0uFhEPrVJ2xYo1yUoDnS3uBht9GKgEZctDi8ksSmKDXvdMNwR2zPR-PXAXZQHXvIrUDuM8fIkmMVeize2e59g76QbrmLJWTAn4Gc9GFxjssyIsDRZPpMG34V7w3WI5TpyL1KvkiSN_z1wIYw60mpRvxSLvXfq0DlcKKCBtBrlm9pR18tg2uKtbnA-rq-wKZzEqyvEnksc08LBeZ1ZPnM",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAK5udmXVqauR08mI9cHzl_cU6jmrHxHtpfSNyJm-yJvGFBPjchE9FHHA3l4MnyzbuKM53m3Vy6_LqnlNKwWBxjiMxr__xJYlJEe4MBSlqFvtgQ0qRrKzL6pvFtdiow5Kf1Y3cFc6529G3DVKq-dpBaQeLj3sSCi9TnNfFJ1OBUJhTNmGcpoDWY2vKGjeyoNHJUAk-LiMdiXUOA-XMWI6DeZk4uxNP0EXy22YXTgKMOY5oRxoagOdo9zLI6KRhrFKSo15IwLItKH9U_",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDatd4azIC27G0oJosUCsoYIyVz2sqfUQcai9atn14GfRqE2UQ_9JseL_fZ3ia3Hi_9iVCEtrq7lw3szV1AJNYr9l2pVO8O79wDRJkFf2oc93eIXd43JdNbIUJ0dLXf1jpQlEfIjPEo3nNcxcBa2D5G_24fxZERsx9IKlFvleI-8DM7beUAp0KV5ik3NFaZ_vjYUox0uekF022l_rFneEB7Etq9APZ0Eev1n-swYKI2T7HFyt05l-sB0fOBdgT5KDXcK6ajGp0obULq",
+const baseProducts = [
+  {
+    productId: "1", // Matches Guid ProductId
+    name: "Imperial Matcha",
+    type: "Green Tea",
+    origin: "Uji, Japan",
+    desc: "Vibrant green ceremonial grade powder with distinct umami notes.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAacKjJEwsR2ONaRZe8c_yYC9f2EaBCNBdkoeD3rk5u_YLjwLTTHq3caX4VBTeFhwaZhCXMwfx1uede07YocpZfbz3zSm4dDTeMArH9il756PAY_KRPdxzaH7dSLsSkDuSCWtylICi5fyAIpFKVpfHoYqtkzrNVIw_LC_8kxSc_G2hCDK6BjEVeFI1QeS40XT_nN2m1HECvuM5iS1ISCqku9IWzMdPOmlERjwo-TyhEFiRMMCsyrVn_rvuE28vZW2_9hVi6b426Ln22",
+    thumbnails: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDEy5SGb1GoJxVolf_VV1JBcRC0xUgcv-Rnd59svi8y8pYh9wb7wTv69LD6QpDZy4kVYcCYXr03WGkHpXAMydPgfkmCcD77WCWLeM4jGdZP-UDSOw7FcajWa6AVChxPXrMjAWFq6H7jzB5n2VjhgvPAwhiOaJpFz6xVAqU8SF37LYFXjrcu568cXvfRtJ5ySNOE_4ytShAlBpuPvCFgjZQOPj-pP8njxZEAHSFhLync2cSXHXjp0jARPdjvpQreZr-5anGUr96tDCsx",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBhr9MKfge7rKsRy4-67IG7PaCQ-xIiFA-n-ifJ6E7mmWmx0wHP3oRvAP1l0uFhEPrVJ2xYo1yUoDnS3uBht9GKgEZctDi8ksSmKDXvdMNwR2zPR-PXAXZQHXvIrUDuM8fIkmMVeize2e59g76QbrmLJWTAn4Gc9GFxjssyIsDRZPpMG34V7w3WI5TpyL1KvkiSN_z1wIYw60mpRvxSLvXfq0DlcKKCBtBrlm9pR18tg2uKtbnA-rq-wKZzEqyvEnksc08LBeZ1ZPnM",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAK5udmXVqauR08mI9cHzl_cU6jmrHxHtpfSNyJm-yJvGFBPjchE9FHHA3l4MnyzbuKM53m3Vy6_LqnlNKwWBxjiMxr__xJYlJEe4MBSlqFvtgQ0qRrKzL6pvFtdiow5Kf1Y3cFc6529G3DVKq-dpBaQeLj3sSCi9TnNfFJ1OBUJhTNmGcpoDWY2vKGjeyoNHJUAk-LiMdiXUOA-XMWI6DeZk4uxNP0EXy22YXTgKMOY5oRxoagOdo9zLI6KRhrFKSo15IwLItKH9U_",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDatd4azIC27G0oJosUCsoYIyVz2sqfUQcai9atn14GfRqE2UQ_9JseL_fZ3ia3Hi_9iVCEtrq7lw3szV1AJNYr9l2pVO8O79wDRJkFf2oc93eIXd43JdNbIUJ0dLXf1jpQlEfIjPEo3nNcxcBa2D5G_24fxZERsx9IKlFvleI-8DM7beUAp0KV5ik3NFaZ_vjYUox0uekF022l_rFneEB7Etq9APZ0Eev1n-swYKI2T7HFyt05l-sB0fOBdgT5KDXcK6ajGp0obULq",
+    ],
+    // The ProductDetails Model implementation
+    productDetails: [
+      {
+        id: "22222222-2222-2222-2222-222222222222", // Matches Guid Id in ProductDetails
+        weight: 30,
+        sizeLabel: "g",
+        unitPrice: 28.0,
+        stockQuantity: 15,
+        sku: "MAT-30G-TIN",
+      },
+      {
+        id: "33333333-3333-3333-3333-333333333333",
+        weight: 100,
+        sizeLabel: "g",
+        unitPrice: 75.0,
+        stockQuantity: 5,
+        sku: "MAT-100G-BAG",
+      },
+    ],
+  },
+  {
+    productId: "2",
+    name: "Sencha Reserve",
+    type: "Green Tea",
+    origin: "Shizuoka, Japan",
+    desc: "Deep steamed green tea with a rich, grassy aroma.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBLUAXmxJa8DR4Q4uI5HFGdZtwiPKB7eoAoCnBvpW-BQoM1Zo9gg1tYHsDXr4sop91GdPYo1i2PgmFpu2MFkfigzm4Y-_Esgcs5I26KBFWQ7t4gpx4z9emSFR_4mnQjeYJlzK2BcJnlxCyLdWq5r41U6Z9jXvU-IV9d05fjKmc964yzzE4Ej4LLPxviPV0sAm_WElsB9OnJttyMUq93CJXuA0vPn41iIDrrG7pq8D5T-8MznrvcY1lAcKo3Z2TNgWl0pn6Qs-i5Q7af",
+    thumbnails: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBhr9MKfge7rKsRy4-67IG7PaCQ-xIiFA-n-ifJ6E7mmWmx0wHP3oRvAP1l0uFhEPrVJ2xYo1yUoDnS3uBht9GKgEZctDi8ksSmKDXvdMNwR2zPR-PXAXZQHXvIrUDuM8fIkmMVeize2e59g76QbrmLJWTAn4Gc9GFxjssyIsDRZPpMG34V7w3WI5TpyL1KvkiSN_z1wIYw60mpRvxSLvXfq0DlcKKCBtBrlm9pR18tg2uKtbnA-rq-wKZzEqyvEnksc08LBeZ1ZPnM",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA5uugs8cst1ahTr0TSIwO0GIJ4l-dskqYpvF2oXpgHu2XRjp6EdhLU7xBYOKogVIvr0jT8uEUdp_blEGzhppQ0aO5W1smPSNuTH6_fvPKwYhsmWWb5aHzrtzXCzWJUPiGsTXBHLZg4sTQU3FxK1zF_XHi-wzGJK--O30M4SczMeDjuvhdaK33CnouQBVA-PYbqds_l0iHncpgHgTR38zMoIaLyvjgVvhGSzM9BbbLAXYUw7czES6wPHZmM6P2XzkjdhCijuJb-Hbe39",
+    ],
+    productDetails: [
+      {
+        id: "55555555-5555-5555-5555-555555555555",
+        weight: 100,
+        sizeLabel: "g",
+        unitPrice: 16.5,
+        stockQuantity: 50,
+        sku: "SEN-100G-BAG",
+      },
+    ],
+  },
+  {
+    productId: "3",
+    name: "Jasmine Pearls",
+    type: "Green Tea",
+    origin: "Fujian, China",
+    desc: "Hand-rolled tea pearls infused with fresh jasmine blossoms.",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBa3a1VM20Me0D-3SLjzYpzZuu8aEkA4-vCSPOPpQo3In4iq_18dE872EXoIp1MWh5eXsQ6o4jYb-C4wbgYlG1v4Vdi01oZBANGqrtuipcK2HRgI8z4zPAvf4iVdk86RDe2HgjQSaaiZAoMjuOF_apnjHd94kDl7kO8Kscg9TmSwOMDn0ZbM_gsNB7C3QMuxRu7EbU0QRVfjKoBdzaz5T6zOAd67ZtQzxVc2elQMmcRmJAx_BFaIS76wHrBEI1Nb6MUCyDSCuAdB7ep",
+    thumbnails: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDatd4azIC27G0oJosUCsoYIyVz2sqfUQcai9atn14GfRqE2UQ_9JseL_fZ3ia3Hi_9iVCEtrq7lw3szV1AJNYr9l2pVO8O79wDRJkFf2oc93eIXd43JdNbIUJ0dLXf1jpQlEfIjPEo3nNcxcBa2D5G_24fxZERsx9IKlFvleI-8DM7beUAp0KV5ik3NFaZ_vjYUox0uekF022l_rFneEB7Etq9APZ0Eev1n-swYKI2T7HFyt05l-sB0fOBdgT5KDXcK6ajGp0obULq",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAjjWaYszFeRx9d2ylydTvb3i0qhIWOfqorEz3uHaEVd-kD82ayqwQFOXKMrhUQFkh9gzpkLARTM_0soQ5YujmVVvP8lFcpfbyceOdusC2u-6ROakQtYLYT7veouGyDiBxEiWVcMwJ8GW7qX7vbuAYYhsmbxF9xLAaOvB1TY4sBVSvA0HEYIvktUd_V-WnZlugcJhaSrM3YMmTeLCik7_tUoFg3i6U6VqhWqYdvMgw8xOnYZjYU7KT9NjyCW4af6yaI5Okh3g39y0xJ1",
+    ],
+    productDetails: [
+      {
+        id: "77777777-7777-7777-7777-777777777777",
+        weight: 50,
+        sizeLabel: "g",
+        unitPrice: 22.0,
+        stockQuantity: 20,
+        sku: "JAS-50G-TIN",
+      },
+    ],
+  },
 ];
 
 const ProductDetail = () => {
-  const [selectedSize, setSelectedSize] = useState("30g");
+  const { id } = useParams();
+  const [selectedDetail, setSelectedDetail] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [carouselStart, setCarouselStart] = useState(0);
   const pageSize = 4;
   const [activeTab, setActiveTab] = useState("Description");
-  const [selectedImage, setSelectedImage] = useState(thumbnails[0]);
+  const [product, setProduct] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const dispatch = useDispatch();
+
+  // when the route parameter changes, look up the product and update state
+  useEffect(() => {
+    if (!id) {
+      setProduct(null);
+      return;
+    }
+    const prod = baseProducts.find((item) => item.productId === id);
+    if (prod) {
+      setProduct(prod);
+      setSelectedDetail(prod.productDetails[0]);
+      setSelectedImage(prod.thumbnails[0] || null);
+    } else {
+      setProduct(null);
+    }
+  }, [id]);
+
+  // current size/price selection
+  const selectedProductDetail =
+    product?.productDetails.find((d) => d.id === selectedDetail?.id) ||
+    product?.productDetails[0];
+
+  const handleAddToCart = () => {
+    if (!product || !selectedDetail) return;
+
+    dispatch(
+      addToCart({
+        productId: product.productId,
+        name: product.name,
+        img: product.img,
+        quantity: quantity,
+        productDetail: {
+          id: selectedDetail.id,
+          sizeLabel: selectedDetail.weight + selectedDetail.sizeLabel,
+          unitPrice: selectedDetail.unitPrice,
+        },
+      }),
+    );
+  };
 
   const relatedProducts = [
     {
@@ -86,13 +203,13 @@ const ProductDetail = () => {
           Shop All
         </Link>
         <span className="text-gray-300">/</span>
-        <span className="text-[#0d1b10] font-bold">Ceremonial Matcha</span>
+        <span className="text-[#0d1b10] font-bold">{product?.name || ""}</span>
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         <div className="flex flex-col-reverse md:flex-row gap-4">
           <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto md:max-h-[600px] no-scrollbar pb-2 md:pb-0">
-            {thumbnails.map((src, idx) => (
+            {product?.thumbnails.map((src, idx) => (
               <div
                 key={idx}
                 onClick={() => setSelectedImage(src)}
@@ -104,7 +221,7 @@ const ProductDetail = () => {
               >
                 <img
                   src={src}
-                  alt="Matcha detail"
+                  alt={`${product?.name} thumbnail ${idx + 1}`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -117,9 +234,6 @@ const ProductDetail = () => {
               alt="High quality ceremonial matcha"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[#0d1b10] text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-widest shadow-sm">
-              Best Seller
-            </div>
           </div>
         </div>
 
@@ -146,16 +260,15 @@ const ProductDetail = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-tight text-[#0d1b10] mb-2">
-              Ceremonial Grade Matcha
+              {product?.name}
             </h1>
-            <p className="text-2xl font-black text-primary">$24.00</p>
+            <p className="text-2xl font-black text-primary">
+              ${selectedDetail?.unitPrice?.toFixed(2)}
+            </p>
           </div>
 
           <p className="text-base leading-relaxed text-gray-600 font-medium">
-            Stone-ground, shade-grown green tea from Uji, Japan. This premium
-            ceremonial grade matcha is rich in antioxidants with a smooth,
-            vegetal flavor, creamy texture, and natural sweetness without
-            bitterness.
+            {product?.desc}
           </p>
 
           <div className="h-px w-full bg-gray-200"></div>
@@ -165,17 +278,18 @@ const ProductDetail = () => {
               Size
             </label>
             <div className="flex flex-wrap gap-3">
-              {["30g", "50g", "100g"].map((size) => (
+              {product?.productDetails.map((detail) => (
                 <button
-                  key={size}
-                  onClick={() => setSelectedSize(size)}
+                  key={detail.id}
+                  // 2. Pass the entire detail object to the state
+                  onClick={() => setSelectedDetail(detail)}
                   className={`px-6 py-2.5 rounded-xl border-2 font-bold transition-all ${
-                    selectedSize === size
+                    selectedProductDetail?.id === detail.id
                       ? "border-primary bg-primary/10 text-[#0d1b10] shadow-sm"
                       : "border-gray-200 hover:border-primary text-gray-500 hover:text-[#0d1b10]"
                   }`}
                 >
-                  {size}
+                  {detail.weight + detail.sizeLabel}
                 </button>
               ))}
             </div>
@@ -204,7 +318,10 @@ const ProductDetail = () => {
                 <span className="material-symbols-outlined text-sm">add</span>
               </button>
             </div>
-            <button className="flex-1 h-14 bg-primary hover:bg-primary/90 text-[#0d1b10] font-black text-lg rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-95">
+            <button
+              onClick={handleAddToCart}
+              className="flex-1 h-14 bg-primary hover:bg-primary/90 text-[#0d1b10] font-black text-lg rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-95"
+            >
               <span className="material-symbols-outlined">shopping_bag</span>
               Add to Cart
             </button>

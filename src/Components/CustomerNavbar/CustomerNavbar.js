@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux"; // 1. Import useSelector
+import { useDispatch, useSelector } from "react-redux"; // 1. Import useSelector
 
 const CustomerNavbar = () => {
-  // 2. Access the products array from Redux
   const products = useSelector((state) => state.cart.products) || [];
 
-  // 3. Calculate total quantity across all products and their variants
   const totalItems = products.reduce((total, product) => {
     const productTotal =
       product.productDetails?.reduce(

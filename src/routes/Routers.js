@@ -28,6 +28,7 @@ import Dashboard from "../Pages/Admin/Dashboard/Dashboard";
 import Orders from "../Pages/Admin/Orders/Orders";
 import ProductEdit from "../Pages/Admin/Products/ProductEdit";
 import Products from "../Pages/Admin/Products/Products";
+import Campaigns from "../Pages/Admin/Campaigns/Campaigns";
 
 const Routers = () => {
   const { isAuthenticated, user } = useSelector(
@@ -78,7 +79,9 @@ const Routers = () => {
         { path: "orders", element: <Orders /> },
         { path: "products", element: <Products /> },
         { path: "products/edit", element: <ProductEdit /> },
-        { path: "products/add", element: <ProductEdit /> }
+        { path: "products/add", element: <ProductEdit /> },
+        { path: "campaigns", element: <Campaigns /> }
+        
       ],
     },
     {

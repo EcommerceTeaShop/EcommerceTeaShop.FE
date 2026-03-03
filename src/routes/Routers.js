@@ -32,6 +32,7 @@ import Campaigns from "../Pages/Admin/Campaigns/Campaigns";
 import QRSystem from "../Pages/Admin/QRSystem/QRSystem";
 import Customers from "../Pages/Admin/Customers/Customers";
 import Support from "../Pages/Admin/Support/Support";
+import Vendors from "../Pages/Admin/Vendors/Vendors";
 
 const Routers = () => {
   const { isAuthenticated, user } = useSelector(
@@ -86,6 +87,7 @@ const Routers = () => {
         { path: "campaigns", element: <Campaigns /> },
         { path: "qr-system", element: <QRSystem /> },
         { path: "customers", element: <Customers /> },
+        { path: "vendors", element: <Vendors /> },
         { path: "support", element: <Support /> }        
         
       ],

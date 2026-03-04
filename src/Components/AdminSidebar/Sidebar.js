@@ -15,17 +15,14 @@ function Sidebar() {
     {
       title: "Store Management",
       items: [
-        { path: "/admin/orders", label: "Orders & Gifting", icon: "local_shipping" },
+        { path: "/admin/orders", label: "Orders", icon: "local_shipping" },
         { path: "/admin/products", label: "Products & Inventory", icon: "inventory_2" },
-        { path: "/admin/vendors", label: "Vendors & Partners", icon: "handshake" },
-        { path: "/admin/qr-system", label: "QR Traceability", icon: "qr_code_2" },
       ]
     },
     {
-      title: "Content & Campaigns",
+      title: "Marketing",
       items: [
         { path: "/admin/campaigns", label: "Banners & Vouchers", icon: "campaign" },
-        { path: "/admin/knowledge-base", label: "Articles & Guides", icon: "menu_book" },
       ]
     },
     {
@@ -70,7 +67,6 @@ function Sidebar() {
                             : "text-gray-600 hover:bg-gray-50 font-medium"
                         }`}
                       >
-                        {/* Inline style used here to ensure Google Material Symbols fill triggers correctly */}
                         <span 
                           className="material-symbols-outlined text-[20px]"
                           style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice/cartSlice";
-import Description from "../Product/Description";
+
 
 const customProduct = {
   productId: "custom-design-1",
@@ -160,38 +160,7 @@ const CustomDesign = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 mt-4 text-center">
-            <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-2xl">
-                eco
-              </span>
-              <span className="text-xs font-bold text-[#0d1b10]">Hữu cơ</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-2xl">
-                bolt
-              </span>
-              <span className="text-xs font-bold text-[#0d1b10]">Năng lượng</span>
-            </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-2xl">
-                spa
-              </span>
-              <span className="text-xs font-bold text-[#0d1b10]">Thư giãn</span>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <div className="mt-24 mb-12">
-        <div className="flex border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar">
-          <button
-            className="px-8 py-4 border-b-4 whitespace-nowrap font-black border-primary text-[#0d1b10]"
-          >
-            Mô tả
-          </button>
-        </div>
-        <Description />
       </div>
     </div>
   );

@@ -37,16 +37,16 @@ const Login = () => {
           className="absolute top-8 left-8 flex items-center gap-2 text-gray-500 hover:text-primary transition-colors font-bold text-sm"
         >
           <span className="material-symbols-outlined text-lg">arrow_back</span>
-          Back to Shop
+          Về cửa hàng
         </Link>
 
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div className="mb-10 text-center lg:text-left">
             <h2 className="text-3xl font-black tracking-tight text-[#0d1b10]">
-              Welcome back
+              Chào mừng quay lại
             </h2>
             <p className="mt-2 text-sm text-gray-500 font-medium">
-              Please enter your details to sign in.
+              Vui lòng nhập thông tin để đăng nhập.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ const Login = () => {
                 className="block text-sm font-bold leading-6 text-[#0d1b10] mb-2"
                 htmlFor="email"
               >
-                Email address
+                Địa chỉ email
               </label>
               <div className="relative rounded-md shadow-sm">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -71,7 +71,7 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="block w-full rounded-xl border border-gray-200 py-3 pl-10 text-[#0d1b10] bg-white focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm sm:leading-6 transition-all"
-                  placeholder="you@example.com"
+                  placeholder="bạn@example.com"
                 />
               </div>
             </div>
@@ -81,7 +81,7 @@ const Login = () => {
                 className="block text-sm font-bold leading-6 text-[#0d1b10] mb-2"
                 htmlFor="password"
               >
-                Password
+                Mật khẩu
               </label>
               <div className="relative rounded-md shadow-sm">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -107,7 +107,7 @@ const Login = () => {
                   to="/forgot-password"
                   className="font-bold text-primary hover:underline"
                 >
-                  Forgot password?
+                  Quên mật khẩu?
                 </Link>
               </div>
             </div>
@@ -120,7 +120,7 @@ const Login = () => {
               {loading ? (
                 <span className="material-symbols-outlined animate-spin text-[20px]">sync</span>
               ) : (
-                "Log In"
+                "Đăng nhập"
               )}
             </button>
           </form>
@@ -135,7 +135,7 @@ const Login = () => {
               </div>
               <div className="relative flex justify-center text-sm font-medium leading-6">
                 <span className="bg-background-light px-6 text-gray-500">
-                  Or continue with
+                  Hoặc tiếp tục với
                 </span>
               </div>
             </div>
@@ -170,12 +170,12 @@ const Login = () => {
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-500 font-medium">
-            Don't have an account?{" "}
+            Chưa có tài khoản?{" "}
             <Link
               to="/register"
               className="font-bold text-primary hover:underline"
             >
-              Sign up for free
+              Đăng ký miễn phí
             </Link>
           </p>
         </div>
@@ -186,13 +186,13 @@ const Login = () => {
         <div className="absolute bottom-0 left-0 right-0 z-20 p-12 text-white">
           <blockquote className="space-y-2">
             <p className="text-xl font-medium italic">
-              "A cup of tea is a cup of peace."
+              "Một tách trà là một tách bình yên."
             </p>
             <footer className="text-sm text-gray-200">— Soshitsu Sen XV</footer>
           </blockquote>
         </div>
         <img
-          alt="Serene tea ceremony setup with green matcha tea, bamboo whisk, and ceramic cups on a wooden table"
+          alt="Bố trí trà đạo trang nhã với matcha xanh, chổi tre và ly gốm"
           className="w-full h-full object-cover object-center opacity-90 dark:opacity-60"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqnZ-LwkyON-UQi0zYA2vT6-ffDxKpADQ9wj0QNT4GWnWVPZ-ukkAUWiXLF4ZdHrBH1uV8M6Z_GBMiEXBsE_9eG4Qu-M7NIqJqLu8BNDs8vJUfz53tZsKEayVUpvU-t-MRBGbS698yDMi1V6qGKIKPwW7YQtoxp7hwdrPSRhk1ZagPtyhaHF0zDAslviAgw-bj0DUVWixN4HFvd5zK856OqV4OCX5fu-gQSTS14kqz90KKYN-YwhwfLTFwWFFB5E60ijxhYM6wHXfx"
         />

@@ -4,38 +4,38 @@ const ShippingPolicy = () => {
   const policies = [
     {
       icon: 'schedule',
-      title: 'Processing Time',
-      desc: 'Orders are processed within 1-2 business days after confirmation. During high-demand periods, processing may take slightly longer. We appreciate your patience as we carefully prepare each order with care.'
+      title: 'Thời gian xử lý',
+      desc: 'Đơn hàng được xử lý trong 1-2 ngày làm việc sau khi xác nhận. Trong giai đoạn cao điểm, thời gian xử lý có thể lâu hơn một chút. Cảm ơn bạn đã kiên nhẫn khi chúng tôi chuẩn bị kỹ từng đơn.'
     },
     {
       icon: 'local_shipping',
-      title: 'Shipping Methods',
-      desc: 'We offer standard and express shipping options through trusted couriers nationwide. Choose the delivery speed that best suits your needs at checkout.'
+      title: 'Phương thức vận chuyển',
+      desc: 'Chúng tôi cung cấp tùy chọn giao tiêu chuẩn và giao nhanh qua các đơn vị vận chuyển uy tín trên toàn quốc. Chọn tốc độ giao phù hợp nhất khi thanh toán.'
     },
     {
       icon: 'location_on',
-      title: 'Estimated Delivery Time',
+      title: 'Thời gian giao dự kiến',
       desc: '',
       list: [
-        { label: 'Inner-city HCMC:', value: '1-2 days' },
-        { label: 'Other provinces:', value: '2-5 days' }
+        { label: 'Nội thành TP.HCM:', value: '1-2 ngày' },
+        { label: 'Tỉnh/thành khác:', value: '2-5 ngày' }
       ]
     },
     {
       icon: 'payments',
-      title: 'Shipping Fees',
-      desc: 'Shipping fees are calculated based on order weight and delivery location.',
-      highlight: '✨ Free shipping for orders over 500,000đ'
+      title: 'Phí vận chuyển',
+      desc: 'Phí vận chuyển được tính dựa trên khối lượng đơn hàng và địa điểm giao.',
+      highlight: '✨ Miễn phí vận chuyển cho đơn trên 500.000đ'
     },
     {
       icon: 'share_location',
-      title: 'Order Tracking',
-      desc: 'Once shipped, customers receive a tracking code via email or SMS for real-time order tracking. Stay informed every step of the way as your order travels to you.'
+      title: 'Theo dõi đơn hàng',
+      desc: 'Khi đã gửi hàng, khách sẽ nhận mã theo dõi qua email hoặc SMS để theo dõi theo thời gian thực. Bạn luôn nắm được trạng thái đơn trên từng chặng.'
     },
     {
       icon: 'inventory_2',
-      title: 'Lost or Damaged Packages',
-      desc: 'Please contact our support team immediately if your package is lost or damaged during transit. We\'ll work with you to resolve the issue promptly and ensure your satisfaction.'
+      title: 'Kiện hàng thất lạc hoặc hư hỏng',
+      desc: 'Vui lòng liên hệ đội hỗ trợ ngay nếu kiện hàng bị thất lạc hoặc hư hỏng trong quá trình vận chuyển. Chúng tôi sẽ phối hợp xử lý nhanh để đảm bảo bạn hài lòng.'
     }
   ];
 
@@ -47,9 +47,9 @@ const ShippingPolicy = () => {
         style={{ backgroundImage: `linear-gradient(rgba(13, 27, 16, 0.6), rgba(13, 27, 16, 0.8)), url("https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")` }}
       >
         <div className="text-center z-10 px-4">
-          <h1 className="text-white text-4xl lg:text-6xl font-black mb-4 tracking-tight">Shipping Policy</h1>
+          <h1 className="text-white text-4xl lg:text-6xl font-black mb-4 tracking-tight">Chính sách vận chuyển</h1>
           <p className="text-gray-200 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-            Our commitment to timely and safe delivery.
+            Cam kết giao hàng đúng hẹn và an toàn.
           </p>
         </div>
       </section>
@@ -89,8 +89,8 @@ const ShippingPolicy = () => {
 
       <section className="max-w-[800px] mx-auto px-4 md:px-10 pb-16 lg:pb-24">
         <div className="bg-surface-light rounded-[2.5rem] p-10 text-center border border-gray-200">
-          <h2 className="text-2xl font-black text-[#0d1b10] mb-4">Questions About Shipping?</h2>
-          <p className="text-gray-600 font-medium mb-8">Feel free to contact us — we're here to help.</p>
+          <h2 className="text-2xl font-black text-[#0d1b10] mb-4">Thắc mắc về vận chuyển?</h2>
+          <p className="text-gray-600 font-medium mb-8">Cứ liên hệ với chúng tôi — luôn sẵn sàng hỗ trợ.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-[#0d1b10] font-bold">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">call</span>

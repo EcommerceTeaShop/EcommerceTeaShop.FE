@@ -8,7 +8,7 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedOrigins, setSelectedOrigins] = useState([]);
-  const [sortBy, setSortBy] = useState("Featured");
+  const [sortBy, setSortBy] = useState("Nổi bật");
 
   const ITEMS_PER_PAGE = 6;
 
@@ -17,7 +17,7 @@ const Shop = () => {
     setCurrentPage(1);
     setSelectedTypes([]);
     setSelectedOrigins([]);
-    setSortBy("Featured");
+    setSortBy("Nổi bật");
   };
 
   const toggleFilter = (item, list, setList) => {
@@ -31,73 +31,73 @@ const Shop = () => {
     {
       id: 1,
       name: "Imperial Matcha",
-      type: "Green Tea",
-      origin: "Uji, Japan",
+      type: "Trà xanh",
+      origin: "Uji, Nhật Bản",
       rating: "4.9",
       price: "$28.00",
-      size: "30g Tin",
-      desc: "Vibrant green ceremonial grade powder with distinct umami notes.",
-      badge: "Best Seller",
+      size: "Hộp 30g",
+      desc: "Bột xanh hạng lễ nghi với nốt umami rõ nét.",
+      badge: "Bán chạy",
       badgeColor: "bg-primary text-[#0d1b10]",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAacKjJEwsR2ONaRZe8c_yYC9f2EaBCNBdkoeD3rk5u_YLjwLTTHq3caX4VBTeFhwaZhCXMwfx1uede07YocpZfbz3zSm4dDTeMArH9il756PAY_KRPdxzaH7dSLsSkDuSCWtylICi5fyAIpFKVpfHoYqtkzrNVIw_LC_8kxSc_G2hCDK6BjEVeFI1QeS40XT_nN2m1HECvuM5iS1ISCqku9IWzMdPOmlERjwo-TyhEFiRMMCsyrVn_rvuE28vZW2_9hVi6b426Ln22",
     },
     {
       id: 2,
       name: "Sencha Reserve",
-      type: "Green Tea",
-      origin: "Shizuoka, Japan",
+      type: "Trà xanh",
+      origin: "Shizuoka, Nhật Bản",
       rating: "4.7",
       price: "$16.50",
-      size: "100g Bag",
-      desc: "Deep steamed green tea with a rich, grassy aroma and sweet finish.",
+      size: "Túi 100g",
+      desc: "Trà xanh hấp kỹ với mùi cỏ đậm, hương cỏ non và hậu ngọt.",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBLUAXmxJa8DR4Q4uI5HFGdZtwiPKB7eoAoCnBvpW-BQoM1Zo9gg1tYHsDXr4sop91GdPYo1i2PgmFpu2MFkfigzm4Y-_Esgcs5I26KBFWQ7t4gpx4z9emSFR_4mnQjeYJlzK2BcJnlxCyLdWq5r41U6Z9jXvU-IV9d05fjKmc964yzzE4Ej4LLPxviPV0sAm_WElsB9OnJttyMUq93CJXuA0vPn41iIDrrG7pq8D5T-8MznrvcY1lAcKo3Z2TNgWl0pn6Qs-i5Q7af",
     },
     {
       id: 3,
       name: "Jasmine Pearls",
-      type: "Green Tea",
-      origin: "Fujian, China",
+      type: "Trà xanh",
+      origin: "Phúc Kiến, Trung Quốc",
       rating: "4.8",
       price: "$22.00",
       oldPrice: "$28.00",
-      size: "50g Tin",
-      desc: "Hand-rolled tea pearls infused with fresh jasmine blossoms.",
-      badge: "Sale",
+      size: "Hộp 50g",
+      desc: "Viên trà vò tay ướp hoa nhài tươi.",
+      badge: "Giảm giá",
       badgeColor: "bg-red-500 text-white",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBa3a1VM20Me0D-3SLjzYpzZuu8aEkA4-vCSPOPpQo3In4iq_18dE872EXoIp1MWh5eXsQ6o4jYb-C4wbgYlG1v4Vdi01oZBANGqrtuipcK2HRgI8z4zPAvf4iVdk86RDe2HgjQSaaiZAoMjuOF_apnjHd94kDl7kO8Kscg9TmSwOMDn0ZbM_gsNB7C3QMuxRu7EbU0QRVfjKoBdzaz5T6zOAd67ZtQzxVc2elQMmcRmJAx_BFaIS76wHrBEI1Nb6MUCyDSCuAdB7ep",
     },
     {
       id: 4,
       name: "Milk Oolong",
-      type: "Oolong",
-      origin: "Taiwan",
+      type: "Trà Oolong",
+      origin: "Đài Loan",
       rating: "5.0",
       price: "$32.00",
-      size: "75g Bag",
-      desc: "Naturally creamy and smooth with a distinct floral aroma.",
+      size: "Túi 75g",
+      desc: "Béo mượt tự nhiên với mùi hoa rõ nét.",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeJTOy1I4Hrk7_GpxYikfBfw1GNqzV1vdbvGwtAVUTCu_BRorMewJc_U7jORsfmWUJd7FR5ZWPR5kAR3RMd_u5Ef7-nwhvuUE7Gcivry2wqpKXFLOKSl6B0Z5HtW0_NjsjYMLk2lNi2M7TfvE4w3MF84YXMcE9iKFJk07V7YeF60iIEEc3EoFeEACDdFGDqOqHwTBV0IbWKIb0nNo7W13prt5sNl7iasXLmnIMTYAKLcrtR6ZYrjcka9KhzhYgUbrFG-kZjkiPv0O1",
     },
     {
       id: 5,
       name: "Earl Grey Superior",
-      type: "Black Tea",
-      origin: "Assam, India",
+      type: "Trà đen",
+      origin: "Assam, Ấn Độ",
       rating: "4.6",
       price: "$14.00",
-      size: "100g Bag",
-      desc: "A bold black tea blend featuring premium bergamot oil.",
+      size: "Túi 100g",
+      desc: "Trà đen đậm vị với tinh dầu bergamot cao cấp.",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGsQ67LpE7LXnpncD0HODoayKRWX6J_SFC8NxrHG6LFL5b3qzAwmaSds7iSTxnayAEJDivWLzxZzdQC1WZDb1HfDA4cCpG83ZR5eWWluPFWBdTs0_if-ChNFtdz1UU3jqwPonq_G-0DMlZmLxYEGjfzKqpvDWE_04IBqkw_MrpdvutW5A_v2WbgC7JQMod4YkObI64yM8qBm-yD9Q9txm4JpYShY_D4CHFzwmNv4hnWTyIHabp-iNPqeSg2efq5OOhxN-3ObE_wp3B",
     },
     {
       id: 6,
       name: "Kyoto Genmaicha",
-      type: "Green Tea",
-      origin: "Kyoto, Japan",
+      type: "Trà xanh",
+      origin: "Kyoto, Nhật Bản",
       rating: "4.9",
       price: "$18.00",
-      size: "100g Bag",
-      desc: "Green tea combined with roasted popped brown rice.",
-      badge: "Limited",
+      size: "Túi 100g",
+      desc: "Trà xanh kết hợp gạo lứt rang nổ.",
+      badge: "Giới hạn",
       badgeColor: "bg-gray-900/80 text-white backdrop-blur-sm",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3OGReXx6tkaV-I_QekT7XrthlnELOXvauVdZwPjMQPmW6uUzVCcaz3f7l_aTa77DyauV38857t9ErJbPObX1BV47Q0EhbvFHHO4-a-LuQDkTGqEYq77CrSKRhuv-uVDjU0x-QnAkJ48a90TJG6DML_zdSRYByHq4BSZQpbX2pmD9MWVPyrlI-EuEmOeffSYuzlwU5zHmEoevWrVGLzDnYjqLA5hRuudv2CwSpqKhpjv-uvoaxTcGomd2AYOCdUP1UOWqQ5KR5wS_w",
     },
@@ -109,7 +109,7 @@ const Shop = () => {
     ...baseProducts.map((p) => ({
       ...p,
       id: p.id + 6,
-      name: `${p.name} (Batch 2)`,
+      name: `${p.name} (Lô 2)`,
     })),
   ];
 
@@ -119,11 +119,11 @@ const Shop = () => {
     const matchPrice = itemPrice <= priceRange;
 
     const originMap = {
-      "Uji, Japan": "Japan (Uji)",
-      "Shizuoka, Japan": "Japan (Uji)",
-      "Kyoto, Japan": "Japan (Uji)",
-      "Fujian, China": "China (Fujian)",
-      "Assam, India": "India (Assam)",
+      "Uji, Nhật Bản": "Nhật Bản (Uji)",
+      "Shizuoka, Nhật Bản": "Nhật Bản (Uji)",
+      "Kyoto, Nhật Bản": "Nhật Bản (Uji)",
+      "Phúc Kiến, Trung Quốc": "Trung Quốc (Phúc Kiến)",
+      "Assam, Ấn Độ": "Ấn Độ (Assam)",
     };
 
     const matchType =
@@ -136,13 +136,13 @@ const Shop = () => {
   });
 
   // 2. Sort
-  if (sortBy === "Price: Low to High") {
+  if (sortBy === "Giá: Thấp đến cao") {
     processedProducts.sort(
       (a, b) =>
         parseFloat(a.price.replace("$", "")) -
         parseFloat(b.price.replace("$", "")),
     );
-  } else if (sortBy === "Price: High to Low") {
+  } else if (sortBy === "Giá: Cao đến thấp") {
     processedProducts.sort(
       (a, b) =>
         parseFloat(b.price.replace("$", "")) -
@@ -167,12 +167,12 @@ const Shop = () => {
             to="/"
             className="text-gray-500 hover:text-primary transition-colors"
           >
-            Home
+            Trang chủ
           </Link>
           <span className="material-symbols-outlined !text-[14px] text-gray-400">
             chevron_right
           </span>
-          <span className="font-bold text-[#0d1b10]">Shop All</span>
+          <span className="font-bold text-[#0d1b10]">Tất cả trà</span>
         </div>
       </div>
 
@@ -180,22 +180,22 @@ const Shop = () => {
         <aside className="w-full lg:w-64 shrink-0 lg:sticky lg:top-24 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-bold flex items-center gap-2">
-              <span className="material-symbols-outlined">tune</span> Filters
+              <span className="material-symbols-outlined">tune</span> Bộ lọc
             </h3>
             <button
               onClick={handleReset}
               className="text-xs text-gray-500 hover:text-primary font-bold"
             >
-              Reset
+              Đặt lại
             </button>
           </div>
 
           <div className="mb-6">
             <h4 className="text-xs font-black mb-4 uppercase tracking-widest text-gray-400">
-              Tea Type
+              Loại trà
             </h4>
             <div className="space-y-3">
-              {["Green Tea", "Black Tea", "Oolong", "Herbal"].map((type) => (
+              {["Trà xanh", "Trà đen", "Trà Oolong", "Trà thảo mộc"].map((type) => (
                 <label
                   key={type}
                   className="flex items-center gap-3 cursor-pointer group"
@@ -218,10 +218,10 @@ const Shop = () => {
 
           <div className="mb-6 border-t border-gray-100 pt-6">
             <h4 className="text-xs font-black mb-4 uppercase tracking-widest text-gray-400">
-              Origin
+              Nguồn gốc
             </h4>
             <div className="space-y-3">
-              {["Japan (Uji)", "China (Fujian)", "India (Assam)"].map(
+                {["Nhật Bản (Uji)", "Trung Quốc (Phúc Kiến)", "Ấn Độ (Assam)"].map(
                 (origin) => (
                   <label
                     key={origin}
@@ -250,7 +250,7 @@ const Shop = () => {
 
           <div className="border-t border-gray-100 pt-6">
             <h4 className="text-xs font-black mb-4 uppercase tracking-widest text-gray-400">
-              Price Range
+              Khoảng giá
             </h4>
             <input
               type="range"
@@ -307,14 +307,14 @@ const Shop = () => {
                   onClick={handleReset}
                   className="text-xs font-bold underline text-gray-500 hover:text-primary ml-1"
                 >
-                  Clear all
+                  Xóa tất cả
                 </button>
               )}
             </div>
 
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500 font-medium">
-                Sort by:
+                Sắp xếp theo:
               </span>
               <select
                 value={sortBy}
@@ -324,10 +324,10 @@ const Shop = () => {
                 }}
                 className="bg-transparent border-none text-sm font-bold focus:ring-0 cursor-pointer text-[#0d1b10] py-0 pl-0"
               >
-                <option>Featured</option>
-                <option>Newest</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
+                <option>Nổi bật</option>
+                <option>Mới nhất</option>
+                <option>Giá: Thấp đến cao</option>
+                <option>Giá: Cao đến thấp</option>
               </select>
             </div>
           </div>

@@ -39,7 +39,7 @@ const CustomerNavbar = () => {
                 TV
               </div>
               <h2 className="text-xl font-bold leading-tight tracking-tight group-hover:text-primary transition-colors">
-                Tea vault
+                Tea Vault
               </h2>
             </Link>
 
@@ -48,25 +48,31 @@ const CustomerNavbar = () => {
                 to="/shop"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                Shop
+                Cửa hàng
+              </Link>
+              <Link
+                to="/custom-design"
+                className="text-sm font-medium hover:text-primary transition-colors"
+              >
+                Thiết kế tùy chỉnh
               </Link>
               <Link
                 to="/journal"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                Journal
+                Nhật ký
               </Link>
               <Link
                 to="/about"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                About
+                Giới thiệu
               </Link>
               <Link
                 to="/contact"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                Contact Us
+                Liên hệ
               </Link>
             </nav>
           </div>
@@ -81,7 +87,7 @@ const CustomerNavbar = () => {
                 </div>
                 <input
                   className="w-full bg-transparent border-none text-sm text-[#0d1b10] placeholder:text-gray-500 focus:outline-none focus:ring-0 h-full px-2"
-                  placeholder="Search teas..."
+                  placeholder="Tìm trà..."
                 />
               </div>
             </div>
@@ -109,7 +115,7 @@ const CustomerNavbar = () => {
                       {user?.name?.charAt(0) || "U"}
                     </div>
                     <span className="text-sm font-bold text-[#0d1b10] hidden md:block">
-                      {user?.name || "My Account"}
+                      {user?.name || "Tài khoản của tôi"}
                     </span>
                     <span className="material-symbols-outlined text-[18px] text-gray-500 hidden md:block">
                       expand_more
@@ -119,7 +125,7 @@ const CustomerNavbar = () => {
                   {isProfileOpen && (
                     <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50 py-1">
                       <div className="px-4 py-3 border-b border-gray-100 bg-gray-50/50">
-                        <p className="text-sm font-bold text-[#0d1b10] truncate">{user?.name || "Customer"}</p>
+                        <p className="text-sm font-bold text-[#0d1b10] truncate">{user?.name || "Khách hàng"}</p>
                         <p className="text-xs font-medium text-gray-500 truncate">{user?.email || "user@teavault.com"}</p>
                       </div>
                       <Link
@@ -128,7 +134,7 @@ const CustomerNavbar = () => {
                         className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
                       >
                         <span className="material-symbols-outlined text-[18px]">person</span>
-                        Manage Profile
+                        Quản lý hồ sơ
                       </Link>
                       <Link
                         to="/profile"
@@ -136,7 +142,7 @@ const CustomerNavbar = () => {
                         className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
                       >
                         <span className="material-symbols-outlined text-[18px]">local_shipping</span>
-                        My Orders
+                        Đơn hàng của tôi
                       </Link>
                       <div className="border-t border-gray-100 my-1"></div>
                       <button
@@ -144,7 +150,7 @@ const CustomerNavbar = () => {
                         className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-red-600 hover:bg-red-50 transition-colors"
                       >
                         <span className="material-symbols-outlined text-[18px]">logout</span>
-                        Sign Out
+                        Đăng xuất
                       </button>
                     </div>
                   )}
@@ -154,7 +160,7 @@ const CustomerNavbar = () => {
                   to="/login"
                   className="flex items-center justify-center rounded-lg px-4 h-10 bg-surface-light hover:bg-primary/20 hover:text-primary transition-all text-[#0d1b10] text-sm font-bold"
                 >
-                  Sign In | Log In
+                  Đăng nhập
                 </Link>
               )}
             </div>

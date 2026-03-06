@@ -6,28 +6,28 @@ function Sidebar() {
 
   const menuGroups = [
     {
-      title: "Overview",
+      title: "Tổng quan",
       items: [
-        { path: "/admin/dashboard", label: "Dashboard Overview", icon: "dashboard" },
+        { path: "/admin/dashboard", label: "Tổng quan bảng điều khiển", icon: "dashboard" },
       ]
     },
     {
-      title: "Store Management",
+      title: "Quản lý cửa hàng",
       items: [
-        { path: "/admin/orders", label: "Orders", icon: "local_shipping" },
-        { path: "/admin/products", label: "Products & Inventory", icon: "inventory_2" },
+        { path: "/admin/orders", label: "Đơn hàng", icon: "local_shipping" },
+        { path: "/admin/products", label: "Sản phẩm & Tồn kho", icon: "inventory_2" },
       ]
     },
     {
       title: "Marketing",
       items: [
-        { path: "/admin/campaigns", label: "Banners & Vouchers", icon: "campaign" },
+        { path: "/admin/campaigns", label: "Banner & Mã giảm giá", icon: "campaign" },
       ]
     },
     {
-      title: "Users & Support",
+      title: "Người dùng & Hỗ trợ",
       items: [
-        { path: "/admin/customers", label: "Users & Reviews", icon: "groups" },
+        { path: "/admin/customers", label: "Người dùng & Đánh giá", icon: "groups" },
       ]
     }
   ];
@@ -42,7 +42,7 @@ function Sidebar() {
           </div>
           <div className="flex flex-col">
             <h1 className="text-lg font-black leading-tight text-gray-800 tracking-tight">TeaVault</h1>
-            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Admin Console</p>
+            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Bảng quản trị</p>
           </div>
         </div>
 

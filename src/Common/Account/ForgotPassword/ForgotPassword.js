@@ -50,7 +50,7 @@ function PasswordStrength({ password }) {
     return score;
   };
   const strength = getStrength(password);
-  const labels = ["", "Weak", "Fair", "Good", "Strong"];
+  const labels = ["", "Yếu", "Tạm", "Tốt", "Mạnh"];
   const colors = ["", "#ef4444", "#f59e0b", "#84cc16", "#13ec37"];
   const widths = ["0%", "25%", "50%", "75%", "100%"];
   if (!password) return null;
@@ -138,50 +138,50 @@ export default function ForgotPassword() {
                   <path d="M9 21h6v2H9z" />
                 </svg>
               </div>
-              <h1 className="text-2xl font-bold tracking-tight">Tea Shop</h1>
+              <h1 className="text-2xl font-bold tracking-tight">Cửa hàng trà</h1>
             </div>
 
             {step === STEPS.FORGOT && (
               <>
                 <h2 className="text-3xl font-bold tracking-tight text-[#0d1b10]">
-                  Forgot password?
+                  Quên mật khẩu?
                 </h2>
                 <p className="mt-2 text-sm text-[#4c9a59]">
-                  Enter the email address associated with your account and we'll
-                  send you a verification code.
+                  Nhập địa chỉ email liên kết với tài khoản và chúng tôi sẽ gửi
+                  mã xác minh.
                 </p>
               </>
             )}
             {step === STEPS.VERIFY && (
               <>
                 <h2 className="text-3xl font-bold tracking-tight text-[#0d1b10]">
-                  Check your email
+                  Kiểm tra email
                 </h2>
                 <p className="mt-2 text-sm text-[#4c9a59]">
-                  We sent a 6-digit code to{" "}
+                  Chúng tôi đã gửi mã 6 chữ số tới{" "}
                   <span className="font-semibold text-[#0d1b10]">{email}</span>.
-                  Enter it below.
+                  Hãy nhập bên dưới.
                 </p>
               </>
             )}
             {step === STEPS.NEW_PASSWORD && (
               <>
                 <h2 className="text-3xl font-bold tracking-tight text-[#0d1b10]">
-                  Set new password
+                  Đặt mật khẩu mới
                 </h2>
                 <p className="mt-2 text-sm text-[#4c9a59]">
-                  Choose a strong password. Must be at least 8 characters.
+                  Chọn mật khẩu mạnh. Ít nhất 8 ký tự.
                 </p>
               </>
             )}
             {step === STEPS.SUCCESS && (
               <>
                 <h2 className="text-3xl font-bold tracking-tight text-[#0d1b10]">
-                  Password reset!
+                  Đặt lại mật khẩu thành công!
                 </h2>
                 <p className="mt-2 text-sm text-[#4c9a59]">
-                  Your password has been reset successfully. You can now sign in
-                  with your new password.
+                  Mật khẩu của bạn đã được đặt lại thành công. Bây giờ bạn có thể
+                  đăng nhập bằng mật khẩu mới.
                 </p>
               </>
             )}
@@ -196,7 +196,7 @@ export default function ForgotPassword() {
                     className="block text-sm font-medium leading-6 text-[#0d1b10]"
                     htmlFor="email"
                   >
-                    Email address
+                    Địa chỉ email
                   </label>
                   <div className="mt-2 relative rounded-md shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -221,7 +221,7 @@ export default function ForgotPassword() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@example.com"
+                      placeholder="bạn@example.com"
                       className={`${inputBase} pl-10`}
                     />
                   </div>
@@ -236,7 +236,7 @@ export default function ForgotPassword() {
                   disabled={!email}
                   className="flex w-full justify-center rounded-lg bg-[#13ec37] px-3 py-3 text-sm font-bold leading-6 text-[#0d1b10] shadow-sm hover:bg-[#0fd630] transition-colors active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Reset Link
+                  Gửi liên kết đặt lại
                 </button>
               </div>
               <div className="mt-10 flex flex-col items-center">
@@ -257,7 +257,7 @@ export default function ForgotPassword() {
                       d="M19 12H5M12 5l-7 7 7 7"
                     />
                   </svg>
-                  Back to login
+                  Quay lại đăng nhập
                 </a>
               </div>
             </div>
@@ -269,7 +269,7 @@ export default function ForgotPassword() {
               <div className="mt-6 space-y-6">
                 <div>
                   <label className="block text-sm font-medium leading-6 text-[#0d1b10] mb-3">
-                    Verification code
+                    Mã xác minh
                   </label>
                   <div className="flex gap-2 justify-between">
                     {code.map((digit, i) => (
@@ -288,17 +288,17 @@ export default function ForgotPassword() {
                     ))}
                   </div>
                   <p className="mt-4 text-sm text-center text-[#4c9a59]">
-                    Didn't receive it?{" "}
+                    Chưa nhận được?{" "}
                     {resendTimer > 0 ? (
                       <span className="text-[#0d1b10] font-medium">
-                        Resend in {resendTimer}s
+                        Gửi lại trong {resendTimer} giây
                       </span>
                     ) : (
                       <button
                         onClick={() => setResendTimer(60)}
                         className="font-semibold text-[#13ec37] hover:text-[#0fd630] hover:underline"
                       >
-                        Resend code
+                        Gửi lại mã
                       </button>
                     )}
                   </p>
@@ -310,7 +310,7 @@ export default function ForgotPassword() {
                   disabled={!code.every((d) => d)}
                   className="flex w-full justify-center rounded-lg bg-[#13ec37] px-3 py-3 text-sm font-bold leading-6 text-[#0d1b10] shadow-sm hover:bg-[#0fd630] transition-colors active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Verify Code
+                  Xác minh mã
                 </button>
               </div>
               <div className="mt-10 flex flex-col items-center">
@@ -331,7 +331,7 @@ export default function ForgotPassword() {
                       d="M19 12H5M12 5l-7 7 7 7"
                     />
                   </svg>
-                  Back
+                  Quay lại
                 </button>
               </div>
             </div>
@@ -346,7 +346,7 @@ export default function ForgotPassword() {
                     className="block text-sm font-medium leading-6 text-[#0d1b10]"
                     htmlFor="password"
                   >
-                    New password
+                    Mật khẩu mới
                   </label>
                   <div className="mt-2 relative rounded-md shadow-sm">
                     <input
@@ -354,7 +354,7 @@ export default function ForgotPassword() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Min. 8 characters"
+                      placeholder="Tối thiểu 8 ký tự"
                       className={`${inputBase} pr-10`}
                     />
                     <button
@@ -372,7 +372,7 @@ export default function ForgotPassword() {
                     className="block text-sm font-medium leading-6 text-[#0d1b10]"
                     htmlFor="confirm"
                   >
-                    Confirm new password
+                    Xác nhận mật khẩu mới
                   </label>
                   <div className="mt-2 relative rounded-md shadow-sm">
                     <input
@@ -380,7 +380,7 @@ export default function ForgotPassword() {
                       type={showConfirm ? "text" : "password"}
                       value={confirm}
                       onChange={(e) => setConfirm(e.target.value)}
-                      placeholder="Re-enter your password"
+                      placeholder="Nhập lại mật khẩu"
                       className={`${inputBase} pr-10 ${passwordError ? "ring-red-400 focus:ring-red-500" : passwordsMatch ? "ring-[#13ec37]" : ""}`}
                     />
                     <button
@@ -393,7 +393,7 @@ export default function ForgotPassword() {
                   </div>
                   {passwordError && (
                     <p className="mt-1 text-xs text-red-500">
-                      Passwords don't match
+                      Mật khẩu không khớp
                     </p>
                   )}
                 </div>
@@ -405,7 +405,7 @@ export default function ForgotPassword() {
                   disabled={!passwordsMatch || password.length < 8}
                   className="flex w-full justify-center rounded-lg bg-[#13ec37] px-3 py-3 text-sm font-bold leading-6 text-[#0d1b10] shadow-sm hover:bg-[#0fd630] transition-colors active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Reset Password
+                  Đặt lại mật khẩu
                 </button>
               </div>
               <div className="mt-10 flex flex-col items-center">
@@ -426,7 +426,7 @@ export default function ForgotPassword() {
                       d="M19 12H5M12 5l-7 7 7 7"
                     />
                   </svg>
-                  Back
+                  Quay lại
                 </button>
               </div>
             </div>
@@ -457,7 +457,7 @@ export default function ForgotPassword() {
                   href="#"
                   className="flex w-full justify-center rounded-lg bg-[#13ec37] px-3 py-3 text-sm font-bold leading-6 text-[#0d1b10] shadow-sm hover:bg-[#0fd630] transition-colors active:scale-[0.99]"
                 >
-                  Back to Login
+                  Quay lại đăng nhập
                 </a>
               </div>
             </div>
@@ -471,13 +471,13 @@ export default function ForgotPassword() {
         <div className="absolute bottom-0 left-0 right-0 z-20 p-12 text-white">
           <blockquote className="space-y-2">
             <p className="text-lg font-medium italic">
-              "Nature's peace will flow into you as sunshine flows into trees."
+              "Sự bình yên của thiên nhiên sẽ len trong bạn như ánh nắng lên trong cây."
             </p>
             <footer className="text-sm text-gray-200">— John Muir</footer>
           </blockquote>
         </div>
         <img
-          alt="Fresh green tea leaves"
+          alt="Lá trà xanh tươi"
           className="absolute inset-0 h-full w-full object-cover"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzJoYFXp5Vuo6jrFHz0xwlgRUv5ybaa5XISoU77DwNHPC78-TjmCi0rxPSFNjy37FeKsNyqEK0RVp56tBuF_XiqVXVbDocvGjXPnaAEVBFsnVJvBaIH8oON145-uq3_h7FpNnpmCqadxqzaIvMpLQ_TwUVk1ZcPB6PN_2YYQovj-R7L3GO2zFeMiEhMv-ct3_afww2KaY1tpnMgf1-FVGPs1gDgAlP8DA2de90N3DexhyxXFGmXtK36GmN0IhOveI4PfbzSiDfAKiV"
         />

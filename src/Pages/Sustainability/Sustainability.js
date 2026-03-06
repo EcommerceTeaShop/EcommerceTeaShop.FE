@@ -5,18 +5,18 @@ const Sustainability = () => {
   const pillars = [
     {
       icon: "eco",
-      title: "Ethical Sourcing",
-      desc: "We work directly with tea farmers who practice sustainable agriculture, ensuring fair wages and preserving traditional cultivation methods that respect the land.",
+      title: "Nguồn cung đạo đức",
+      desc: "Chúng tôi làm việc trực tiếp với nông dân trồng trà theo canh tác bền vững, đảm bảo thu nhập công bằng và giữ gìn phương pháp canh tác truyền thống tôn trọng đất.",
     },
     {
       icon: "inventory_2",
-      title: "Eco-Friendly Packaging",
-      desc: "Our packaging is 100% recyclable and biodegradable. We use minimal, elegant design to reduce waste while protecting the quality of our teas.",
+      title: "Bao bì thân thiện môi trường",
+      desc: "Bao bì của chúng tôi 100% có thể tái chế và phân hủy sinh học. Thiết kế tối giản giúp giảm rác thải mà vẫn bảo vệ chất lượng trà.",
     },
     {
       icon: "volunteer_activism",
-      title: "Community Empowerment",
-      desc: "We invest in local communities through education programs, healthcare initiatives, and infrastructure development in tea-growing regions.",
+      title: "Trao quyền cộng đồng",
+      desc: "Chúng tôi đầu tư vào cộng đồng địa phương qua chương trình giáo dục, sáng kiến y tế và phát triển hạ tầng tại vùng trồng trà.",
     },
   ];
 
@@ -30,12 +30,12 @@ const Sustainability = () => {
       >
         <div className="text-center z-10 px-4">
           <h1 className="text-white text-4xl lg:text-7xl font-black mb-6 tracking-tight">
-            Nurturing nature, <br />
-            one leaf at a time
+            Nuôi dưỡng thiên nhiên, <br />
+            từng lá một
           </h1>
           <p className="text-gray-200 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-            Our commitment to sustainability goes beyond tea — it's a promise to
-            the earth and future generations.
+            Cam kết bền vững của chúng tôi vượt xa trà — đó là lời hứa với trái
+            đất và các thế hệ tương lai.
           </p>
         </div>
       </section>
@@ -46,21 +46,20 @@ const Sustainability = () => {
             <div className="aspect-video lg:aspect-square rounded-[2.5rem] overflow-hidden shadow-md border border-gray-100 group">
               <img
                 src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Harvesting fresh tea leaves"
+                alt="Thu hái lá trà tươi"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
           <div className="flex-1 space-y-6">
             <h2 className="text-3xl lg:text-5xl font-black text-[#0d1b10] mb-8">
-              Our Sustainable Journey
+              Hành trình bền vững của chúng tôi
             </h2>
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
-              At Teavault, sustainability isn't just a buzzword — it's woven
-              into every step of our process. From the moment a tea leaf is
-              plucked to when it reaches your cup, we ensure our practices honor
-              the earth, support farming communities, and preserve the ancient
-              art of tea cultivation for generations to come.
+              Tại Teavault, bền vững không chỉ là khẩu hiệu — mà được dệt vào
+              mọi bước trong quy trình. Từ lúc hái lá đến khi vào ly của bạn,
+              chúng tôi đảm bảo thực hành tôn trọng đất, hỗ trợ cộng đồng nông
+              hộ và gìn giữ nghệ thuật canh tác trà truyền thống cho thế hệ sau.
             </p>
           </div>
         </div>
@@ -69,7 +68,7 @@ const Sustainability = () => {
       <section className="bg-surface-light py-16 lg:py-24 border-y border-gray-100">
         <div className="max-w-[1440px] mx-auto px-4 md:px-10 text-center">
           <h2 className="text-3xl lg:text-4xl font-black text-[#0d1b10] mb-12">
-            Our Three Pillars
+            Ba trụ cột
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {pillars.map((pillar, i) => (
@@ -96,15 +95,15 @@ const Sustainability = () => {
 
       <section className="max-w-[1024px] mx-auto px-4 md:px-10 py-16 lg:py-24 text-center">
         <h2 className="text-3xl lg:text-4xl font-black text-[#0d1b10] mb-6">
-          Join us in creating a sustainable future
+          Cùng chúng tôi tạo tương lai bền vững
         </h2>
         <p className="text-gray-600 font-medium text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          Every purchase supports ethical farming, eco-friendly practices, and
-          thriving communities.
+          Mỗi đơn hàng đều ủng hộ canh tác đạo đức, thực hành thân thiện môi
+          trường và cộng đồng phát triển.
         </p>
         <Link to="/our-story">
           <button className="bg-[#0d1b10] text-white px-10 py-4 rounded-xl font-black shadow-lg hover:bg-opacity-80 active:scale-[0.98] transition-all">
-            Learn More About Our Journey
+            Tìm hiểu thêm về hành trình
           </button>
         </Link>
       </section>

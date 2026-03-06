@@ -5,14 +5,13 @@ const Description = () => {
     <div className="grid md:grid-cols-3 gap-12">
       <div className="md:col-span-2 space-y-6">
         <h3 className="text-2xl font-black text-[#0d1b10]">
-          The Essence of Uji
+          Tinh túy Uji
         </h3>
         <p className="text-gray-600 font-medium leading-relaxed">
-          Our Ceremonial Grade Matcha is sourced directly from a family-owned
-          estate in Uji, Kyoto—the birthplace of Japanese matcha. The leaves are
-          shade-grown for 20 days before harvest to boost chlorophyll and
-          L-theanine levels, resulting in a vibrant emerald green color and a
-          profound umami flavor.
+          Matcha hạng lễ nghi của chúng tôi được lấy trực tiếp từ trang trại gia
+          đình ở Uji, Kyoto - nơi khai sinh matcha Nhật Bản. Lá trà được che bóng
+          20 ngày trước khi thu hoạch để tăng chlorophyll và L-theanine, tạo màu
+          xanh lục bảo và vị umami sâu.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-10">
@@ -21,24 +20,24 @@ const Description = () => {
               <span className="material-symbols-outlined text-primary">
                 psychiatry
               </span>
-              Tasting Notes
+              Hương vị
             </h4>
             <ul className="space-y-3 text-gray-600 font-medium">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Creamy mouthfeel
+                Cảm giác béo mượt
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Vegetal greens
+                Hương cỏ xanh
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Subtle sweetness
+                Ngọt nhẹ
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Zero bitterness
+                Không đắng
               </li>
             </ul>
           </div>
@@ -47,24 +46,24 @@ const Description = () => {
               <span className="material-symbols-outlined text-primary">
                 nutrition
               </span>
-              Benefits
+              Lợi ích
             </h4>
             <ul className="space-y-3 text-gray-600 font-medium">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                High in antioxidants
+                Giàu chất chống oxy hóa
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Boosts metabolism
+                Hỗ trợ trao đổi chất
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Calm focus (L-theanine)
+                Tập trung bình ổn (L-theanine)
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                Detoxifies naturally
+                Thanh lọc tự nhiên
               </li>
             </ul>
           </div>
@@ -73,7 +72,7 @@ const Description = () => {
 
       <div className="bg-[#ecf6ee] rounded-3xl p-8 border border-primary/20 h-fit">
         <h4 className="text-xl font-black mb-8 text-center text-[#0d1b10]">
-          Perfect Brew
+          Pha hoàn hảo
         </h4>
         <div className="space-y-6">
           <div className="flex items-center gap-5">
@@ -82,7 +81,7 @@ const Description = () => {
             </div>
             <div>
               <p className="text-[10px] uppercase font-black tracking-widest text-gray-400">
-                Temperature
+                Nhiệt độ
               </p>
               <p className="font-bold text-[#0d1b10] mt-0.5">175°F / 80°C</p>
             </div>
@@ -93,9 +92,9 @@ const Description = () => {
             </div>
             <div>
               <p className="text-[10px] uppercase font-black tracking-widest text-gray-400">
-                Whisk Time
+                Thời gian đánh
               </p>
-              <p className="font-bold text-[#0d1b10] mt-0.5">15-30 Seconds</p>
+              <p className="font-bold text-[#0d1b10] mt-0.5">15-30 giây</p>
             </div>
           </div>
           <div className="flex items-center gap-5">
@@ -104,7 +103,7 @@ const Description = () => {
             </div>
             <div>
               <p className="text-[10px] uppercase font-black tracking-widest text-gray-400">
-                Quantity
+                Lượng
               </p>
               <p className="font-bold text-[#0d1b10] mt-0.5">1.5g / 1 tsp</p>
             </div>

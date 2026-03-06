@@ -10,9 +10,9 @@ const baseProducts = [
   {
     productId: "1", // Matches Guid ProductId
     name: "Imperial Matcha",
-    type: "Green Tea",
-    origin: "Uji, Japan",
-    desc: "Vibrant green ceremonial grade powder with distinct umami notes.",
+    type: "Trà xanh",
+    origin: "Uji, Nhật Bản",
+    desc: "Bột xanh hạng lễ nghi với nốt umami rõ nét.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAacKjJEwsR2ONaRZe8c_yYC9f2EaBCNBdkoeD3rk5u_YLjwLTTHq3caX4VBTeFhwaZhCXMwfx1uede07YocpZfbz3zSm4dDTeMArH9il756PAY_KRPdxzaH7dSLsSkDuSCWtylICi5fyAIpFKVpfHoYqtkzrNVIw_LC_8kxSc_G2hCDK6BjEVeFI1QeS40XT_nN2m1HECvuM5iS1ISCqku9IWzMdPOmlERjwo-TyhEFiRMMCsyrVn_rvuE28vZW2_9hVi6b426Ln22",
     thumbnails: [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDEy5SGb1GoJxVolf_VV1JBcRC0xUgcv-Rnd59svi8y8pYh9wb7wTv69LD6QpDZy4kVYcCYXr03WGkHpXAMydPgfkmCcD77WCWLeM4jGdZP-UDSOw7FcajWa6AVChxPXrMjAWFq6H7jzB5n2VjhgvPAwhiOaJpFz6xVAqU8SF37LYFXjrcu568cXvfRtJ5ySNOE_4ytShAlBpuPvCFgjZQOPj-pP8njxZEAHSFhLync2cSXHXjp0jARPdjvpQreZr-5anGUr96tDCsx",
@@ -43,9 +43,9 @@ const baseProducts = [
   {
     productId: "2",
     name: "Sencha Reserve",
-    type: "Green Tea",
-    origin: "Shizuoka, Japan",
-    desc: "Deep steamed green tea with a rich, grassy aroma.",
+    type: "Trà xanh",
+    origin: "Shizuoka, Nhật Bản",
+    desc: "Trà xanh hấp kỹ với mùi cỏ đậm.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBLUAXmxJa8DR4Q4uI5HFGdZtwiPKB7eoAoCnBvpW-BQoM1Zo9gg1tYHsDXr4sop91GdPYo1i2PgmFpu2MFkfigzm4Y-_Esgcs5I26KBFWQ7t4gpx4z9emSFR_4mnQjeYJlzK2BcJnlxCyLdWq5r41U6Z9jXvU-IV9d05fjKmc964yzzE4Ej4LLPxviPV0sAm_WElsB9OnJttyMUq93CJXuA0vPn41iIDrrG7pq8D5T-8MznrvcY1lAcKo3Z2TNgWl0pn6Qs-i5Q7af",
     thumbnails: [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBhr9MKfge7rKsRy4-67IG7PaCQ-xIiFA-n-ifJ6E7mmWmx0wHP3oRvAP1l0uFhEPrVJ2xYo1yUoDnS3uBht9GKgEZctDi8ksSmKDXvdMNwR2zPR-PXAXZQHXvIrUDuM8fIkmMVeize2e59g76QbrmLJWTAn4Gc9GFxjssyIsDRZPpMG34V7w3WI5TpyL1KvkiSN_z1wIYw60mpRvxSLvXfq0DlcKKCBtBrlm9pR18tg2uKtbnA-rq-wKZzEqyvEnksc08LBeZ1ZPnM",
@@ -65,9 +65,9 @@ const baseProducts = [
   {
     productId: "3",
     name: "Jasmine Pearls",
-    type: "Green Tea",
-    origin: "Fujian, China",
-    desc: "Hand-rolled tea pearls infused with fresh jasmine blossoms.",
+    type: "Trà xanh",
+    origin: "Phúc Kiến, Trung Quốc",
+    desc: "Viên trà vò tay ướp hoa nhài tươi.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBa3a1VM20Me0D-3SLjzYpzZuu8aEkA4-vCSPOPpQo3In4iq_18dE872EXoIp1MWh5eXsQ6o4jYb-C4wbgYlG1v4Vdi01oZBANGqrtuipcK2HRgI8z4zPAvf4iVdk86RDe2HgjQSaaiZAoMjuOF_apnjHd94kDl7kO8Kscg9TmSwOMDn0ZbM_gsNB7C3QMuxRu7EbU0QRVfjKoBdzaz5T6zOAd67ZtQzxVc2elQMmcRmJAx_BFaIS76wHrBEI1Nb6MUCyDSCuAdB7ep",
     thumbnails: [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDatd4azIC27G0oJosUCsoYIyVz2sqfUQcai9atn14GfRqE2UQ_9JseL_fZ3ia3Hi_9iVCEtrq7lw3szV1AJNYr9l2pVO8O79wDRJkFf2oc93eIXd43JdNbIUJ0dLXf1jpQlEfIjPEo3nNcxcBa2D5G_24fxZERsx9IKlFvleI-8DM7beUAp0KV5ik3NFaZ_vjYUox0uekF022l_rFneEB7Etq9APZ0Eev1n-swYKI2T7HFyt05l-sB0fOBdgT5KDXcK6ajGp0obULq",
@@ -140,31 +140,31 @@ const ProductDetail = () => {
     {
       name: "Bamboo Whisk",
       price: "$18.00",
-      desc: "Essential for frothy matcha",
+      desc: "Dùng để đánh matcha bông mịn",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7K55ZdjQhjrz3iGZFvNhFp_-nIEP9DRGCnnBOMC_qS0YKyGE1PSVzYpXHKsAJiDihpwWf65cuo6_7QvAkZxd5zkdfP8nLC9obhbyi8DvajJOU9-B_EmaY2jYUdDfWQkWJ_gR0Yi9ycMWW8rfPoPgjFBnP3e4NO5dJ-ALG9R_CdEgqm1hj-iOB_71mko5CAawd7ZAkfmrz6EVEUfgLwbgW125m8tnesbSydLVv92PX3WDwu8jCQQpCKZ8pU97KiRbl6kIA8WFyLkbG",
     },
     {
       name: "Premium Sencha",
       price: "$21.00",
-      desc: "Deep steamed green tea",
+      desc: "Trà xanh hấp kỹ",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuClFQShTmxw7hwEMBY6fTuihtXKdb8cLCDa7-4MqLFRQYL3g26XwjrrPhQdlx4ayRY26TFo0yapDrVhdDsAJAVr1749hymQkacV5uRoDSemPzhgfvz8sN1VoEFHGfX6dHWBt6NwZxUQcowo2pQsZJekIC2mPs12d-S9Yyk7fZeYMmN-CQCjII0_zwur77XfESn__4nj5OgStk4IUa4lq_AslorAJBjuZ_7DsmhXbA1oB43YW7IXiZjoHiBAdSlIazj_V8s5vNqWe0Z1",
     },
     {
       name: "Matcha Bowl",
       price: "$45.00",
-      desc: "Handcrafted in Japan",
+      desc: "Chế tác thủ công tại Nhật Bản",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-zVYAk4QZeGjW0XvSG9WcVBv2-9JjE-uPtrRutJuy0FkdjX7ttyTlcbLMg93qioKFrx418DoWysF19rkXerO7LANFlbxmfu1tmWpKYTD1Ag5d6jsLHzeNTHYGKsU1B45MrjPMuLorCJa7f__-1YGKEsiKVnYoAqWTV2tS8qEMx3_432O4vY6iSdGSD1xiBcjnhtnb0dp1r-yT0ZO2-c7N8spaX1BB822R_srXNS67eqZK9x9dVPkegUQP2Cd9UCI5FGjJOJcrzUcq",
     },
     {
       name: "Hojicha Powder",
       price: "$19.00",
-      desc: "Roasted green tea powder",
+      desc: "Bột trà xanh rang",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZtsxL1UZXLjLFyqm0zo4308WfmgHLmVhu90k-DDPYkPaQ1qkk5XUMZIRtBvwiL1U29CMe8kFJ7OMLeVUwQddWhAQzKvtnlxEYze2qUmvR5XmR-vwFIxCZYM4FMuQJ4O1OJudvK4MmpIYzNn2BpnhlRRib28QzO8k9CtLBB4XLzW1n0GcKBs75gb-9QklWjTo_9DqChKhUUm0T6CVd2v2GRhliC-7_mS4JhBluTK3OXKYStvK86g1G03_7z_firDUxmTfsHjb3C7Wf",
     },
     {
       name: "Hojicha Powder",
       price: "$19.00",
-      desc: "Roasted green tea powder",
+      desc: "Bột trà xanh rang",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZtsxL1UZXLjLFyqm0zo4308WfmgHLmVhu90k-DDPYkPaQ1qkk5XUMZIRtBvwiL1U29CMe8kFJ7OMLeVUwQddWhAQzKvtnlxEYze2qUmvR5XmR-vwFIxCZYM4FMuQJ4O1OJudvK4MmpIYzNn2BpnhlRRib28QzO8k9CtLBB4XLzW1n0GcKBs75gb-9QklWjTo_9DqChKhUUm0T6CVd2v2GRhliC-7_mS4JhBluTK3OXKYStvK86g1G03_7z_firDUxmTfsHjb3C7Wf",
     },
   ];
@@ -193,14 +193,14 @@ const ProductDetail = () => {
           to="/"
           className="text-gray-500 hover:text-primary transition-colors font-medium"
         >
-          Home
+          Trang chủ
         </Link>
         <span className="text-gray-300">/</span>
         <Link
           to="/shop"
           className="text-gray-500 hover:text-primary transition-colors font-medium"
         >
-          Shop All
+          Tất cả trà
         </Link>
         <span className="text-gray-300">/</span>
         <span className="text-[#0d1b10] font-bold">{product?.name || ""}</span>
@@ -231,7 +231,7 @@ const ProductDetail = () => {
           <div className="flex-1 h-[400px] md:h-[600px] rounded-3xl overflow-hidden bg-surface-light relative shadow-sm group">
             <img
               src={selectedImage}
-              alt="High quality ceremonial matcha"
+              alt="Matcha lễ nghi chất lượng cao"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
@@ -256,7 +256,7 @@ const ProductDetail = () => {
                 star_half
               </span>
               <span className="ml-2 text-gray-500 text-sm font-bold underline cursor-pointer hover:text-primary transition-colors">
-                4.8 (124 Reviews)
+                4.8 (124 đánh giá)
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-tight text-[#0d1b10] mb-2">
@@ -275,7 +275,7 @@ const ProductDetail = () => {
 
           <div className="space-y-3">
             <label className="text-xs font-black uppercase tracking-widest text-gray-400">
-              Size
+              Kích cỡ
             </label>
             <div className="flex flex-wrap gap-3">
               {product?.productDetails.map((detail) => (
@@ -323,7 +323,7 @@ const ProductDetail = () => {
               className="flex-1 h-14 bg-primary hover:bg-primary/90 text-[#0d1b10] font-black text-lg rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-95"
             >
               <span className="material-symbols-outlined">shopping_bag</span>
-              Add to Cart
+              Thêm vào giỏ
             </button>
           </div>
 
@@ -332,19 +332,19 @@ const ProductDetail = () => {
               <span className="material-symbols-outlined text-primary text-2xl">
                 eco
               </span>
-              <span className="text-xs font-bold text-[#0d1b10]">Organic</span>
+              <span className="text-xs font-bold text-[#0d1b10]">Hữu cơ</span>
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center gap-2">
               <span className="material-symbols-outlined text-primary text-2xl">
                 bolt
               </span>
-              <span className="text-xs font-bold text-[#0d1b10]">Energy</span>
+              <span className="text-xs font-bold text-[#0d1b10]">Năng lượng</span>
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center gap-2">
               <span className="material-symbols-outlined text-primary text-2xl">
                 spa
               </span>
-              <span className="text-xs font-bold text-[#0d1b10]">Calming</span>
+              <span className="text-xs font-bold text-[#0d1b10]">Thư giãn</span>
             </div>
           </div>
         </div>
@@ -360,7 +360,7 @@ const ProductDetail = () => {
                 : "border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600 font-bold"
             }`}
           >
-            Description
+            Mô tả
           </button>
           <button
             onClick={() => setActiveTab("Origin")}
@@ -370,7 +370,7 @@ const ProductDetail = () => {
                 : "border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600 font-bold"
             }`}
           >
-            Origin
+            Xuất xứ
           </button>
           <button
             onClick={() => setActiveTab("Reviews")}
@@ -380,7 +380,7 @@ const ProductDetail = () => {
                 : "border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600 font-bold"
             }`}
           >
-            Reviews (124)
+            Đánh giá (124)
           </button>
         </div>
 
@@ -396,7 +396,7 @@ const ProductDetail = () => {
       <div className="mt-32 mb-12">
         <div className="flex items-center justify-between mb-10">
           <h3 className="text-2xl md:text-3xl font-black text-[#0d1b10]">
-            You Might Also Like
+            Có thể bạn sẽ thích
           </h3>
           <div className="flex gap-3">
             <button
@@ -406,7 +406,7 @@ const ProductDetail = () => {
                   ? "opacity-40 cursor-not-allowed"
                   : "border-gray-200 hover:border-primary hover:text-primary"
               }`}
-              aria-label="previous"
+              aria-label="trước"
             >
               <span className="material-symbols-outlined">arrow_back</span>
             </button>
@@ -417,7 +417,7 @@ const ProductDetail = () => {
                   ? "opacity-40 cursor-not-allowed"
                   : "border-gray-200 hover:border-primary hover:text-primary"
               }`}
-              aria-label="next"
+              aria-label="sau"
             >
               <span className="material-symbols-outlined">arrow_forward</span>
             </button>

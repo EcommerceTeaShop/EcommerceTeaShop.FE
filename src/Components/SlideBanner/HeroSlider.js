@@ -44,22 +44,22 @@ const HeroSlider = () => {
 
       <div className="relative z-20 text-center px-4 max-w-3xl">
         <h1 className="text-white text-5xl md:text-7xl font-black mb-6 leading-tight drop-shadow-sm">
-          Experience the <br />
-          <span className="text-primary">Art of Calm</span>
+          Trải nghiệm <br />
+          <span className="text-primary">nghệ thuật bình yên</span>
         </h1>
         <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto font-medium">
-          Hand-picked organic teas sourced from the finest gardens, delivered
-          fresh to your door.
+          Trà hữu cơ được tuyển chọn từ những vườn tốt nhất, giao tận tay
+          đến nhà bạn.
         </p>
         <div className="flex gap-4 justify-center">
           <Link to="/shop">
             <button className="bg-primary hover:bg-primary/90 text-[#0d1b10] px-8 py-3 rounded-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/25">
-              Shop Collection
+              Xem bộ sưu tập
             </button>
           </Link>
           <Link to="/about">
             <button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/30 px-8 py-3 rounded-lg font-bold transition-all">
-              Our Story
+              Câu chuyện của chúng tôi
             </button>
           </Link>
         </div>
@@ -68,14 +68,14 @@ const HeroSlider = () => {
       <button
         onClick={prev}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white rounded-full p-2"
-        aria-label="Previous slide"
+        aria-label="Trang trước"
       >
         <span className="material-symbols-outlined">chevron_left</span>
       </button>
       <button
         onClick={next}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white rounded-full p-2"
-        aria-label="Next slide"
+        aria-label="Trang sau"
       >
         <span className="material-symbols-outlined">chevron_right</span>
       </button>
@@ -86,7 +86,7 @@ const HeroSlider = () => {
             key={i}
             onClick={() => setIndex(i)}
             className={`w-3 h-3 rounded-full ${i === index ? "bg-primary" : "bg-white/40"}`}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`Đến trang ${i + 1}`}
           />
         ))}
       </div>

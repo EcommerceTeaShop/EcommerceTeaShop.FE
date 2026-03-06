@@ -5,9 +5,9 @@ const Navbar = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const notifications = [
-    { id: 1, text: "New order #TV-1045 received", time: "5m ago", unread: true },
-    { id: 2, text: "Alice Green opened a support ticket", time: "12m ago", unread: true },
-    { id: 3, text: "Imperial Jasmine Pearl stock is low", time: "2h ago", unread: false },
+    { id: 1, text: "Đã nhận đơn mới #TV-1045", time: "5p trước", unread: true },
+    { id: 2, text: "Alice Green đã mở một phiếu hỗ trợ", time: "12p trước", unread: true },
+    { id: 3, text: "Tồn kho Imperial Jasmine Pearl sắp hết", time: "2g trước", unread: false },
   ];
 
   return (
@@ -31,8 +31,8 @@ const Navbar = () => {
           {isNotifOpen && (
             <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden z-50">
               <div className="px-4 py-3 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-                <span className="font-bold text-slate-900">Notifications</span>
-                <button className="text-xs font-bold text-blue-600 hover:text-blue-700">Mark all read</button>
+                <span className="font-bold text-slate-900">Thông báo</span>
+                <button className="text-xs font-bold text-blue-600 hover:text-blue-700">Đánh dấu đã đọc</button>
               </div>
               <div className="max-h-[300px] overflow-y-auto">
                 {notifications.map(notif => (
@@ -43,7 +43,7 @@ const Navbar = () => {
                 ))}
               </div>
               <div className="p-3 text-center border-t border-slate-100 bg-slate-50/50">
-                <button className="text-sm font-bold text-slate-600 hover:text-slate-900">View All Activity</button>
+                <button className="text-sm font-bold text-slate-600 hover:text-slate-900">Xem tất cả hoạt động</button>
               </div>
             </div>
           )}
@@ -62,8 +62,8 @@ const Navbar = () => {
               TV
             </div>
             <div className="hidden md:block">
-              <p className="text-sm font-bold text-slate-900 leading-none">Admin</p>
-              <p className="text-xs font-medium text-slate-500 mt-1 leading-none">Console Manager</p>
+              <p className="text-sm font-bold text-slate-900 leading-none">Quản trị</p>
+              <p className="text-xs font-medium text-slate-500 mt-1 leading-none">Quản lý hệ thống</p>
             </div>
             <span className="material-symbols-outlined text-slate-400 text-[20px]">expand_more</span>
           </div>
@@ -72,19 +72,19 @@ const Navbar = () => {
             <div className="absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden z-50">
               <div className="py-1">
                 <button 
-                  onClick={() => alert("Settings page routing to be defined by backend.")}
+                  onClick={() => alert("Đường dẫn trang cài đặt sẽ do backend định nghĩa.")}
                   className="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 flex items-center gap-2 transition-colors"
                 >
                   <span className="material-symbols-outlined text-[18px]">manage_accounts</span> 
-                  Account Settings
+                  Cài đặt tài khoản
                 </button>
                 <div className="border-t border-slate-100 my-1"></div>
                 <button 
-                  onClick={() => alert("Simulating backend logout protocol...")}
+                  onClick={() => alert("Đang mô phỏng đăng xuất từ backend...")}
                   className="w-full text-left px-4 py-2.5 text-sm font-bold text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors"
                 >
                   <span className="material-symbols-outlined text-[18px]">logout</span> 
-                  Sign Out
+                  Đăng xuất
                 </button>
               </div>
             </div>

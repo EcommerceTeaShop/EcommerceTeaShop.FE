@@ -12,22 +12,22 @@ const ProductEdit = () => {
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-              {isAddMode ? 'Add New Product' : 'Update Product'}
+              {isAddMode ? 'Thêm sản phẩm mới' : 'Cập nhật sản phẩm'}
             </h1>
             <p className="mt-1 text-slate-500">
-              {isAddMode ? 'Create a new tea listing and set its comparison metrics.' : 'Edit details, comparison matrix data, and packaging options.'}
+              {isAddMode ? 'Tạo sản phẩm trà mới và thiết lập chỉ số so sánh.' : 'Chỉnh sửa chi tiết, dữ liệu so sánh và tùy chọn đóng gói.'}
             </p>
           </div>
           <div className="flex items-center gap-3">
             <Link to="/admin/products" className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors shadow-sm">
-              Cancel
+              Hủy
             </Link>
             <button 
-              onClick={() => alert(isAddMode ? 'Simulating adding new product to Redux store...' : 'Simulating saving edits...')}
+              onClick={() => alert(isAddMode ? 'Đang mô phỏng thêm sản phẩm mới vào Redux store...' : 'Đang mô phỏng lưu chỉnh sửa...')}
               className="flex items-center gap-2 px-5 py-2 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 shadow-sm transition-all transform active:scale-95"
             >
               <span className="material-symbols-outlined text-[20px]">{isAddMode ? 'add_circle' : 'save'}</span>
-              {isAddMode ? 'Publish Tea' : 'Save Changes'}
+              {isAddMode ? 'Đăng trà' : 'Lưu thay đổi'}
             </button>
           </div>
         </div>
@@ -40,7 +40,7 @@ const ProductEdit = () => {
               </div>
               <input 
                 className="block w-full h-12 pl-12 pr-4 bg-transparent border-none rounded-lg text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all sm:text-sm" 
-                placeholder="Search product by name, SKU, or tag to edit..." 
+                placeholder="Tìm theo tên sản phẩm, SKU, hoặc thẻ để chỉnh sửa..." 
                 type="text"
               />
             </div>
@@ -54,30 +54,30 @@ const ProductEdit = () => {
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-blue-600">edit_note</span> General Information
+                  <span className="material-symbols-outlined text-blue-600">edit_note</span> Thông tin chung
                 </h3>
                 {!isAddMode && (
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">
-                    Published
+                    Đã đăng
                   </span>
                 )}
               </div>
               
               <div className="space-y-5">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="product-name">Product Name</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="product-name">Tên sản phẩm</label>
                   <input 
                     className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
                     id="product-name" 
                     type="text" 
                     defaultValue={isAddMode ? '' : "Imperial Jasmine Pearl Green Tea"}
-                    placeholder={isAddMode ? 'e.g., Spring Harvest Matcha' : ''}
+                    placeholder={isAddMode ? 'vd. Spring Harvest Matcha' : ''}
                   />
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="sku">SKU Tracking</label>
+                    <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="sku">Theo dõi SKU</label>
                     <input 
                       className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm font-mono uppercase" 
                       id="sku" 
@@ -87,19 +87,19 @@ const ProductEdit = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="origin">Sourcing Origin</label>
+                    <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="origin">Nguồn gốc</label>
                     <input 
                       className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
                       id="origin" 
                       type="text" 
                       defaultValue={isAddMode ? '' : "Fujian Province, China"}
-                      placeholder={isAddMode ? 'e.g., Kyoto, Japan' : ''}
+                      placeholder={isAddMode ? 'vd. Kyoto, Japan' : ''}
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Storefront Description</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Mô tả cửa hàng</label>
                   <div className="border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
                     <div className="flex items-center gap-1 p-2 border-b border-slate-200 bg-white">
                       <button className="p-1.5 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded" type="button"><span className="material-symbols-outlined text-[18px]">format_bold</span></button>
@@ -112,7 +112,7 @@ const ProductEdit = () => {
                         className="w-full border-none bg-transparent p-0 focus:ring-0 text-sm text-slate-800 resize-none outline-none" 
                         rows="4"
                         defaultValue={isAddMode ? '' : "Hand-rolled pearls of premium green tea infused with the delicate scent of night-blooming jasmine flowers. Perfect for relaxing evenings."}
-                        placeholder={isAddMode ? 'Describe the flavor profile, history, and feeling of this tea...' : ''}
+                        placeholder={isAddMode ? 'Mô tả hương vị, câu chuyện và cảm giác của loại trà này...' : ''}
                       />
                     </div>
                   </div>
@@ -123,42 +123,42 @@ const ProductEdit = () => {
             <div className="bg-white rounded-xl shadow-sm border border-blue-200 p-6 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
               <h3 className="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">tune</span> Tea Comparison Matrix
+                <span className="material-symbols-outlined text-blue-600">tune</span> Ma trận so sánh trà
               </h3>
-              <p className="text-xs text-slate-500 mb-6">These core metrics directly power the storefront's algorithm.</p>
+              <p className="text-xs text-slate-500 mb-6">Các chỉ số cốt lõi này trực tiếp chi phối thuật toán hiển thị.</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Aroma / Smell Profile</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Hương thơm</label>
                   <select className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                    {isAddMode && <option value="" disabled selected>Select profile...</option>}
-                    <option>Floral & Sweet</option>
-                    <option>Earthy & Woody</option>
-                    <option>Roasted & Nutty</option>
-                    <option>Fresh & Vegetal</option>
+                    {isAddMode && <option value="" disabled selected>Chọn hồ sơ...</option>}
+                    <option>Hoa & ngọt</option>
+                    <option>Thổ & gỗ</option>
+                    <option>Rang & hạt</option>
+                    <option>Tươi & thảo mộc</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Primary Taste Notes</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Nốt vị chính</label>
                   <input 
                     className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
                     type="text" 
                     defaultValue={isAddMode ? '' : "Jasmine, Honey, Light Grass"}
-                    placeholder={isAddMode ? 'e.g., Umami, Seaweed, Sweet' : ''}
+                    placeholder={isAddMode ? 'vd. Umami, Tảo biển, Ngọt' : ''}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Brewing Style</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Kiểu pha</label>
                   <select className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                    {isAddMode && <option value="" disabled selected>Select style...</option>}
-                    <option>Loose Leaf Rolled</option>
-                    <option>Loose Leaf Standard</option>
-                    <option>Powder / Matcha</option>
-                    <option>Compressed Cake</option>
+                    {isAddMode && <option value="" disabled selected>Chọn kiểu...</option>}
+                    <option>Lá rời cuộn</option>
+                    <option>Lá rời tiêu chuẩn</option>
+                    <option>Bột / Matcha</option>
+                    <option>Bánh nén</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Credibility Rating (1-5)</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Xếp hạng uy tín (1-5)</label>
                   <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
                     <input type="range" min="1" max="5" defaultValue={isAddMode ? "3" : "5"} className="w-full accent-blue-600" />
                     <span className="font-bold text-slate-900">{isAddMode ? "3.0" : "5.0"}</span>
@@ -169,13 +169,13 @@ const ProductEdit = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">imagesmode</span> Product Media
+                <span className="material-symbols-outlined text-blue-600">imagesmode</span> Hình ảnh sản phẩm
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                 {!isAddMode && (
                   <div className="relative group aspect-square rounded-lg overflow-hidden border-2 border-blue-600 bg-slate-100 flex items-center justify-center">
                     <span className="material-symbols-outlined text-slate-400 text-4xl">photo_camera</span>
-                    <div className="absolute top-1 left-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 rounded">MAIN</div>
+                    <div className="absolute top-1 left-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 rounded">CHÍNH</div>
                   </div>
                 )}
                 {!isAddMode && (
@@ -185,7 +185,7 @@ const ProductEdit = () => {
                 )}
                 <label className="flex flex-col items-center justify-center aspect-square rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
                   <span className="material-symbols-outlined text-slate-400 text-3xl mb-1">add_photo_alternate</span>
-                  <span className="text-xs text-slate-500 font-bold">Upload</span>
+                  <span className="text-xs text-slate-500 font-bold">Tải lên</span>
                   <input className="hidden" type="file" />
                 </label>
               </div>
@@ -197,11 +197,11 @@ const ProductEdit = () => {
             
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">payments</span> Pricing Engine
+                <span className="material-symbols-outlined text-blue-600">payments</span> Cơ chế giá
               </h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Base Price ($)</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Giá cơ bản ($)</label>
                   <div className="relative rounded-lg shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                       <span className="text-slate-500 font-bold sm:text-sm">$</span>
@@ -213,7 +213,7 @@ const ProductEdit = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Discount Compare Price</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Giá so sánh giảm</label>
                   <div className="relative rounded-lg shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                       <span className="text-slate-500 font-bold sm:text-sm">$</span>
@@ -226,13 +226,13 @@ const ProductEdit = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">redeem</span> Custom Gifting
+                <span className="material-symbols-outlined text-blue-600">redeem</span> Quà tặng tùy chỉnh
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-sm font-bold text-slate-900 block">Enable Graphic Packaging</span>
-                    <span className="text-xs text-slate-500">Allow users to select pre-designed art wraps for this tea.</span>
+                    <span className="text-sm font-bold text-slate-900 block">Bật gói đồ họa</span>
+                    <span className="text-xs text-slate-500">Cho phép người dùng chọn bao bì thiết kế sẵn cho trà này.</span>
                   </div>
                   <button className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${isAddMode ? 'bg-slate-300' : 'bg-blue-600'}`} type="button">
                     <span className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${isAddMode ? 'translate-x-0' : 'translate-x-5'}`}></span>
@@ -243,17 +243,17 @@ const ProductEdit = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">inventory</span> Warehouse Stock
+                <span className="material-symbols-outlined text-blue-600">inventory</span> Tồn kho
               </h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Initial Quantity</label>
+                  <label className="block text-sm font-bold text-slate-700 mb-1">Số lượng ban đầu</label>
                   <input className="block w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm font-mono" type="number" defaultValue={isAddMode ? "0" : "128"} />
                 </div>
                 {!isAddMode && (
                   <div className="pt-4 border-t border-slate-100">
                     <div className="flex items-center justify-between text-xs text-slate-500 font-bold">
-                      <span>Last Vendor Restock:</span>
+                      <span>Lần nhập hàng gần nhất:</span>
                       <span className="text-blue-600">Oct 24, 2023</span>
                     </div>
                   </div>

@@ -2,17 +2,17 @@ import React from 'react';
 
 const Dashboard = () => {
   const recentOrders = [
-    { id: '#ORD-0012', customer: 'Alex Morgan', type: 'Custom Gift Box', date: 'Oct 24, 2023', amount: '$48.00', status: 'Completed', statusColor: 'bg-green-100 text-green-800' },
-    { id: '#ORD-0011', customer: 'Sarah Jones', type: 'Standard', date: 'Oct 23, 2023', amount: '$32.00', status: 'Pending', statusColor: 'bg-yellow-100 text-yellow-800' },
-    { id: '#ORD-0010', customer: 'Michael Chen', type: 'Corporate Gift', date: 'Oct 23, 2023', amount: '$285.00', status: 'Packaging', statusColor: 'bg-blue-100 text-blue-800' },
-    { id: '#ORD-0009', customer: 'Emma Wilson', type: 'Standard', date: 'Oct 22, 2023', amount: '$16.00', status: 'Completed', statusColor: 'bg-green-100 text-green-800' }
+    { id: '#ORD-0012', customer: 'Alex Morgan', type: 'Hộp quà tùy chỉnh', date: 'Oct 24, 2023', amount: '$48.00', status: 'Hoàn tất', statusColor: 'bg-green-100 text-green-800' },
+    { id: '#ORD-0011', customer: 'Sarah Jones', type: 'Tiêu chuẩn', date: 'Oct 23, 2023', amount: '$32.00', status: 'Chờ xử lý', statusColor: 'bg-yellow-100 text-yellow-800' },
+    { id: '#ORD-0010', customer: 'Michael Chen', type: 'Quà doanh nghiệp', date: 'Oct 23, 2023', amount: '$285.00', status: 'Đang đóng gói', statusColor: 'bg-blue-100 text-blue-800' },
+    { id: '#ORD-0009', customer: 'Emma Wilson', type: 'Tiêu chuẩn', date: 'Oct 22, 2023', amount: '$16.00', status: 'Hoàn tất', statusColor: 'bg-green-100 text-green-800' }
   ];
 
   const contentAlerts = [
-    { title: 'Tết Holiday Banner', type: 'Animated Hero', status: 'Scheduled', icon: 'animation' },
-    { title: 'Spring Matcha Sale', type: 'Voucher/Discount', status: 'Active', icon: 'sell' },
-    { title: 'Oolong Origin Guide', type: 'Blog Content', status: 'Pending Review', icon: 'article' },
-    { title: 'Uji Matcha Matrix', type: 'Tea Comparison', status: 'Updated', icon: 'tune' }
+    { title: 'Tết Holiday Banner', type: 'Hero động', status: 'Đã lên lịch', icon: 'animation' },
+    { title: 'Spring Matcha Sale', type: 'Voucher/Giảm giá', status: 'Đang chạy', icon: 'sell' },
+    { title: 'Oolong Origin Guide', type: 'Nội dung blog', status: 'Chờ duyệt', icon: 'article' },
+    { title: 'Uji Matcha Matrix', type: 'So sánh trà', status: 'Đã cập nhật', icon: 'tune' }
   ];
 
   return (
@@ -21,8 +21,8 @@ const Dashboard = () => {
         
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-black tracking-tight text-[#102213]">System Overview</h2>
-            <p className="text-gray-500 mt-1">TeaVault Central Management & Analytics Console.</p>
+            <h2 className="text-3xl font-black tracking-tight text-[#102213]">Tổng quan hệ thống</h2>
+            <p className="text-gray-500 mt-1">Bảng điều khiển quản trị & phân tích TeaVault.</p>
           </div>
         </div>
 
@@ -37,6 +37,7 @@ const Dashboard = () => {
               </span>
             </div>
             <p className="text-sm font-medium text-gray-500">Sales Revenue</p>
+            <p className="text-sm font-medium text-gray-500">Doanh thu</p>
             <h3 className="text-2xl font-bold mt-1">$45,231</h3>
           </div>
 
@@ -46,7 +47,7 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined">local_shipping</span>
               </div>
             </div>
-            <p className="text-sm font-medium text-gray-500">Active Order States</p>
+            <p className="text-sm font-medium text-gray-500">Đơn hàng đang xử lý</p>
             <h3 className="text-2xl font-bold mt-1">342</h3>
           </div>
 
@@ -56,7 +57,7 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined">redeem</span>
               </div>
             </div>
-            <p className="text-sm font-medium text-gray-500">Custom Gift Packages</p>
+            <p className="text-sm font-medium text-gray-500">Gói quà tùy chỉnh</p>
             <h3 className="text-2xl font-bold mt-1">128</h3>
           </div>
 
@@ -66,11 +67,11 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined">inventory_2</span>
               </div>
               <span className="flex items-center text-sm font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-                Action Req.
+                Cần xử lý
               </span>
             </div>
-            <p className="text-sm font-medium text-gray-500">Low Stock / Vendors</p>
-            <h3 className="text-2xl font-bold mt-1">5 Items</h3>
+            <p className="text-sm font-medium text-gray-500">Tồn kho thấp / Nhà cung cấp</p>
+            <h3 className="text-2xl font-bold mt-1">5 mục</h3>
           </div>
         </div>
 
@@ -80,14 +81,14 @@ const Dashboard = () => {
           <div className="lg:col-span-2 flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm p-6">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h3 className="font-bold text-lg">Revenue & Profit Analytics</h3>
+                <h3 className="font-bold text-lg">Phân tích doanh thu & lợi nhuận</h3>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-2xl font-bold tracking-tight">$12,450</span>
                 </div>
               </div>
               <div className="flex gap-2">
-                <button className="px-3 py-1 text-sm font-medium rounded-lg bg-gray-100 transition-colors">Week</button>
-                <button className="px-3 py-1 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-colors">Month</button>
+                <button className="px-3 py-1 text-sm font-medium rounded-lg bg-gray-100 transition-colors">Tuần</button>
+                <button className="px-3 py-1 text-sm font-medium rounded-lg text-gray-500 hover:bg-gray-50 transition-colors">Tháng</button>
               </div>
             </div>
             <div className="relative w-full h-full min-h-[250px] mt-4">
@@ -107,7 +108,7 @@ const Dashboard = () => {
           <div className="flex flex-col gap-6">
             
             <div className="flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm p-6">
-              <h3 className="font-bold text-lg mb-6">Media & Campaign Control</h3>
+              <h3 className="font-bold text-lg mb-6">Điều khiển media & chiến dịch</h3>
               <div className="flex flex-col gap-5">
                 {contentAlerts.map((alert, index) => (
                   <div key={index} className="flex items-center gap-4 border-b border-gray-50 pb-3 last:border-0 last:pb-0">
@@ -125,21 +126,21 @@ const Dashboard = () => {
             </div>
 
             <div className="flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm p-6">
-              <h3 className="font-bold text-lg mb-4">Support & Feedback</h3>
+              <h3 className="font-bold text-lg mb-4">Hỗ trợ & phản hồi</h3>
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center p-3 bg-yellow-50/50 rounded-lg border border-yellow-100">
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-yellow-600 text-[20px]">star_half</span>
-                    <span className="text-sm font-bold text-gray-700">Pending Reviews</span>
+                    <span className="text-sm font-bold text-gray-700">Đánh giá chờ duyệt</span>
                   </div>
-                  <span className="px-2.5 py-1 bg-yellow-100 text-yellow-800 rounded-md text-xs font-black">12 Awaiting</span>
+                  <span className="px-2.5 py-1 bg-yellow-100 text-yellow-800 rounded-md text-xs font-black">12 chờ</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-red-50/50 rounded-lg border border-red-100">
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-red-500 text-[20px]">support_agent</span>
-                    <span className="text-sm font-bold text-gray-700">Open Tickets</span>
+                    <span className="text-sm font-bold text-gray-700">Yêu cầu hỗ trợ</span>
                   </div>
-                  <span className="px-2.5 py-1 bg-red-100 text-red-700 rounded-md text-xs font-black">3 Urgent</span>
+                  <span className="px-2.5 py-1 bg-red-100 text-red-700 rounded-md text-xs font-black">3 khẩn cấp</span>
                 </div>
               </div>
             </div>
@@ -149,13 +150,13 @@ const Dashboard = () => {
 
         <div className="flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm overflow-hidden">
           <div className="p-6 border-b border-gray-100 flex justify-between items-center">
-            <h3 className="font-bold text-lg">Transaction Evidence (Recent)</h3>
+            <h3 className="font-bold text-lg">Bằng chứng giao dịch (gần đây)</h3>
             <div className="flex gap-2">
               <span className="relative">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
                   <span className="material-symbols-outlined text-[18px]">search</span>
                 </span>
-                <input className="pl-9 pr-4 py-1.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Search orders..." type="text" />
+                <input className="pl-9 pr-4 py-1.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Tìm đơn hàng..." type="text" />
               </span>
             </div>
           </div>
@@ -163,12 +164,12 @@ const Dashboard = () => {
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 text-gray-500 font-medium">
                 <tr>
-                  <th className="px-6 py-4">Order ID</th>
-                  <th className="px-6 py-4">Customer</th>
-                  <th className="px-6 py-4">Fulfillment Type</th>
-                  <th className="px-6 py-4">Date</th>
-                  <th className="px-6 py-4">Amount</th>
-                  <th className="px-6 py-4">State</th>
+                  <th className="px-6 py-4">Mã đơn</th>
+                  <th className="px-6 py-4">Khách hàng</th>
+                  <th className="px-6 py-4">Hình thức xử lý</th>
+                  <th className="px-6 py-4">Ngày</th>
+                  <th className="px-6 py-4">Số tiền</th>
+                  <th className="px-6 py-4">Trạng thái</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">

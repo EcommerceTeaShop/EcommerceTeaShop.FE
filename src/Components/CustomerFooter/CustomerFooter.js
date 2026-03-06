@@ -19,7 +19,7 @@ const CustomerFooter = () => {
             </h2>
           </Link>
           <p className="text-sm text-gray-500 mt-2 pr-4">
-            Premium teas from authentic artisan growers.
+            Trà cao cấp từ các nhà trồng nghệ nhân thật sự.
           </p>
           <div className="flex gap-4 mt-4">
             <Social
@@ -72,11 +72,11 @@ const CustomerFooter = () => {
         </div>
 
         <div className="col-span-1">
-          <h3 className="font-bold mb-4 text-lg">Shop</h3>
+          <h3 className="font-bold mb-4 text-lg">Cửa hàng</h3>
           <ul className="flex flex-col gap-3 text-sm text-gray-500 font-medium">
             <li>
               <Link to="/shop" className="hover:text-primary transition-colors">
-                All Teas
+                Tất cả trà
               </Link>
             </li>
             <li>
@@ -84,7 +84,7 @@ const CustomerFooter = () => {
                 to="/our-story"
                 className="hover:text-primary transition-colors"
               >
-                Our Story
+                Câu chuyện của chúng tôi
               </Link>
             </li>
             <li>
@@ -92,7 +92,7 @@ const CustomerFooter = () => {
                 to="/sustainability"
                 className="hover:text-primary transition-colors"
               >
-                Sustainability
+                Bền vững
               </Link>
             </li>
             <li>
@@ -100,7 +100,7 @@ const CustomerFooter = () => {
                 to="/journal"
                 className="hover:text-primary transition-colors"
               >
-                The Vault Journal
+                Nhật ký Vault
               </Link>
             </li>
             {/* <li>
@@ -115,19 +115,19 @@ const CustomerFooter = () => {
         </div>
 
         <div className="col-span-1">
-          <h3 className="font-bold mb-4 text-lg">Support</h3>
+          <h3 className="font-bold mb-4 text-lg">Hỗ trợ</h3>
           <ul className="flex flex-col gap-3 text-sm text-gray-500 font-medium">
             <li>
               <Link
                 to="/contact"
                 className="hover:text-primary transition-colors"
               >
-                Contact Us
+                Liên hệ
               </Link>
             </li>
             <li>
               <Link to="/faq" className="hover:text-primary transition-colors">
-                FAQs
+                Câu hỏi thường gặp
               </Link>
             </li>
             <li>
@@ -135,7 +135,7 @@ const CustomerFooter = () => {
                 to="/shipping-policy"
                 className="hover:text-primary transition-colors"
               >
-                Shipping Policy
+                Chính sách vận chuyển
               </Link>
             </li>
             <li>
@@ -143,14 +143,14 @@ const CustomerFooter = () => {
                 to="/returns-refund"
                 className="hover:text-primary transition-colors"
               >
-                Returns & Refund
+                Đổi trả & Hoàn tiền
               </Link>
             </li>
           </ul>
         </div>
 
         <div className="col-span-1">
-          <h3 className="font-bold mb-4 text-lg">Contact</h3>
+          <h3 className="font-bold mb-4 text-lg">Liên hệ</h3>
           <ul className="flex flex-col gap-4 text-sm text-gray-500 font-medium">
             <li className="flex items-center gap-3">
               <span className="material-symbols-outlined text-primary text-[20px]">
@@ -176,14 +176,14 @@ const CustomerFooter = () => {
 
       <div className="max-w-[1440px] mx-auto pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-gray-400 font-medium">
-          © 2026 Tea Soul. All rights reserved.
+          © 2026 Tea Soul. Đã đăng ký bản quyền.
         </p>
         <div className="flex gap-6 text-xs text-gray-400 font-medium">
           <span className="hover:text-primary transition-colors cursor-pointer">
-            Privacy Policy
+            Chính sách bảo mật
           </span>
           <span className="hover:text-primary transition-colors cursor-pointer">
-            Terms of Service
+            Điều khoản dịch vụ
           </span>
         </div>
       </div>

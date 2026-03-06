@@ -4,28 +4,28 @@ const ReturnsRefund = () => {
   const policies = [
     {
       icon: 'assignment_return',
-      title: 'Eligibility for Returns',
-      desc: 'Products can be returned within 7 days of receipt if they are unopened, unused, and in their original packaging. We want to ensure that every product meets your expectations and maintains the highest quality standards.'
+      title: 'Điều kiện đổi trả',
+      desc: 'Sản phẩm có thể đổi trả trong 7 ngày kể từ khi nhận nếu chưa mở, chưa sử dụng và còn nguyên bao bì. Chúng tôi muốn mọi sản phẩm đáp ứng kỳ vọng và giữ chuẩn chất lượng cao nhất.'
     },
     {
       icon: 'do_not_disturb_alt',
-      title: 'Non-returnable Items',
-      desc: 'Opened tea packages or products damaged by improper storage are not eligible for return. This policy ensures the quality and safety of all products we offer to our valued customers.'
+      title: 'Sản phẩm không nhận đổi trả',
+      desc: 'Gói trà đã mở hoặc sản phẩm hư hỏng do bảo quản sai không đủ điều kiện đổi trả. Chính sách này đảm bảo chất lượng và an toàn cho mọi sản phẩm chúng tôi cung cấp.'
     },
     {
       icon: 'support_agent',
-      title: 'Return Process',
-      desc: 'Contact our support team with your order ID and reason for return. Once approved, we will guide you through the return steps with clear instructions to make the process as smooth as possible.'
+      title: 'Quy trình đổi trả',
+      desc: 'Liên hệ đội hỗ trợ kèm mã đơn hàng và lý do đổi trả. Khi được duyệt, chúng tôi sẽ hướng dẫn các bước rõ ràng để quy trình diễn ra thuận tiện nhất.'
     },
     {
       icon: 'history',
-      title: 'Refund Timeline',
-      desc: 'Refunds will be processed within 5–7 business days after the returned item is received and inspected. We\'ll notify you via email once your refund has been initiated.'
+      title: 'Thời gian hoàn tiền',
+      desc: 'Hoàn tiền được xử lý trong 5–7 ngày làm việc sau khi nhận và kiểm tra hàng trả. Chúng tôi sẽ thông báo qua email khi bắt đầu hoàn tiền.'
     },
     {
       icon: 'swap_horiz',
-      title: 'Exchange Option',
-      desc: 'You may choose to exchange for another product of equal or lesser value if available. Simply let us know your preference when initiating the return process, and we\'ll help you find the perfect alternative.'
+      title: 'Tùy chọn đổi sản phẩm',
+      desc: 'Bạn có thể đổi sang sản phẩm khác có giá trị bằng hoặc thấp hơn nếu còn hàng. Chỉ cần cho chúng tôi biết lựa chọn khi bắt đầu quy trình đổi trả, chúng tôi sẽ hỗ trợ tìm phương án phù hợp.'
     }
   ];
 
@@ -37,9 +37,9 @@ const ReturnsRefund = () => {
         style={{ backgroundImage: `linear-gradient(rgba(13, 27, 16, 0.7), rgba(13, 27, 16, 0.8)), url("https://images.unsplash.com/photo-1576092762791-dd9e2220cad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")` }}
       >
         <div className="text-center z-10 px-4">
-          <h1 className="text-white text-4xl lg:text-6xl font-black mb-4 tracking-tight">Returns & Refund Policy</h1>
+          <h1 className="text-white text-4xl lg:text-6xl font-black mb-4 tracking-tight">Chính sách đổi trả & hoàn tiền</h1>
           <p className="text-gray-200 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-            Our priority is your satisfaction through transparent and efficient returns.
+            Ưu tiên của chúng tôi là sự hài lòng của bạn với quy trình đổi trả minh bạch, hiệu quả.
           </p>
         </div>
       </section>
@@ -62,8 +62,8 @@ const ReturnsRefund = () => {
 
       <section className="max-w-[800px] mx-auto px-4 md:px-10 pb-16 lg:pb-24">
         <div className="bg-surface-light rounded-[2.5rem] p-10 text-center border border-gray-200 flex flex-col items-center">
-          <h2 className="text-2xl font-black text-[#0d1b10] mb-4">Need Assistance with Returns?</h2>
-          <p className="text-gray-600 font-medium mb-8">For assistance with returns, please contact us:</p>
+          <h2 className="text-2xl font-black text-[#0d1b10] mb-4">Cần hỗ trợ đổi trả?</h2>
+          <p className="text-gray-600 font-medium mb-8">Để được hỗ trợ đổi trả, vui lòng liên hệ:</p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-[#0d1b10] font-bold mb-4">
             <div className="flex items-center gap-2">

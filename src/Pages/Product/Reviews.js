@@ -16,7 +16,7 @@ const Reviews = () => {
         "https://ui-avatars.com/api/?name=Aiko&background=fef3c7&color=92400e",
       rating: 5,
       date: "2026-02-15",
-      text: "Smooth, vibrant, and perfect for ceremonies. Highly recommend!",
+      text: "Mùi mượt, tươi và rất hợp cho nghi lễ. Rất đáng thử!",
     },
   ]);
 
@@ -41,7 +41,7 @@ const Reviews = () => {
 
   return (
     <div className="max-w-2xl space-y-6">
-      <h3 className="text-xl font-bold text-[#0d1b10]">Product Reviews</h3>
+      <h3 className="text-xl font-bold text-[#0d1b10]">Đánh giá sản phẩm</h3>
 
       {/* Review Input Section */}
       {currentUser.isAuthenticated && (
@@ -53,7 +53,7 @@ const Reviews = () => {
             {/* Rounded Profile Image */}
             <img
               src={currentUser.avatar}
-              alt="User"
+              alt="Người dùng"
               className="w-10 h-10 rounded-full border border-gray-100"
             />
             <span className="font-medium text-gray-700">
@@ -63,7 +63,7 @@ const Reviews = () => {
 
           {/* Shopee-style Star Picker */}
           <div className="flex items-center gap-1 mb-4">
-            <span className="text-sm text-gray-500 mr-2">Product Quality:</span>
+            <span className="text-sm text-gray-500 mr-2">Chất lượng sản phẩm:</span>
             {[1, 2, 3, 4, 5].map((star) => (
               <button
                 key={star}
@@ -86,17 +86,17 @@ const Reviews = () => {
             ))}
             <span className="ml-2 text-sm font-bold text-amber-500">
               {form.rating === 5
-                ? "Amazing"
+                ? "Tuyệt vời"
                 : form.rating === 4
-                  ? "Good"
-                  : "Fair"}
+                  ? "Tốt"
+                  : "Tạm"}
             </span>
           </div>
 
           <textarea
             value={form.text}
             onChange={(e) => setForm({ ...form, text: e.target.value })}
-            placeholder="How is the tea? Share your experience..."
+            placeholder="Trà thế nào? Chia sẻ trải nghiệm của bạn..."
             className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg h-28 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm"
           />
 
@@ -105,7 +105,7 @@ const Reviews = () => {
               type="submit"
               className="bg-[#ee4d2d] hover:bg-[#d73211] text-white px-8 py-2 rounded-sm font-medium transition-colors"
             >
-              Submit
+              Gửi
             </button>
           </div>
         </form>

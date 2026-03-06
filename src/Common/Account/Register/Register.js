@@ -17,16 +17,16 @@ const Register = ({ onBackToLogin }) => {
           className="absolute top-8 left-8 flex items-center gap-2 text-gray-500 hover:text-primary transition-colors font-bold text-sm"
         >
           <span className="material-symbols-outlined text-lg">arrow_back</span>
-          Back to Shop
+          Về cửa hàng
         </Link>
 
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div className="mb-10 text-center lg:text-left">
             <h1 className="text-3xl font-black tracking-tight text-[#0d1b10] mb-3">
-              Create Account
+              Tạo tài khoản
             </h1>
             <p className="text-sm text-gray-500 font-medium">
-              Sign up to track orders, save favorites, and earn loyalty points.
+              Đăng ký để theo dõi đơn hàng, lưu yêu thích và tích điểm thành viên.
             </p>
           </div>
 
@@ -61,7 +61,7 @@ const Register = ({ onBackToLogin }) => {
           <div className="relative flex items-center mb-6">
             <div className="flex-grow border-t border-gray-200"></div>
             <span className="flex-shrink-0 mx-4 text-gray-400 text-sm font-medium">
-              Or register with email
+              Hoặc đăng ký bằng email
             </span>
             <div className="flex-grow border-t border-gray-200"></div>
           </div>
@@ -72,7 +72,7 @@ const Register = ({ onBackToLogin }) => {
                 htmlFor="fullName"
                 className="block text-sm font-bold leading-6 text-[#0d1b10] mb-2"
               >
-                Full Name
+                Họ và tên
               </label>
               <div className="relative rounded-md shadow-sm">
                 <span className="material-symbols-outlined absolute left-0 top-0 flex h-full items-center pl-3 text-gray-400 !text-[20px] pointer-events-none">
@@ -83,7 +83,7 @@ const Register = ({ onBackToLogin }) => {
                   type="text"
                   required
                   className="block w-full rounded-xl border border-gray-200 py-3 pl-10 pr-4 text-[#0d1b10] bg-white focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm transition-all"
-                  placeholder="e.g. Jane Doe"
+                  placeholder="ví dụ: Nguyễn Văn A"
                 />
               </div>
             </div>
@@ -93,7 +93,7 @@ const Register = ({ onBackToLogin }) => {
                 htmlFor="email"
                 className="block text-sm font-bold leading-6 text-[#0d1b10] mb-2"
               >
-                Email Address
+                Địa chỉ email
               </label>
               <div className="relative rounded-md shadow-sm">
                 <span className="material-symbols-outlined absolute left-0 top-0 flex h-full items-center pl-3 text-gray-400 !text-[20px] pointer-events-none">
@@ -114,7 +114,7 @@ const Register = ({ onBackToLogin }) => {
                 htmlFor="password"
                 className="block text-sm font-bold leading-6 text-[#0d1b10] mb-2"
               >
-                Password
+                Mật khẩu
               </label>
               <div className="relative rounded-md shadow-sm">
                 <span className="material-symbols-outlined absolute left-0 top-0 flex h-full items-center pl-3 text-gray-400 !text-[20px] pointer-events-none">
@@ -141,13 +141,13 @@ const Register = ({ onBackToLogin }) => {
                 htmlFor="terms"
                 className="text-sm text-gray-600 font-medium"
               >
-                I agree to the{" "}
+                Tôi đồng ý với{" "}
                 <span className="text-primary hover:underline cursor-pointer">
-                  Terms of Service
+                  Điều khoản dịch vụ
                 </span>{" "}
-                and{" "}
+                và{" "}
                 <span className="text-primary hover:underline cursor-pointer">
-                  Privacy Policy
+                  Chính sách bảo mật
                 </span>
                 .
               </label>
@@ -157,19 +157,19 @@ const Register = ({ onBackToLogin }) => {
               type="submit"
               className="w-full mt-2 h-12 flex items-center justify-center rounded-xl bg-primary hover:bg-primary/90 transition-transform hover:scale-[1.02] shadow-md text-[#0d1b10] text-base font-bold"
             >
-              Create Account
+              Tạo tài khoản
             </button>
           </form>
 
           <p className="text-center mt-8 text-sm text-gray-500 font-medium">
-            Already have an account?{" "}
+            Đã có tài khoản?{" "}
             <button
               onClick={() =>
                 onBackToLogin ? onBackToLogin() : navigate("/login")
               }
               className="text-primary font-bold hover:underline cursor-pointer"
             >
-              Log In
+              Đăng nhập
             </button>
           </p>
         </div>
@@ -193,12 +193,11 @@ const Register = ({ onBackToLogin }) => {
               </div>
               <div>
                 <h3 className="text-xl font-black text-[#0d1b10] mb-2">
-                  Premium Quality Tea
+                  Trà chất lượng cao
                 </h3>
                 <p className="text-gray-600 font-medium leading-relaxed">
-                  "Join over 20,000 tea enthusiasts who have discovered their
-                  perfect blend with us. Experience freshness like never
-                  before."
+                  "Tham gia hơn 20,000 người yêu trà đã tìm thấy hương vị
+                  hoàn hảo cùng chúng tôi. Trải nghiệm độ tươi mới lạ."
                 </p>
               </div>
             </div>

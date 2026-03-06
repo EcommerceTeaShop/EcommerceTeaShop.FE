@@ -13,11 +13,11 @@ const About = () => {
         >
           <div className="flex flex-col gap-4 max-w-3xl z-10">
             <h1 className="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight drop-shadow-lg">
-              Brewing a Better World
+              Ươm nên một thế giới tốt đẹp hơn
             </h1>
             <h2 className="text-gray-100 text-base md:text-xl font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-md">
-              From the misty hills of Darjeeling to your cup, we are dedicated
-              to cultivating connection through sustainable, organic tea.
+              Từ đồi núi sương mù Darjeeling đến ly của bạn, chúng tôi cam kết
+              kết nối mọi người bằng trà hữu cơ bền vững.
             </h2>
           </div>
         </div>
@@ -29,30 +29,29 @@ const About = () => {
             <div className="flex-1 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 <span className="text-primary font-bold tracking-wider text-sm uppercase">
-                  Our Origins
+                  Nguồn gốc
                 </span>
                 <h2 className="text-[#0d1b10] text-3xl md:text-4xl font-bold leading-tight">
-                  It started in a small kitchen with big dreams.
+                  Bắt đầu từ một căn bếp nhỏ với giấc mơ lớn.
                 </h2>
                 <p className="text-[#0d1b10]/80 text-lg font-normal leading-relaxed">
-                  We traveled across continents to find the perfect leaves,
-                  building relationships with farmers who share our passion for
-                  purity. What began as a personal quest for the perfect cup has
-                  grown into a community of tea lovers dedicated to quality and
-                  transparency.
+                  Chúng tôi đi khắp các châu lục để tìm lá trà hoàn hảo, xây
+                  dựng mối quan hệ với nông dân cùng chia sẻ đam mê về sự tinh
+                  khiết. Điều bắt đầu từ hành trình tìm tách trà hoàn hảo đã trở
+                  thành cộng đồng yêu trà đề cao chất lượng và minh bạch.
                 </p>
               </div>
               <div className="flex gap-4 pt-2">
                 <div className="flex flex-col gap-1">
                   <span className="text-2xl font-bold text-[#0d1b10]">10+</span>
                   <span className="text-sm text-gray-500">
-                    Years of Sourcing
+                    Năm tìm nguồn
                   </span>
                 </div>
                 <div className="w-px bg-gray-200 h-12"></div>
                 <div className="flex flex-col gap-1">
                   <span className="text-2xl font-bold text-[#0d1b10]">50+</span>
-                  <span className="text-sm text-gray-500">Partner Farms</span>
+                  <span className="text-sm text-gray-500">Trang trại đối tác</span>
                 </div>
               </div>
             </div>
@@ -69,7 +68,7 @@ const About = () => {
               <div className="mt-4 flex items-center gap-3">
                 <div className="h-px bg-primary w-8"></div>
                 <p className="text-primary text-sm font-medium">
-                  Fair Trade Certified Estates
+                  Trang trại chứng nhận thương mại công bằng
                 </p>
               </div>
             </div>
@@ -78,11 +77,11 @@ const About = () => {
           <section className="flex flex-col gap-10">
             <div className="text-center max-w-2xl mx-auto flex flex-col gap-4">
               <h2 className="text-[#0d1b10] text-3xl md:text-4xl font-bold">
-                Our Values
+                Giá trị của chúng tôi
               </h2>
               <p className="text-[#0d1b10]/80 text-lg">
-                Sustainability isn't just a buzzword. It's our soil. We believe
-                in transparency, purity, and community in every sip.
+                Bền vững không chỉ là khẩu hiệu. Đó là đất mẹ. Chúng tôi tin vào
+                sự minh bạch, tinh khiết và cộng đồng trong mọi ngụm trà.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -94,11 +93,11 @@ const About = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="text-[#0d1b10] text-xl font-bold">
-                    Organic Sourcing
+                    Nguồn hữu cơ
                   </h3>
                   <p className="text-gray-500 leading-relaxed">
-                    100% organic certified farms without harmful pesticides. We
-                    respect the earth that provides for us.
+                    Trang trại hữu cơ chứng nhận 100% không dùng thuốc trừ sâu
+                    độc hại. Chúng tôi tôn trọng đất mẹ nuôi dưỡng chúng ta.
                   </p>
                 </div>
               </div>
@@ -111,11 +110,11 @@ const About = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="text-[#0d1b10] text-xl font-bold">
-                    Zero Waste
+                    Không rác thải
                   </h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Biodegradable packaging that leaves no trace. From the box
-                    to the bag, everything returns to nature.
+                    Bao bì tự hủy không để lại dấu vết. Từ hộp đến túi, tất cả
+                    đều trở về thiên nhiên.
                   </p>
                 </div>
               </div>
@@ -128,11 +127,11 @@ const About = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="text-[#0d1b10] text-xl font-bold">
-                    Hand Picked
+                    Hái bằng tay
                   </h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Selected by hand to ensure only the best leaves make it into
-                    your morning ritual.
+                    Chọn bằng tay để đảm bảo chỉ lá trà tốt nhất đến với nghi
+                    thức buổi sáng của bạn.
                   </p>
                 </div>
               </div>
@@ -142,10 +141,10 @@ const About = () => {
           <section className="flex flex-col gap-10">
             <div className="flex flex-col gap-2">
               <h2 className="text-[#0d1b10] text-3xl font-bold">
-                The Tea Sommeliers
+                Đội ngũ sommelier trà
               </h2>
               <p className="text-gray-500">
-                Meet the passionate people behind your daily brew.
+                Gặp những con người đầy đam mê đứng sau tách trà hằng ngày.
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -162,10 +161,10 @@ const About = () => {
                     Sarah Jenkins
                   </h4>
                   <p className="text-primary text-sm font-medium">
-                    Founder & Master Blender
+                    Nhà sáng lập & Pha chế trưởng
                   </p>
                   <p className="text-gray-500 text-xs mt-1">
-                    Fav: Earl Grey Supreme
+                    Thích: Earl Grey Supreme
                   </p>
                 </div>
               </div>
@@ -183,10 +182,10 @@ const About = () => {
                     Marcus Chen
                   </h4>
                   <p className="text-primary text-sm font-medium">
-                    Head of Sourcing
+                    Trưởng bộ phận nguồn cung
                   </p>
                   <p className="text-gray-500 text-xs mt-1">
-                    Fav: Silver Needle White
+                    Thích: Silver Needle White
                   </p>
                 </div>
               </div>
@@ -204,10 +203,10 @@ const About = () => {
                     Elena Rodriguez
                   </h4>
                   <p className="text-primary text-sm font-medium">
-                    Sustainability Lead
+                    Trưởng nhóm bền vững
                   </p>
                   <p className="text-gray-500 text-xs mt-1">
-                    Fav: Matcha Ceremonial
+                    Thích: Matcha Ceremonial
                   </p>
                 </div>
               </div>
@@ -224,9 +223,9 @@ const About = () => {
                   <h4 className="text-[#0d1b10] font-bold text-lg">
                     David Okonjo
                   </h4>
-                  <p className="text-primary text-sm font-medium">Operations</p>
+                  <p className="text-primary text-sm font-medium">Vận hành</p>
                   <p className="text-gray-500 text-xs mt-1">
-                    Fav: Rooibos Chai
+                    Thích: Rooibos Chai
                   </p>
                 </div>
               </div>
@@ -238,20 +237,20 @@ const About = () => {
               local_cafe
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-[#0d1b10]">
-              Ready to taste the difference?
+              Sẵn sàng cảm nhận sự khác biệt?
             </h2>
             <p className="text-gray-600 font-medium max-w-lg">
-              Join our community of tea lovers and get 15% off your first order
-              of sustainable, organic tea.
+              Tham gia cộng đồng yêu trà và nhận giảm 15% cho đơn hàng trà hữu
+              cơ bền vững đầu tiên.
             </p>
             <div className="flex w-full max-w-md gap-3 mt-4">
               <input
                 className="flex-1 rounded-xl border-none focus:ring-2 focus:ring-primary h-14 px-5 bg-white shadow-sm text-[#0d1b10] font-medium"
-                placeholder="Enter your email"
+                placeholder="Nhập email"
                 type="email"
               />
               <button className="bg-primary text-[#0d1b10] font-black px-8 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-md shadow-primary/20">
-                Join
+                Tham gia
               </button>
             </div>
           </section>

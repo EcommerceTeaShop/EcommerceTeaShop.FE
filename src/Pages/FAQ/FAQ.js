@@ -9,74 +9,74 @@ const FAQ = () => {
 
   const faqData = [
     {
-      category: 'Shipping',
+      category: 'Vận chuyển',
       icon: 'local_shipping',
       items: [
         {
-          q: 'How long does delivery take?',
-          a: 'Standard shipping usually takes 5-8 business days within the country. Express shipping options are available at checkout and typically arrive in 1-3 business days.'
+          q: 'Giao hàng mất bao lâu?',
+          a: 'Giao tiêu chuẩn thường mất 5-8 ngày làm việc trong nước. Giao nhanh có sẵn tại bước thanh toán và thường đến trong 1-3 ngày làm việc.'
         },
         {
-          q: 'Do you ship nationwide?',
-          a: 'Yes! We ship nationwide, and we also offer international shipping to select countries including the US, Canada, UK, and Japan.'
+          q: 'Có giao hàng toàn quốc không?',
+          a: 'Có! Chúng tôi giao hàng toàn quốc và có giao quốc tế đến một số nước như Hoa Kỳ, Canada, Vương quốc Anh và Nhật Bản.'
         },
         {
-          q: 'How can I track my order?',
-          a: 'Once your order is processed and handed over to our shipping partners, you will receive an email containing a tracking number and a link to follow your package.'
+          q: 'Làm sao để theo dõi đơn hàng?',
+          a: 'Khi đơn hàng được xử lý và bàn giao cho đơn vị vận chuyển, bạn sẽ nhận email có mã vận đơn và liên kết để theo dõi.'
         }
       ]
     },
     {
-      category: 'Orders',
+      category: 'Đơn hàng',
       icon: 'inventory_2',
       items: [
         {
-          q: 'Can I modify my order after placing it?',
-          a: 'We process orders quickly, but if you reach out to us within 2 hours of placing your order, we can usually make modifications or cancellations.'
+          q: 'Tôi có thể sửa đơn hàng sau khi đặt không?',
+          a: 'Chúng tôi xử lý đơn hàng nhanh, nhưng nếu bạn liên hệ trong 2 giờ sau khi đặt, chúng tôi thường có thể sửa hoặc hủy đơn.'
         },
         {
-          q: 'What payment methods do you accept?',
-          a: 'We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and secure digital wallet payments like Apple Pay and Google Pay.'
+          q: 'Các phương thức thanh toán nào được chấp nhận?',
+          a: 'Chúng tôi chấp nhận thẻ tín dụng (Visa, Mastercard, Amex), PayPal và ví điện tử an toàn như Apple Pay, Google Pay.'
         },
         {
-          q: 'Is there a minimum order amount?',
-          a: 'There is no minimum order amount to purchase from TeaVault! However, orders over $50 automatically qualify for free standard shipping.'
+          q: 'Có giá trị đơn hàng tối thiểu không?',
+          a: 'Không có giá trị tối thiểu khi mua tại TeaVault! Tuy nhiên, đơn trên $50 sẽ được miễn phí giao tiêu chuẩn.'
         }
       ]
     },
     {
-      category: 'Products',
+      category: 'Sản phẩm',
       icon: 'spa',
       items: [
         {
-          q: 'Are Teavault teas organic?',
-          a: 'Yes, the vast majority of our teas are 100% certified organic. We work directly with sustainable farms that avoid synthetic pesticides and chemicals.'
+          q: 'Trà Teavault có hữu cơ không?',
+          a: 'Có, phần lớn trà của chúng tôi được chứng nhận hữu cơ 100%. Chúng tôi hợp tác với các trang trại bền vững không dùng thuốc trừ sâu tổng hợp và hóa chất.'
         },
         {
-          q: 'How should I store my tea?',
-          a: 'To maintain peak freshness, store your tea in an airtight container in a cool, dark, and dry place away from strong odors and direct sunlight.'
+          q: 'Bảo quản trà như thế nào?',
+          a: 'Để giữ độ tươi tốt nhất, hãy bảo quản trà trong hộp kín, nơi mát, tối và khô, tránh mùi mạnh và ánh nắng trực tiếp.'
         },
         {
-          q: 'What\'s the shelf life of your teas?',
-          a: 'When stored properly, our loose-leaf teas stay fresh for 12 to 24 months. Matcha and green teas are best consumed within 6 months of opening for the best flavor.'
+          q: 'Hạn sử dụng của trà là bao lâu?',
+          a: 'Khi bảo quản đúng cách, trà lá rời có thể tươi 12-24 tháng. Matcha và trà xanh nên dùng trong 6 tháng sau khi mở để có hương vị tốt nhất.'
         }
       ]
     },
     {
-      category: 'Returns',
+      category: 'Đổi trả',
       icon: 'sync',
       items: [
         {
-          q: 'Can I return or exchange my order?',
-          a: 'We want you to love your tea. If you are unsatisfied, unopened products can be returned or exchanged within 30 days of delivery.'
+          q: 'Tôi có thể đổi/trả đơn hàng không?',
+          a: 'Chúng tôi muốn bạn hài lòng với trà. Nếu chưa hài lòng, sản phẩm chưa mở có thể đổi/trả trong 30 ngày kể từ khi giao.'
         },
         {
-          q: 'How do I initiate a return?',
-          a: 'Simply contact our support team with your order number, and we will provide you with a return authorization and shipping instructions.'
+          q: 'Làm sao để bắt đầu đổi trả?',
+          a: 'Chỉ cần liên hệ đội hỗ trợ kèm mã đơn hàng, chúng tôi sẽ cung cấp mã xác nhận đổi trả và hướng dẫn gửi hàng.'
         },
         {
-          q: 'Who pays for return shipping?',
-          a: 'If the return is due to an error on our part or a defective product, we cover the shipping. For general returns or changes of heart, the customer is responsible for return postage.'
+          q: 'Ai trả phí đổi trả?',
+          a: 'Nếu đổi/trả do lỗi của chúng tôi hoặc sản phẩm lỗi, chúng tôi sẽ chi trả phí vận chuyển. Trường hợp đổi/trả thông thường, khách hàng tự chi trả phí gửi lại.'
         }
       ]
     }
@@ -86,9 +86,9 @@ const FAQ = () => {
     <div className="flex-1 w-full max-w-[1024px] mx-auto px-4 md:px-10 py-16 lg:py-24 font-display bg-background-light text-[#0d1b10] min-h-screen">
       
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Frequently Asked Questions</h1>
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Câu hỏi thường gặp</h1>
         <p className="text-gray-600 text-lg font-medium">
-          Everything you need to know about Teavault products, shipping, and our services.
+          Tất cả thông tin cần biết về sản phẩm Teavault, vận chuyển và dịch vụ.
         </p>
       </div>
 
@@ -138,9 +138,9 @@ const FAQ = () => {
       </div>
 
       <div className="bg-surface-light rounded-3xl p-10 md:p-16 text-center border border-gray-100 shadow-sm">
-        <h2 className="text-2xl font-black text-[#0d1b10] mb-4">Still have questions?</h2>
+        <h2 className="text-2xl font-black text-[#0d1b10] mb-4">Vẫn còn thắc mắc?</h2>
         <p className="text-gray-600 font-medium mb-8">
-          Our team is here to help. Reach out anytime via phone or email.
+          Đội ngũ chúng tôi sẵn sàng hỗ trợ. Liên hệ bất cứ lúc nào qua điện thoại hoặc email.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <a href="tel:0357130804" className="flex items-center gap-2 text-primary hover:text-green-600 transition-colors font-bold">

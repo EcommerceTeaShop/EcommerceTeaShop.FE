@@ -1,35 +1,35 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
 const Orders = () => {
-  const [activeTab, setActiveTab] = useState('All Orders');
+  const [activeTab, setActiveTab] = useState('Tất cả đơn');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [sortOption, setSortOption] = useState('Newest');
+  const [sortOption, setSortOption] = useState('Mới nhất');
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   
   const itemsPerPage = 5;
 
   const allOrders = [
-    { id: '#TV-1024', customer: 'Alice Green', email: 'alice@example.com', type: 'Custom Gift Package', date: 'Oct 24, 2023', time: '10:23 AM', status: 'Custom Packaging', amount: '$85.00', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
-    { id: '#TV-1023', customer: 'Bob Herbal', email: 'bob@herbal.com', type: 'Standard Fulfillment', date: 'Oct 24, 2023', time: '09:15 AM', status: 'Pending', amount: '$22.50', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
-    { id: '#TV-1022', customer: 'Charlie Chai', email: 'charlie@tea.co', type: 'Corporate Gift Batch', date: 'Oct 23, 2023', time: '04:45 PM', status: 'Shipped', amount: '$450.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' },
-    { id: '#TV-1021', customer: 'Diana Darjeeling', email: 'diana@outlook.com', type: 'Standard Fulfillment', date: 'Oct 23, 2023', time: '02:30 PM', status: 'Delivered', amount: '$15.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: '#TV-1019', customer: 'Fiona Fruit', email: 'fiona@fruit.com', type: 'Custom Gift Package', date: 'Oct 22, 2023', time: '08:00 AM', status: 'Delivered', amount: '$112.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: '#TV-1018', customer: 'George Glass', email: 'george@glass.com', type: 'Standard Fulfillment', date: 'Oct 21, 2023', time: '11:20 AM', status: 'Delivered', amount: '$34.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: '#TV-1017', customer: 'Hannah Honey', email: 'hannah@honey.com', type: 'Corporate Gift Batch', date: 'Oct 21, 2023', time: '09:00 AM', status: 'Pending', amount: '$890.00', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
-    { id: '#TV-1016', customer: 'Ian Ice', email: 'ian@ice.com', type: 'Custom Gift Package', date: 'Oct 20, 2023', time: '01:15 PM', status: 'Shipped', amount: '$65.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' }
+    { id: '#TV-1024', customer: 'Alice Green', email: 'alice@example.com', type: 'Gói quà tùy chỉnh', date: 'Oct 24, 2023', time: '10:23 AM', status: 'Đóng gói tùy chỉnh', amount: '$85.00', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
+    { id: '#TV-1023', customer: 'Bob Herbal', email: 'bob@herbal.com', type: 'Tiêu chuẩn', date: 'Oct 24, 2023', time: '09:15 AM', status: 'Chờ xử lý', amount: '$22.50', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
+    { id: '#TV-1022', customer: 'Charlie Chai', email: 'charlie@tea.co', type: 'Lô quà doanh nghiệp', date: 'Oct 23, 2023', time: '04:45 PM', status: 'Đang giao', amount: '$450.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' },
+    { id: '#TV-1021', customer: 'Diana Darjeeling', email: 'diana@outlook.com', type: 'Tiêu chuẩn', date: 'Oct 23, 2023', time: '02:30 PM', status: 'Đã giao', amount: '$15.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: '#TV-1019', customer: 'Fiona Fruit', email: 'fiona@fruit.com', type: 'Gói quà tùy chỉnh', date: 'Oct 22, 2023', time: '08:00 AM', status: 'Đã giao', amount: '$112.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: '#TV-1018', customer: 'George Glass', email: 'george@glass.com', type: 'Tiêu chuẩn', date: 'Oct 21, 2023', time: '11:20 AM', status: 'Đã giao', amount: '$34.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: '#TV-1017', customer: 'Hannah Honey', email: 'hannah@honey.com', type: 'Lô quà doanh nghiệp', date: 'Oct 21, 2023', time: '09:00 AM', status: 'Chờ xử lý', amount: '$890.00', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
+    { id: '#TV-1016', customer: 'Ian Ice', email: 'ian@ice.com', type: 'Gói quà tùy chỉnh', date: 'Oct 20, 2023', time: '01:15 PM', status: 'Đang giao', amount: '$65.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' }
   ];
 
   const filteredOrders = useMemo(() => {
     let result = allOrders.filter(order => {
       const matchesTab = 
-        activeTab === 'All Orders' ||
-        (activeTab === 'Standard' && order.type.includes('Standard')) ||
-        (activeTab === 'Custom Gifts' && order.type.includes('Custom Gift')) ||
-        (activeTab === 'Corporate' && order.type.includes('Corporate'));
+        activeTab === 'Tất cả đơn' ||
+        (activeTab === 'Tiêu chuẩn' && order.type.includes('Tiêu chuẩn')) ||
+        (activeTab === 'Quà tùy chỉnh' && order.type.includes('Gói quà')) ||
+        (activeTab === 'Doanh nghiệp' && order.type.includes('doanh nghiệp'));
 
       const matchesSearch = 
         order.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -38,11 +38,11 @@ const Orders = () => {
       return matchesTab && matchesSearch;
     });
 
-    if (sortOption === 'Highest Amount') {
+    if (sortOption === 'Giá trị cao nhất') {
       result.sort((a, b) => parseFloat(b.amount.replace('$', '')) - parseFloat(a.amount.replace('$', '')));
-    } else if (sortOption === 'Lowest Amount') {
+    } else if (sortOption === 'Giá trị thấp nhất') {
       result.sort((a, b) => parseFloat(a.amount.replace('$', '')) - parseFloat(b.amount.replace('$', '')));
-    } else if (sortOption === 'Oldest') {
+    } else if (sortOption === 'Cũ nhất') {
       result.sort((a, b) => a.id.localeCompare(b.id)); 
     } else {
       result.sort((a, b) => b.id.localeCompare(a.id)); 
@@ -67,26 +67,26 @@ const Orders = () => {
             <div className="flex items-center justify-center size-12 rounded-full bg-blue-50 text-blue-600 mb-4 mx-auto">
               <span className="material-symbols-outlined text-2xl">receipt_long</span>
             </div>
-            <h3 className="text-lg font-bold text-center text-slate-900 mb-2">Exporting Log</h3>
+            <h3 className="text-lg font-bold text-center text-slate-900 mb-2">Đang xuất báo cáo</h3>
             <p className="text-sm text-slate-500 text-center mb-6">
-              Compiling order history and transaction states into a PDF report...
+              Đang tổng hợp lịch sử đơn hàng và trạng thái giao dịch vào báo cáo PDF...
             </p>
             <div className="flex gap-3">
               <button 
                 onClick={() => setIsExportOpen(false)}
                 className="flex-1 py-2 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors"
               >
-                Cancel
+                Hủy
               </button>
               <button 
                 onClick={() => {
                   setTimeout(() => setIsExportOpen(false), 800);
-                  alert("Download started! (Mock)");
+                  alert("Bắt đầu tải xuống! (Mock)");
                 }}
                 className="flex-1 py-2 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors flex justify-center items-center gap-2"
               >
                 <span className="material-symbols-outlined text-[18px] animate-bounce">download</span>
-                Save PDF
+                Lưu PDF
               </button>
             </div>
           </div>
@@ -99,12 +99,12 @@ const Orders = () => {
             <div className="flex justify-between items-start mb-6">
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <h3 className="text-xl font-bold text-slate-900">Order {selectedOrder.id}</h3>
+                  <h3 className="text-xl font-bold text-slate-900">Đơn {selectedOrder.id}</h3>
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${selectedOrder.statusColor}`}>
                     {selectedOrder.status}
                   </span>
                 </div>
-                <p className="text-sm text-slate-500">{selectedOrder.date} at {selectedOrder.time} • {selectedOrder.type}</p>
+                <p className="text-sm text-slate-500">{selectedOrder.date} lúc {selectedOrder.time} • {selectedOrder.type}</p>
               </div>
               <button onClick={() => setSelectedOrder(null)} className="text-slate-400 hover:text-slate-600 transition-colors">
                 <span className="material-symbols-outlined">close</span>
@@ -113,19 +113,19 @@ const Orders = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Customer Details</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Thông tin khách hàng</p>
                 <p className="text-sm font-bold text-slate-900">{selectedOrder.customer}</p>
                 <p className="text-sm text-slate-600">{selectedOrder.email}</p>
               </div>
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Shipping Address</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Địa chỉ giao hàng</p>
                 <p className="text-sm text-slate-900">123 Tea Garden Lane<br/>Portland, OR 97204</p>
               </div>
             </div>
 
             <div className="mb-6 bg-white border border-slate-200 rounded-xl overflow-hidden">
               <div className="bg-slate-50 px-4 py-2 border-b border-slate-200">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Order Items</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Sản phẩm trong đơn</p>
               </div>
               <div className="p-4 space-y-3">
                 <div className="flex justify-between items-center text-sm">
@@ -133,15 +133,15 @@ const Orders = () => {
                   <span className="font-bold text-slate-900">{selectedOrder.amount}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm border-t border-slate-100 pt-3">
-                  <span className="font-medium text-slate-500">Subtotal</span>
+                  <span className="font-medium text-slate-500">Tạm tính</span>
                   <span className="font-bold text-slate-900">{selectedOrder.amount}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm border-t border-slate-100 pt-3">
-                  <span className="font-medium text-slate-500">Standard Shipping</span>
+                  <span className="font-medium text-slate-500">Vận chuyển tiêu chuẩn</span>
                   <span className="font-bold text-slate-900">$0.00</span>
                 </div>
                 <div className="flex justify-between items-center text-sm border-t border-slate-100 pt-3">
-                  <span className="font-black text-slate-900 uppercase">Total Paid</span>
+                  <span className="font-black text-slate-900 uppercase">Tổng thanh toán</span>
                   <span className="font-black text-blue-600 text-lg">{selectedOrder.amount}</span>
                 </div>
               </div>
@@ -149,10 +149,10 @@ const Orders = () => {
 
             <div className="flex gap-3 mt-auto">
               <button onClick={() => setSelectedOrder(null)} className="flex-1 py-2.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors">
-                Close
+                Đóng
               </button>
-              <button onClick={() => { alert('Simulating status update to Shipped...'); setSelectedOrder(null); }} className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors">
-                Update Status
+              <button onClick={() => { alert('Đang mô phỏng cập nhật trạng thái sang Đang giao...'); setSelectedOrder(null); }} className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors">
+                Cập nhật trạng thái
               </button>
             </div>
           </div>
@@ -163,8 +163,8 @@ const Orders = () => {
         
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Order Management</h1>
-            <p className="mt-1 text-slate-500">Track fulfillment states and manage customer shipments.</p>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Quản lý đơn hàng</h1>
+            <p className="mt-1 text-slate-500">Theo dõi trạng thái xử lý và quản lý giao hàng cho khách.</p>
           </div>
           <div className="flex items-center gap-3">
             <button 
@@ -172,33 +172,33 @@ const Orders = () => {
               className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 text-sm font-medium hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all shadow-sm"
             >
               <span className="material-symbols-outlined text-[18px]">download</span>
-              Export Log
+              Xuất báo cáo
             </button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Total Orders (This Month)</p>
+            <p className="text-slate-500 text-sm font-medium">Tổng đơn (tháng này)</p>
             <h3 className="text-2xl font-bold text-slate-900 mt-2">1,248</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Pending Processing</p>
+            <p className="text-slate-500 text-sm font-medium">Đang chờ xử lý</p>
             <h3 className="text-2xl font-bold text-slate-900 mt-2">12</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">In Custom Packaging</p>
+            <p className="text-slate-500 text-sm font-medium">Đang đóng gói tùy chỉnh</p>
             <h3 className="text-2xl font-bold text-slate-900 mt-2">45</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Successfully Delivered</p>
+            <p className="text-slate-500 text-sm font-medium">Giao thành công</p>
             <h3 className="text-2xl font-bold text-slate-900 mt-2">1,191</h3>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
-            {['All Orders', 'Standard', 'Custom Gifts', 'Corporate'].map((tab) => (
+            {['Tất cả đơn', 'Tiêu chuẩn', 'Quà tùy chỉnh', 'Doanh nghiệp'].map((tab) => (
               <button 
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -222,7 +222,7 @@ const Orders = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="block w-full pl-10 pr-3 py-2 border-none ring-1 ring-slate-200 rounded-lg bg-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-sm" 
-                placeholder="Search Order ID or Customer..." 
+                placeholder="Tìm mã đơn hoặc khách hàng..." 
                 type="text"
               />
             </div>
@@ -233,13 +233,13 @@ const Orders = () => {
                 className="flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-all shadow-sm"
               >
                 <span className="material-symbols-outlined text-[18px]">filter_list</span>
-                Sort: {sortOption}
+                Sắp xếp: {sortOption}
               </button>
               
               {isFilterOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-slate-100 z-20 py-2">
-                  <div className="px-3 py-1 text-xs font-bold text-slate-400 uppercase tracking-wider">Sort By</div>
-                  {['Newest', 'Oldest', 'Highest Amount', 'Lowest Amount'].map((option) => (
+                  <div className="px-3 py-1 text-xs font-bold text-slate-400 uppercase tracking-wider">Sắp xếp theo</div>
+                  {['Mới nhất', 'Cũ nhất', 'Giá trị cao nhất', 'Giá trị thấp nhất'].map((option) => (
                     <button
                       key={option}
                       onClick={() => {
@@ -264,13 +264,13 @@ const Orders = () => {
             <table className="w-full text-left border-collapse table-fixed min-w-[1000px]">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="p-4 pl-6 text-sm font-semibold text-slate-600 w-[12%]">Order ID</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Customer</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Fulfillment Type</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[16%]">Date Logged</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[14%]">State</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[10%]">Total</th>
-                  <th className="p-4 pr-6 text-sm font-semibold text-slate-600 w-[8%] text-right">Actions</th>
+                  <th className="p-4 pl-6 text-sm font-semibold text-slate-600 w-[12%]">Mã đơn</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Khách hàng</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Hình thức xử lý</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[16%]">Ngày ghi nhận</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[14%]">Trạng thái</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[10%]">Tổng</th>
+                  <th className="p-4 pr-6 text-sm font-semibold text-slate-600 w-[8%] text-right">Thao tác</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -306,7 +306,7 @@ const Orders = () => {
                           onClick={() => setSelectedOrder(order)}
                           className="text-blue-600 hover:bg-blue-50 transition-colors px-4 py-1.5 rounded-md text-xs font-bold border border-slate-200 hover:border-blue-200"
                         >
-                          View
+                          Xem
                         </button>
                       </td>
                     </tr>
@@ -314,7 +314,7 @@ const Orders = () => {
                 ) : (
                   <tr>
                     <td colSpan="7" className="p-8 text-center text-slate-500 font-medium">
-                      No orders found matching your criteria.
+                      Không tìm thấy đơn hàng phù hợp.
                     </td>
                   </tr>
                 )}
@@ -325,7 +325,7 @@ const Orders = () => {
           {totalPages > 1 && (
             <div className="flex items-center justify-between p-4 border-t border-slate-200 bg-slate-50/50">
               <span className="text-sm text-slate-500 font-medium">
-                Showing <span className="font-bold text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-bold text-slate-900">{Math.min(currentPage * itemsPerPage, filteredOrders.length)}</span> of <span className="font-bold text-slate-900">{filteredOrders.length}</span>
+                Hiển thị <span className="font-bold text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</span> đến <span className="font-bold text-slate-900">{Math.min(currentPage * itemsPerPage, filteredOrders.length)}</span> trên <span className="font-bold text-slate-900">{filteredOrders.length}</span>
               </span>
               <div className="flex items-center gap-1">
                 <button 

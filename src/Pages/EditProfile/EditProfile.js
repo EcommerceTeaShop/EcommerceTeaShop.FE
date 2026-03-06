@@ -8,7 +8,7 @@ const EditProfile = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    alert("Simulating profile update saving to database...");
+    alert("Đang mô phỏng lưu cập nhật hồ sơ vào cơ sở dữ liệu...");
     navigate("/profile");
   };
 
@@ -19,23 +19,23 @@ const EditProfile = () => {
         <nav className="flex flex-col gap-2">
           <Link to="/profile" className="flex items-center gap-3 rounded-xl bg-primary/10 px-5 py-4 font-bold text-[#0d1b10] border border-primary/20 transition-all">
             <span className="material-symbols-outlined text-[22px] text-primary">person</span>
-            <span className="text-sm">Account Overview</span>
+            <span className="text-sm">Tổng quan tài khoản</span>
           </Link>
           <Link to="/orders" className="flex items-center gap-3 rounded-xl px-5 py-4 text-gray-500 hover:text-[#0d1b10] hover:bg-surface-light transition-all font-medium">
             <span className="material-symbols-outlined text-[22px]">package_2</span>
-            <span className="text-sm">My Orders</span>
+            <span className="text-sm">Đơn hàng của tôi</span>
           </Link>
-          <button onClick={() => alert("Password reset logic to be defined by IT.")} className="w-full flex items-center gap-3 rounded-xl px-5 py-4 text-gray-500 hover:text-[#0d1b10] hover:bg-surface-light transition-all font-medium">
+          <button onClick={() => alert("Luồng đặt lại mật khẩu sẽ do IT định nghĩa.")} className="w-full flex items-center gap-3 rounded-xl px-5 py-4 text-gray-500 hover:text-[#0d1b10] hover:bg-surface-light transition-all font-medium">
             <span className="material-symbols-outlined text-[22px]">lock_reset</span>
-            <span className="text-sm">Change Password</span>
+            <span className="text-sm">Đổi mật khẩu</span>
           </button>
         </nav>
       </aside>
 
       <section className="flex-1 max-w-4xl">
         <div className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-black text-[#0d1b10] tracking-tight">Edit Profile</h1>
-          <p className="text-gray-500 mt-2 font-medium text-sm">Manage your personal information and profile appearance.</p>
+          <h1 className="text-3xl md:text-4xl font-black text-[#0d1b10] tracking-tight">Chỉnh sửa hồ sơ</h1>
+          <p className="text-gray-500 mt-2 font-medium text-sm">Quản lý thông tin cá nhân và giao diện hồ sơ.</p>
         </div>
 
         <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 mb-8">
@@ -46,7 +46,7 @@ const EditProfile = () => {
                 {user?.name?.charAt(0) || "D"}
               </div>
               <label 
-                onClick={() => alert("Simulating file upload prompt...")}
+                onClick={() => alert("Đang mô phỏng hộp thoại tải tệp...")}
                 className="absolute bottom-0 right-0 bg-primary text-[#0d1b10] p-3 rounded-full shadow-lg hover:scale-110 transition-transform cursor-pointer flex items-center justify-center border-4 border-white"
               >
                 <span className="material-symbols-outlined text-sm font-bold">photo_camera</span>
@@ -54,23 +54,23 @@ const EditProfile = () => {
             </div>
             <div className="flex flex-col gap-3 text-center md:text-left">
               <div>
-                <h4 className="text-xl md:text-2xl font-black text-[#0d1b10]">Profile Photo</h4>
-                <p className="text-xs md:text-sm text-gray-400 font-medium mt-1">Recommended: Square JPG or PNG, min. 400x400px</p>
+                <h4 className="text-xl md:text-2xl font-black text-[#0d1b10]">Ảnh đại diện</h4>
+                <p className="text-xs md:text-sm text-gray-400 font-medium mt-1">Gợi ý: JPG hoặc PNG vuông, tối thiểu 400x400px</p>
               </div>
               <div className="flex gap-4 justify-center md:justify-start mt-2">
                 <button 
                   type="button" 
-                  onClick={() => alert("Simulating file upload prompt...")}
+                  onClick={() => alert("Đang mô phỏng hộp thoại tải tệp...")}
                   className="px-5 py-2.5 bg-surface-light hover:bg-primary/20 text-[#0d1b10] rounded-xl text-sm font-bold transition-all"
                 >
-                  Upload New
+                  Tải ảnh mới
                 </button>
                 <button 
                   type="button" 
-                  onClick={() => alert("Simulating photo removal...")}
+                  onClick={() => alert("Đang mô phỏng xóa ảnh...")}
                   className="px-5 py-2.5 text-red-500 hover:bg-red-50 rounded-xl text-sm font-bold transition-all"
                 >
-                  Remove
+                  Xóa
                 </button>
               </div>
             </div>
@@ -79,7 +79,7 @@ const EditProfile = () => {
           <form onSubmit={handleSave} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Full Name</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Họ và tên</label>
                 <input 
                   type="text" 
                   defaultValue={user?.name || "Diệm"} 
@@ -87,7 +87,7 @@ const EditProfile = () => {
                 />
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Email Address</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Địa chỉ email</label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">mail</span>
                   <input 
@@ -98,7 +98,7 @@ const EditProfile = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Phone Number</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Số điện thoại</label>
                 <input 
                   type="tel" 
                   defaultValue="+84 987 654 321" 
@@ -109,13 +109,13 @@ const EditProfile = () => {
 
             <div className="flex flex-col-reverse md:flex-row items-center justify-end gap-4 md:gap-6 pt-10 border-t border-gray-100">
               <Link to="/profile" className="text-sm font-bold text-gray-500 hover:text-[#0d1b10] transition-colors py-4 md:py-0">
-                Discard Changes
+                Hủy thay đổi
               </Link>
               <button 
                 type="submit" 
                 className="w-full md:w-auto px-10 py-4 bg-primary text-[#0d1b10] rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all shadow-md shadow-primary/20"
               >
-                Save Changes
+                Lưu thay đổi
               </button>
             </div>
           </form>

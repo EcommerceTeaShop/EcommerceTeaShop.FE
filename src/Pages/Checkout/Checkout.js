@@ -9,20 +9,20 @@ const Checkout = () => {
   const savedAddresses = [
     {
       id: 1,
-      label: "Campus Delivery",
-      details: "FPT University Campus, Hoa Lac Hi-Tech Park, Thach That, Hanoi, Vietnam",
+      label: "Giao đến campus",
+      details: "Khuôn viên Đại học FPT, Khu công nghệ cao Hòa Lạc, Thạch Thất, Hà Nội, Việt Nam",
       isDefault: true,
     },
     {
       id: 2,
-      label: "Home",
-      details: "123 Tea Garden Lane, District 1, Ho Chi Minh City, Vietnam",
+      label: "Nhà",
+      details: "123 Tea Garden Lane, Quận 1, TP. Hồ Chí Minh, Việt Nam",
       isDefault: false,
     },
     {
       id: 3,
-      label: "Work",
-      details: "Keangnam Landmark 72, Pham Hung, Nam Tu Liem, Hanoi, Vietnam",
+      label: "Công ty",
+      details: "Keangnam Landmark 72, Phạm Hùng, Nam Từ Liêm, Hà Nội, Việt Nam",
       isDefault: false,
     }
   ];
@@ -33,7 +33,7 @@ const Checkout = () => {
     {
       id: 1,
       name: "Sencha Green Tea",
-      details: "50g / Loose Leaf",
+      details: "50g / Lá rời",
       price: "$14.00",
       qty: 1,
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBHwSQh3yVGOtNgVFt5Mzh6Rjx1m18YPEUj99Rwtq6qdvsibhIpHN2f46dQ3PCzFchCKOVy59m3VsSvmrV5R3VfRDtKy3rLPM4vVBcgkSjYJmQLkaGqWXOEbZo-Up7-DNQfGksPLzdAeJ193dCjLSQ9eJgLAq8hthiEd1oA2tL4jMI9KSHGs3alNDJfTmd4DOr5ioX2beU4iSH-pert2a2fsoN0uf5gWGYkxvl6rjvtufxMkRZkQT6-lonJ0vwrLIQIkV0ttv-QDifh",
@@ -41,7 +41,7 @@ const Checkout = () => {
     {
       id: 2,
       name: "Earl Grey Reserve",
-      details: "100g / Tin",
+      details: "100g / Hộp",
       price: "$24.00",
       qty: 2,
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDz3JiwkG7V7_d3dtVWmb9w9PMmC06M3B_jH3O_gf3rksdhRazyJshSr9R2Geid0lD4xp0zN-2Drx9E6Kbgbu1RKAp5U18ryxSzuHxND7g89JQGrAhKPZGdLYnQ5rVZc68QzAWr-V4aobYyM_qen8yCibKwx1twEGL-mTkMuSUyzcB0o_LuehhBeSaWSDUo2zXoCT8x2Esnq0JA0ab7ElTKFxzboncbCKU5Gk8zsxXoSjHUH3h-s3N66mmfDn3pbyYEiSFFMgWdJsms",
@@ -55,7 +55,7 @@ const Checkout = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4">
           <div className="bg-white rounded-3xl p-8 w-full max-w-lg shadow-2xl animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-black text-[#0d1b10]">Select Address</h3>
+              <h3 className="text-2xl font-black text-[#0d1b10]">Chọn địa chỉ</h3>
               <button onClick={() => setShowAddressModal(false)} className="text-gray-400 hover:text-red-500 transition-colors">
                 <span className="material-symbols-outlined">close</span>
               </button>
@@ -78,10 +78,10 @@ const Checkout = () => {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="font-bold text-[#0d1b10]">{addr.label}</span>
-                        {addr.isDefault && <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-md">Default</span>}
+                        {addr.isDefault && <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-md">Mặc định</span>}
                       </div>
                       <p className="text-sm text-gray-600 leading-relaxed">{addr.details}</p>
-                      <p className="text-sm font-medium text-[#0d1b10] mt-2">{user?.name || "Customer"} • +84 987 654 321</p>
+                      <p className="text-sm font-medium text-[#0d1b10] mt-2">{user?.name || "Khách hàng"} • +84 987 654 321</p>
                     </div>
                   </div>
                 </div>
@@ -89,7 +89,7 @@ const Checkout = () => {
             </div>
             
             <button onClick={() => setShowAddressModal(false)} className="w-full mt-6 py-4 rounded-xl bg-surface-light text-[#0d1b10] font-bold hover:bg-gray-200 transition-colors">
-              Add New Address
+              Thêm địa chỉ mới
             </button>
           </div>
         </div>
@@ -99,35 +99,35 @@ const Checkout = () => {
         <div className="flex-1 flex flex-col gap-8 order-2 lg:order-1">
           <nav className="flex items-center flex-wrap gap-2 text-sm font-medium">
             <Link to="/cart" className="text-primary hover:underline">
-              Cart
+              Giỏ hàng
             </Link>
             <span className="material-symbols-outlined text-gray-400 text-base">
               chevron_right
             </span>
-            <span className="text-[#0d1b10]">Information</span>
+            <span className="text-[#0d1b10]">Thông tin</span>
             <span className="material-symbols-outlined text-gray-400 text-base">
               chevron_right
             </span>
-            <span className="text-gray-500">Shipping</span>
+            <span className="text-gray-500">Vận chuyển</span>
             <span className="material-symbols-outlined text-gray-400 text-base">
               chevron_right
             </span>
-            <span className="text-gray-500">Payment</span>
+            <span className="text-gray-500">Thanh toán</span>
           </nav>
 
           <section>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-bold tracking-tight text-[#0d1b10]">
-                Contact Information
+                Thông tin liên hệ
               </h3>
               {!isAuthenticated && (
                 <div className="text-sm text-gray-600">
-                  Already have an account?{" "}
+                  Đã có tài khoản?{" "}
                   <Link
                     to="/login"
                     className="text-primary hover:underline font-medium"
                   >
-                    Log in
+                    Đăng nhập
                   </Link>
                 </div>
               )}
@@ -139,7 +139,7 @@ const Checkout = () => {
                   {user?.name?.charAt(0) || "C"}
                 </div>
                 <div>
-                  <p className="font-bold text-[#0d1b10]">{user?.name || "Customer"}</p>
+                  <p className="font-bold text-[#0d1b10]">{user?.name || "Khách hàng"}</p>
                   <p className="text-sm text-gray-500">{user?.email || "customer@teavault.com"}</p>
                 </div>
               </div>
@@ -147,11 +147,11 @@ const Checkout = () => {
               <div className="space-y-4">
                 <label className="block">
                   <span className="text-sm font-medium text-gray-700 mb-1 block">
-                    Email address
+                    Địa chỉ email
                   </span>
                   <input
                     className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10] placeholder:text-gray-400"
-                    placeholder="you@example.com"
+                    placeholder="ban@example.com"
                     type="email"
                   />
                 </label>
@@ -165,14 +165,14 @@ const Checkout = () => {
                 type="checkbox"
               />
               <label className="text-sm text-gray-600" htmlFor="newsletter">
-                Email me with news and offers
+                Gửi email cho tôi về tin tức và ưu đãi
               </label>
             </div>
           </section>
 
           <section>
             <h3 className="text-xl font-bold tracking-tight text-[#0d1b10] mb-4">
-              Shipping Address
+              Địa chỉ giao hàng
             </h3>
             
             {isAuthenticated ? (
@@ -180,17 +180,17 @@ const Checkout = () => {
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary text-xl">location_on</span>
-                    <span className="font-bold text-[#0d1b10] text-lg">Deliver To: {selectedAddress.label}</span>
+                    <span className="font-bold text-[#0d1b10] text-lg">Giao đến: {selectedAddress.label}</span>
                   </div>
                   <button 
                     onClick={() => setShowAddressModal(true)}
                     className="text-xs font-bold uppercase tracking-widest text-primary hover:text-[#0d1b10] transition-colors"
                   >
-                    Change
+                    Đổi
                   </button>
                 </div>
                 <div className="ml-7">
-                  <p className="font-bold text-[#0d1b10] mb-1">{user?.name || "Customer"} <span className="text-gray-400 font-normal mx-2">|</span> +84 987 654 321</p>
+                  <p className="font-bold text-[#0d1b10] mb-1">{user?.name || "Khách hàng"} <span className="text-gray-400 font-normal mx-2">|</span> +84 987 654 321</p>
                   <p className="text-sm text-gray-600 leading-relaxed max-w-md">
                     {selectedAddress.details}
                   </p>
@@ -199,41 +199,41 @@ const Checkout = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="block">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">First name</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Tên</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="text" />
                 </label>
                 <label className="block">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">Last name</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Họ</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="text" />
                 </label>
                 <label className="block md:col-span-2">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">Address</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Địa chỉ</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="text" />
                 </label>
                 <label className="block md:col-span-2">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">Apartment, suite, etc. (optional)</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Căn hộ, phòng, v.v. (tùy chọn)</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="text" />
                 </label>
                 <label className="block">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">City</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Thành phố</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="text" />
                 </label>
                 <label className="block">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">Postal code</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Mã bưu chính</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="text" />
                 </label>
                 <label className="block md:col-span-2">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">Country/Region</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Quốc gia/Khu vực</span>
                   <select className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10] appearance-none">
-                    <option>United States</option>
+                    <option>Hoa Kỳ</option>
                     <option>Canada</option>
-                    <option>United Kingdom</option>
-                    <option>Japan</option>
-                    <option>Vietnam</option>
+                    <option>Vương quốc Anh</option>
+                    <option>Nhật Bản</option>
+                    <option>Việt Nam</option>
                   </select>
                 </label>
                 <label className="block md:col-span-2 relative">
-                  <span className="text-sm font-medium text-gray-700 mb-1 block">Phone (optional)</span>
+                  <span className="text-sm font-medium text-gray-700 mb-1 block">Điện thoại (tùy chọn)</span>
                   <input className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]" type="tel" />
                   <span className="material-symbols-outlined absolute right-3 top-9 text-gray-400 text-lg pointer-events-none">help</span>
                 </label>
@@ -243,7 +243,7 @@ const Checkout = () => {
 
           <section>
             <h3 className="text-xl font-bold tracking-tight text-[#0d1b10] mb-4">
-              Shipping Method
+              Phương thức vận chuyển
             </h3>
             <div className="rounded-lg border border-[#e7f3e9] bg-white overflow-hidden">
               <label className="relative flex items-center p-4 border-b border-[#e7f3e9] cursor-pointer hover:bg-gray-50 transition-colors">
@@ -255,13 +255,13 @@ const Checkout = () => {
                 />
                 <div className="ml-3 flex flex-1 flex-col">
                   <span className="block text-sm font-medium text-[#0d1b10]">
-                    Standard Shipping
+                    Giao hàng tiêu chuẩn
                   </span>
                   <span className="block text-xs text-gray-500">
-                    5-8 business days
+                    5-8 ngày làm việc
                   </span>
                 </div>
-                <span className="text-sm font-medium text-[#0d1b10]">Free</span>
+                <span className="text-sm font-medium text-[#0d1b10]">Miễn phí</span>
               </label>
               <label className="relative flex items-center p-4 cursor-pointer hover:bg-gray-50 transition-colors">
                 <input
@@ -271,10 +271,10 @@ const Checkout = () => {
                 />
                 <div className="ml-3 flex flex-1 flex-col">
                   <span className="block text-sm font-medium text-[#0d1b10]">
-                    Express Shipping
+                    Giao hàng nhanh
                   </span>
                   <span className="block text-xs text-gray-500">
-                    1-3 business days
+                    1-3 ngày làm việc
                   </span>
                 </div>
                 <span className="text-sm font-medium text-[#0d1b10]">
@@ -286,13 +286,13 @@ const Checkout = () => {
 
           <section>
             <h3 className="text-xl font-bold tracking-tight text-[#0d1b10] mb-4">
-              Payment
+              Thanh toán
             </h3>
             <div className="rounded-lg border border-[#e7f3e9] bg-white p-6 shadow-sm">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-gray-700">
-                    Credit Card
+                    Thẻ tín dụng
                   </span>
                   <div className="flex gap-2 text-gray-400">
                     <span className="material-symbols-outlined">
@@ -306,14 +306,14 @@ const Checkout = () => {
                 <label className="block">
                   <input
                     className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]"
-                    placeholder="Card number"
+                    placeholder="Số thẻ"
                     type="text"
                   />
                 </label>
                 <label className="block">
                   <input
                     className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]"
-                    placeholder="Name on card"
+                    placeholder="Tên trên thẻ"
                     type="text"
                   />
                 </label>
@@ -321,7 +321,7 @@ const Checkout = () => {
                   <label className="block flex-1">
                     <input
                       className="w-full h-12 px-4 rounded-lg bg-white border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10]"
-                      placeholder="Expiration (MM / YY)"
+                      placeholder="Hết hạn (MM / YY)"
                       type="text"
                     />
                   </label>
@@ -348,7 +348,7 @@ const Checkout = () => {
               <span className="material-symbols-outlined text-base">
                 arrow_back
               </span>
-              Return to cart
+              Quay lại giỏ hàng
             </Link>
           </div>
         </div>
@@ -357,7 +357,7 @@ const Checkout = () => {
           <div className="sticky top-24">
             <div className="bg-white border border-[#e7f3e9] rounded-2xl p-6 lg:p-8 shadow-sm">
               <h2 className="text-xl font-bold tracking-tight text-[#0d1b10] mb-6">
-                Order Summary
+                Tổng đơn hàng
               </h2>
 
               <div className="space-y-4 mb-6">
@@ -391,32 +391,32 @@ const Checkout = () => {
               <div className="flex gap-2 mb-6 pt-6 border-t border-[#e7f3e9]">
                 <input
                   className="flex-1 h-12 px-4 rounded-lg bg-[#f8fcf9] border border-[#e7f3e9] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-[#0d1b10] placeholder:text-gray-400 text-sm"
-                  placeholder="Discount code"
+                  placeholder="Mã giảm giá"
                   type="text"
                 />
                 <button className="h-12 px-6 rounded-lg bg-gray-100 hover:bg-gray-200 text-[#0d1b10] font-bold text-sm transition-colors">
-                  Apply
+                  Áp dụng
                 </button>
               </div>
 
               <div className="space-y-3 pt-6 border-t border-[#e7f3e9] text-sm">
                 <div className="flex justify-between text-gray-600">
-                  <span className="font-medium">Subtotal</span>
+                  <span className="font-medium">Tạm tính</span>
                   <span className="font-bold text-[#0d1b10]">$38.00</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span className="font-medium">Shipping</span>
-                  <span className="font-bold text-[#0d1b10]">Free</span>
+                  <span className="font-medium">Vận chuyển</span>
+                  <span className="font-bold text-[#0d1b10]">Miễn phí</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span className="font-medium">Estimated Taxes</span>
+                  <span className="font-medium">Thuế dự kiến</span>
                   <span className="font-bold text-[#0d1b10]">$3.04</span>
                 </div>
               </div>
 
               <div className="flex justify-between items-end pt-6 mt-6 border-t border-[#e7f3e9]">
                 <span className="text-base font-black text-[#0d1b10]">
-                  Total
+                  Tổng
                 </span>
                 <div className="flex items-baseline gap-2">
                   <span className="text-xs font-bold text-gray-500">USD</span>
@@ -428,7 +428,7 @@ const Checkout = () => {
 
               <div className="mt-6 flex justify-center ">
                 <button className="w-full sm:w-auto px-20 py-4 bg-primary hover:bg-[#0fd630] text-[#0d1b10] font-black tracking-wide rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
-                  Pay Now
+                  Thanh toán ngay
                 </button>
               </div>
             </div>

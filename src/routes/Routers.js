@@ -28,6 +28,7 @@ import ProductEdit from "../Pages/Admin/Products/ProductEdit";
 import Products from "../Pages/Admin/Products/Products";
 import Campaigns from "../Pages/Admin/Campaigns/Campaigns";
 import Customers from "../Pages/Admin/Customers/Customers";
+import CustomDesign from "../Pages/CustomDesign/CustomDesign";
 
 const Routers = () => {
   const { isAuthenticated, user } = useSelector(
@@ -57,6 +58,7 @@ const Routers = () => {
         { path: "sustainability", element: <Sustainability /> },
         { path: "shipping-policy", element: <ShippingPolicy /> },
         { path: "returns-refund", element: <ReturnsRefund /> },
+        { path: "custom-design", element: <CustomDesign /> }, 
       ],
     },
     {

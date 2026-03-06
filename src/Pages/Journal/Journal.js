@@ -8,71 +8,71 @@ const Journal = () => {
   const articles = [
     {
       id: 1,
-      category: "Wellness",
-      date: "April 12, 2024",
-      readTime: "5 min read",
-      title: "Benefits of Oolong Tea for Heart Health",
-      desc: "New research suggests that a daily cup of Oolong can significantly lower cholesterol levels...",
+      category: "Sức khỏe",
+      date: "12 Tháng 4, 2024",
+      readTime: "5 phút đọc",
+      title: "Lợi ích của trà Oolong với tim mạch",
+      desc: "Nghiên cứu mới cho thấy uống Oolong mỗi ngày có thể giảm đáng kể cholesterol...",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCDKRTyVz7dd9bxyLv3Lf4DZsy3cWAG0uGqantT8F7Wl0n7KXIEOlg7FutmSBQe45ZQmXPklk7ROrElgqcCVJkcC3WtLXQp755DqCe6u6su2Z3zrTlokYpZt2_duwJpqrhyCGEqUGIOMvE3n46fI-44GnncrOo-JAqwsDpgRansTZymZpS3MvCuUDxtqp46juGDBe5v11HmDMyLt84avwSGqaLVj6lo1vKLwuVD87kiV4yfpkQs47FYQHmT-eZTusKfvJDSa9SLdxjT",
     },
     {
       id: 2,
-      category: "Tradition",
-      date: "April 08, 2024",
-      readTime: "8 min read",
-      title: "The History of the Japanese Tea Ceremony",
-      desc: "Exploring the profound spiritual roots and technical mastery of Chanoyu, the way of tea...",
+      category: "Truyền thống",
+      date: "08 Tháng 4, 2024",
+      readTime: "8 phút đọc",
+      title: "Lịch sử nghi lễ trà Nhật Bản",
+      desc: "Khám phá gốc rễ tâm linh sâu sắc và kỹ thuật tinh xảo của Chanoyu...",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBtpgP2EgoktGk0RKogqPkO5LxahdcOEFXI8cpfj0kNrWhEPCx7AG-8yn8Yg5LBPrF0fJzzh_AjSRLrBieMQ3QjK8XwUhljgZ8HJob3-66cn8iytCTusqPr7UN7iGrbi-LXmgY3-VkW1PcXE8NziQIvX0dCzdEuBS4tXfCuQnD0YACzYBiUzVEJ3AtOG6PouhT9JFHq1vTk_fSw0fcIOgQPxlwb74d40VR2RQaHCMbz6INOHJPx2olimiYv9MlDYIswTKE4L04LNEb3",
     },
     {
       id: 3,
-      category: "Tutorial",
-      date: "April 05, 2024",
-      readTime: "3 min read",
-      title: "Water Temperature: The Secret to Better Flavor",
-      desc: "Stop burning your green tea. Learn the specific temperatures for every variety of leaf...",
+      category: "Hướng dẫn",
+      date: "05 Tháng 4, 2024",
+      readTime: "3 phút đọc",
+      title: "Nhiệt độ nước: Bí mật để hương vị ngon hơn",
+      desc: "Đừng làm trà xanh bị cháy. Hãy tìm hiểu nhiệt độ đúng cho từng loại lá...",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAVuPpQZJmXNuYMMsiFQNt-xooBYyyB_wesNi4RGlDHMoQ8w9m7WNruW5yzFEJTGmKHqCXYqa0N-d8Y7xyhh_rF10DHPcvZmhbZgr3t9XWCLwpNJsbTXpgV_7mZXzF31Dk--_1SHWIFZmoPenLWkMCqm9wwauYC5-drllIg5aLao-fzdCUieHKOv8qYLvbwaF2srRfRBi9kyTdUonaDeUBLWvFbEwJyhaWJ2gnSlOS_3NdEhmvIez5EfdG4ltp_KN5eZ4d86q9YXFny",
     },
     {
       id: 4,
-      category: "Sourcing",
-      date: "March 28, 2024",
-      readTime: "12 min read",
-      title: "Spring Harvest 2024: A Trip to Darjeeling",
-      desc: "An exclusive look at this year's first flush and the incredible families harvesting it...",
+      category: "Nguồn cung",
+      date: "28 Tháng 3, 2024",
+      readTime: "12 phút đọc",
+      title: "Vụ thu hoạch mùa xuân 2024: Chuyến đi đến Darjeeling",
+      desc: "Góc nhìn độc quyền về lứa đầu mùa và những gia đình thu hoạch tuyệt vời...",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB6-GO3bel_ztFUMh7MWSHSFVzn_AXH0UnLlp380j_-1DHtaF_ZuVioVt3bxiFbalOr78WdYSAlPwcqa8zvoHaHdhJSL1WG-Gz86cKZRIzFuiOueksWgxKnTMS6lQMHYsaBc7jS2Z99nOzmYI35LSnQnOM9enNVswQ-9SNMkS0js1CTVSI-6szIdoRnuak2Qd58So-3yinNRD_WvZCQWlXjjNrGqKHfTis5oag2l-UT6UXgsVJwMqPbJba5SUIxlYZMjjKnl7cuiql8",
     },
     {
       id: 5,
-      category: "Culture",
-      date: "March 22, 2024",
-      readTime: "6 min read",
-      title: "The Fascinating Tale of Earl Grey Tea",
-      desc: "How a British diplomat and Bergamot oranges created one of the world's most iconic flavors...",
+      category: "Văn hóa",
+      date: "22 Tháng 3, 2024",
+      readTime: "6 phút đọc",
+      title: "Câu chuyện thú vị về trà Earl Grey",
+      desc: "Một nhà ngoại giao Anh và quả bergamot đã tạo nên hương vị biểu tượng...",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB21X5QM8_vyKyNKHqgj7_wVX3lKgywA3pNjEsY0dnwA_vMkUAVYOI9TnaQ0dvapFRUKgWaVQmGgS-Md1sJixpg43VtC1vZN2Zk_45mYS4pVzOVSQ3VaJqHApn5T0BufwtXUupAWVp5ArilJQ6yjSnMsoR4gAe6IOGX4mIzpa_8_O9TJ9dbgvEAJexUAWNIRcDFwBfC6Y_KWNSj8GWEWwleh8oub9d9mag8dZufaCNYWejDMZXzJGg6jy_fzr6cflRbfX97fKFDsuXE",
     },
     {
       id: 6,
-      category: "Health",
-      date: "March 15, 2024",
-      readTime: "4 min read",
-      title: "5 Herbal Teas for Better Sleep Tonight",
-      desc: "Say goodbye to restless nights with these naturally caffeine-free infusions that soothe the mind...",
+      category: "Sức khỏe",
+      date: "15 Tháng 3, 2024",
+      readTime: "4 phút đọc",
+      title: "5 loại trà thảo mộc giúp ngủ ngon hơn tối nay",
+      desc: "Tạm biệt đêm mất ngủ với những loại trà không caffeine giúp dịu tâm trí...",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_8d_yp0AsNrWuFAl4NfFOMcZY9TWMI2wU21MpBk0xN4eodZWS0xgMU3WlRtRJIs-XWm9Gqcv9lx_DIkIaesbGmMi6B0xbStNe-zQ_Ool5j6lOsES4LE6mLbTvGus4RXpl7VXOclpJJMI0finUhZz3j2y_6eh5Glab1HmY94upnzQXZIYErxGEiUpPRhOD3R4FY24-WiZeyzo3aqW1z33dTs7OE_NV_T05Logl-I3ST4R3djZMvECIUN3A4itSlCe9dnxQRvpEPCG4",
     },
   ];
 
-  const [selectedCategory, setSelectedCategory] = React.useState("All Posts");
+  const [selectedCategory, setSelectedCategory] = React.useState("Tất cả bài viết");
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const categories = [
-    "All Posts",
+    "Tất cả bài viết",
     ...Array.from(new Set(articles.map((a) => a.category))),
   ];
 
   const filteredArticles = articles.filter((article) => {
     const matchesCategory =
-      selectedCategory === "All Posts" || article.category === selectedCategory;
+      selectedCategory === "Tất cả bài viết" || article.category === selectedCategory;
     const matchesSearch =
       article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       article.desc.toLowerCase().includes(searchTerm.toLowerCase());
@@ -91,18 +91,17 @@ const Journal = () => {
         >
           <div className="max-w-2xl relative z-10">
             <span className="bg-primary text-[#0d1b10] text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-widest mb-4 inline-block shadow-sm">
-              Featured Post
+              Bài viết nổi bật
             </span>
             <h2 className="text-white text-3xl lg:text-5xl font-black leading-tight mb-4 tracking-tight">
-              The Zen of Morning Matcha: A Modern Ritual
+              Thiền tĩnh buổi sáng với matcha: Nghi thức hiện đại
             </h2>
             <p className="text-gray-200 text-lg mb-8 font-medium line-clamp-2">
-              Discover why thousands of tea lovers are switching their morning
-              coffee for a meditative matcha ceremony and how it transforms
-              productivity.
+              Khám phá lý do hàng nghìn người yêu trà đổi cà phê sáng sang nghi
+              thức matcha và cách nó thay đổi hiệu suất.
             </p>
             <button className="bg-white text-[#0d1b10] px-8 py-3.5 rounded-xl font-black flex items-center gap-2 hover:bg-primary transition-colors shadow-lg shadow-black/20">
-              Read the Article{" "}
+              Đọc bài viết{" "}
               <span className="material-symbols-outlined text-[20px]">
                 arrow_forward
               </span>
@@ -152,7 +151,7 @@ const Journal = () => {
                 {article.desc}
               </p>
               <div className="text-primary font-black text-sm flex items-center gap-1 group/link mt-auto">
-                Read More{" "}
+                Đọc thêm{" "}
                 <span className="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">
                   chevron_right
                 </span>

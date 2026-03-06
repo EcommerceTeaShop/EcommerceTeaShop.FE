@@ -8,7 +8,7 @@ const SearchBar = ({ value, onChange }) => {
       </span>
       <input
         className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-[#0d1b10] font-medium placeholder:text-gray-400"
-        placeholder="Search articles..."
+        placeholder="Tìm bài viết..."
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}

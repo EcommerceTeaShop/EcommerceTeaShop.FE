@@ -29,10 +29,10 @@ const NotFoundPage = () => {
 
         <div className="max-w-2xl mt-[-20px] md:mt-[-40px]">
           <h2 className="font-display text-4xl md:text-7xl text-white font-medium mb-6 italic drop-shadow-md">
-            Oops! Your tea has gone cold
+            Ối! Trà của bạn đã nguội
           </h2>
           <p className="text-white/80 text-lg md:text-xl font-light mb-12 max-w-md mx-auto leading-relaxed tracking-wide">
-            The path to this secret garden seems to have faded into the mist.
+            Lối vào khu vườn bí mật này dường như đã mờ trong sương.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ const NotFoundPage = () => {
             className="group relative flex min-w-[280px] items-center justify-center overflow-hidden rounded-full bg-white px-10 py-5 text-lg font-bold text-[#2D5A27] transition-all duration-500 hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
           >
             <span className="relative z-10 tracking-wider">
-              Return to the Garden
+              Quay về khu vườn
             </span>
           </a>
 
@@ -54,7 +54,7 @@ const NotFoundPage = () => {
               arrow_back
             </span>
             <span className="text-xs font-bold tracking-[0.2em] uppercase">
-              Step Back
+              Quay lại
             </span>
           </button>
         </div>
@@ -62,7 +62,7 @@ const NotFoundPage = () => {
 
       <div className="absolute bottom-12 left-12 hidden md:block">
         <div className="text-white/30 text-[10px] tracking-[0.4em] uppercase font-bold transform -rotate-90 origin-left">
-          Lost in the Highlands
+          Lạc giữa cao nguyên
         </div>
       </div>
 
@@ -78,7 +78,7 @@ const NotFoundPage = () => {
         <div className="flex flex-col items-end gap-2">
           <div className="h-[1px] w-12 bg-white/20"></div>
           <div className="text-white/30 text-[10px] tracking-[0.2em] uppercase font-medium">
-            Estate No. 404
+            Trang viên số 404
           </div>
         </div>
       </div>

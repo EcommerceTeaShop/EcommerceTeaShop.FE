@@ -2,30 +2,30 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Products = () => {
-  const [activeTab, setActiveTab] = useState('All Products');
+  const [activeTab, setActiveTab] = useState('Tất cả sản phẩm');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [sortOption, setSortOption] = useState('Newest');
+  const [sortOption, setSortOption] = useState('Mới nhất');
   
   const itemsPerPage = 5;
 
   const allProducts = [
-    { id: 'TEA-GRN-JAS-001', name: 'Imperial Jasmine Pearl', category: 'Green Tea', price: '$24.50', stock: 128, status: 'In Stock', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: 'TEA-BLK-EGY-002', name: 'Classic Earl Grey', category: 'Black Tea', price: '$18.00', stock: 12, status: 'Low Stock', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
-    { id: 'TEA-OOL-TGY-003', name: 'Premium Tie Guan Yin', category: 'Oolong Tea', price: '$32.00', stock: 45, status: 'In Stock', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: 'TEA-MAT-CER-004', name: 'Uji Matcha Ceremony Grade', category: 'Powder/Matcha', price: '$45.00', stock: 0, status: 'Out of Stock', statusColor: 'bg-red-100 text-red-800 border-red-200' },
-    { id: 'TEA-HRB-CHM-005', name: 'Wild Chamomile Blend', category: 'Herbal Tea', price: '$16.00', stock: 210, status: 'In Stock', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: 'TEA-WHT-SIL-006', name: 'Silver Needle White Tea', category: 'White Tea', price: '$38.00', stock: 8, status: 'Low Stock', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
-    { id: 'TEA-DRK-PUH-007', name: 'Aged Pu-erh Cake (2015)', category: 'Dark Tea', price: '$85.00', stock: 32, status: 'In Stock', statusColor: 'bg-green-100 text-green-800 border-green-200' }
+    { id: 'TEA-GRN-JAS-001', name: 'Imperial Jasmine Pearl', category: 'Trà xanh', price: '$24.50', stock: 128, status: 'Còn hàng', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: 'TEA-BLK-EGY-002', name: 'Classic Earl Grey', category: 'Trà đen', price: '$18.00', stock: 12, status: 'Sắp hết', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
+    { id: 'TEA-OOL-TGY-003', name: 'Premium Tie Guan Yin', category: 'Trà ô long', price: '$32.00', stock: 45, status: 'Còn hàng', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: 'TEA-MAT-CER-004', name: 'Uji Matcha Ceremony Grade', category: 'Bột/Matcha', price: '$45.00', stock: 0, status: 'Hết hàng', statusColor: 'bg-red-100 text-red-800 border-red-200' },
+    { id: 'TEA-HRB-CHM-005', name: 'Wild Chamomile Blend', category: 'Trà thảo mộc', price: '$16.00', stock: 210, status: 'Còn hàng', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: 'TEA-WHT-SIL-006', name: 'Silver Needle White Tea', category: 'Trà trắng', price: '$38.00', stock: 8, status: 'Sắp hết', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
+    { id: 'TEA-DRK-PUH-007', name: 'Aged Pu-erh Cake (2015)', category: 'Trà hậu lên men', price: '$85.00', stock: 32, status: 'Còn hàng', statusColor: 'bg-green-100 text-green-800 border-green-200' }
   ];
 
   const filteredProducts = useMemo(() => {
     let result = allProducts.filter(product => {
       const matchesTab = 
-        activeTab === 'All Products' ||
-        (activeTab === 'Low Stock' && product.status === 'Low Stock') ||
-        (activeTab === 'Out of Stock' && product.status === 'Out of Stock');
+        activeTab === 'Tất cả sản phẩm' ||
+        (activeTab === 'Sắp hết' && product.status === 'Sắp hết') ||
+        (activeTab === 'Hết hàng' && product.status === 'Hết hàng');
 
       const matchesSearch = 
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -34,11 +34,11 @@ const Products = () => {
       return matchesTab && matchesSearch;
     });
 
-    if (sortOption === 'Highest Price') {
+    if (sortOption === 'Giá cao nhất') {
       result.sort((a, b) => parseFloat(b.price.replace('$', '')) - parseFloat(a.price.replace('$', '')));
-    } else if (sortOption === 'Lowest Price') {
+    } else if (sortOption === 'Giá thấp nhất') {
       result.sort((a, b) => parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', '')));
-    } else if (sortOption === 'Lowest Stock') {
+    } else if (sortOption === 'Tồn kho thấp') {
       result.sort((a, b) => a.stock - b.stock); 
     } else {
       result.sort((a, b) => b.id.localeCompare(a.id)); 
@@ -60,39 +60,39 @@ const Products = () => {
         
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Inventory Management</h1>
-            <p className="mt-1 text-slate-500">Track stock levels, update pricing, and manage your tea catalog.</p>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Quản lý tồn kho</h1>
+            <p className="mt-1 text-slate-500">Theo dõi tồn kho, cập nhật giá và quản lý danh mục trà.</p>
           </div>
           <div className="flex items-center gap-3">
             <Link to="/admin/products/add" className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-sm">
               <span className="material-symbols-outlined text-[18px]">add</span>
-              Add New Tea
+              Thêm trà mới
             </Link>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Total Products</p>
+            <p className="text-slate-500 text-sm font-medium">Tổng sản phẩm</p>
             <h3 className="text-2xl font-bold text-slate-900 mt-2">124</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Low Stock Alerts</p>
+            <p className="text-slate-500 text-sm font-medium">Cảnh báo sắp hết</p>
             <h3 className="text-2xl font-bold text-orange-600 mt-2">12</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Out of Stock</p>
+            <p className="text-slate-500 text-sm font-medium">Hết hàng</p>
             <h3 className="text-2xl font-bold text-red-600 mt-2">3</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Active Categories</p>
+            <p className="text-slate-500 text-sm font-medium">Danh mục đang hoạt động</p>
             <h3 className="text-2xl font-bold text-slate-900 mt-2">8</h3>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
-            {['All Products', 'Low Stock', 'Out of Stock'].map((tab) => (
+            {['Tất cả sản phẩm', 'Sắp hết', 'Hết hàng'].map((tab) => (
               <button 
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -116,7 +116,7 @@ const Products = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="block w-full pl-10 pr-3 py-2 border-none ring-1 ring-slate-200 rounded-lg bg-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-sm" 
-                placeholder="Search by Tea Name or SKU..." 
+                placeholder="Tìm theo tên trà hoặc SKU..." 
                 type="text"
               />
             </div>
@@ -127,13 +127,13 @@ const Products = () => {
                 className="flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-all shadow-sm"
               >
                 <span className="material-symbols-outlined text-[18px]">filter_list</span>
-                Sort: {sortOption}
+                Sắp xếp: {sortOption}
               </button>
               
               {isFilterOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-slate-100 z-20 py-2">
-                  <div className="px-3 py-1 text-xs font-bold text-slate-400 uppercase tracking-wider">Sort By</div>
-                  {['Newest', 'Lowest Stock', 'Highest Price', 'Lowest Price'].map((option) => (
+                  <div className="px-3 py-1 text-xs font-bold text-slate-400 uppercase tracking-wider">Sắp xếp theo</div>
+                  {['Mới nhất', 'Tồn kho thấp', 'Giá cao nhất', 'Giá thấp nhất'].map((option) => (
                     <button
                       key={option}
                       onClick={() => {
@@ -158,13 +158,13 @@ const Products = () => {
             <table className="w-full text-left border-collapse table-fixed min-w-[1000px]">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="p-4 pl-6 text-sm font-semibold text-slate-600 w-[25%]">Product Info</th>
+                  <th className="p-4 pl-6 text-sm font-semibold text-slate-600 w-[25%]">Thông tin sản phẩm</th>
                   <th className="p-4 text-sm font-semibold text-slate-600 w-[15%]">SKU</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[15%]">Category</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[15%]">Price</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[10%]">Stock</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[12%]">Status</th>
-                  <th className="p-4 pr-6 text-sm font-semibold text-slate-600 w-[8%] text-right">Actions</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[15%]">Danh mục</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[15%]">Giá</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[10%]">Tồn kho</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[12%]">Trạng thái</th>
+                  <th className="p-4 pr-6 text-sm font-semibold text-slate-600 w-[8%] text-right">Thao tác</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -194,7 +194,7 @@ const Products = () => {
                       <td className="p-4 pr-6 text-right space-x-2">
                         {/* Note: In a real app, this would be a <Link to="/admin/products/edit"> */}
                         <Link to="/admin/products/edit" className="text-blue-600 hover:bg-blue-50 transition-colors px-2 py-1 rounded-md text-xs font-bold border border-transparent hover:border-blue-200">
-                          Edit
+                          Sửa
                         </Link>
                       </td>
                     </tr>
@@ -202,7 +202,7 @@ const Products = () => {
                 ) : (
                   <tr>
                     <td colSpan="7" className="p-8 text-center text-slate-500 font-medium">
-                      No products found matching your criteria.
+                      Không tìm thấy sản phẩm phù hợp.
                     </td>
                   </tr>
                 )}
@@ -213,7 +213,7 @@ const Products = () => {
           {totalPages > 1 && (
             <div className="flex items-center justify-between p-4 border-t border-slate-200 bg-slate-50/50">
               <span className="text-sm text-slate-500 font-medium">
-                Showing <span className="font-bold text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-bold text-slate-900">{Math.min(currentPage * itemsPerPage, filteredProducts.length)}</span> of <span className="font-bold text-slate-900">{filteredProducts.length}</span>
+                Hiển thị <span className="font-bold text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</span> đến <span className="font-bold text-slate-900">{Math.min(currentPage * itemsPerPage, filteredProducts.length)}</span> trên <span className="font-bold text-slate-900">{filteredProducts.length}</span>
               </span>
               <div className="flex items-center gap-1">
                 <button 

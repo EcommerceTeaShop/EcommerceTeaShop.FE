@@ -40,10 +40,10 @@ const Cart = () => {
             to="/"
             className="text-gray-500 hover:text-primary text-sm font-medium transition-colors"
           >
-            Home
+            Trang chủ
           </Link>
           <span className="text-gray-400 text-sm font-medium">/</span>
-          <span className="text-[#102213] text-sm font-medium">Cart</span>
+          <span className="text-[#102213] text-sm font-medium">Giỏ hàng</span>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 items-start">
@@ -51,18 +51,18 @@ const Cart = () => {
           <div className="flex-1 w-full flex flex-col gap-6">
             <div className="flex justify-between items-end border-b border-[#e7f3e9] pb-4">
               <h1 className="text-[#0d1b10] text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">
-                Your Cart ({cartItemCount} items)
+                Giỏ hàng của bạn ({cartItemCount} món)
               </h1>
             </div>
 
             {flatCartItems.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-gray-500 text-lg">Your cart is empty.</p>
+                <p className="text-gray-500 text-lg">Giỏ hàng của bạn đang trống.</p>
                 <Link
                   to="/shop"
                   className="text-primary font-bold mt-4 inline-block underline"
                 >
-                  Continue Shopping
+                  Tiếp tục mua sắm
                 </Link>
               </div>
             ) : (
@@ -145,7 +145,7 @@ const Cart = () => {
                         <span className="material-symbols-outlined text-[18px]">
                           delete
                         </span>
-                        <span className="hidden sm:inline">Remove</span>
+                        <span className="hidden sm:inline">Xóa</span>
                       </button>
                     </div>
                   </div>
@@ -158,26 +158,26 @@ const Cart = () => {
           <div className="w-full lg:w-[380px] shrink-0 lg:sticky lg:top-24">
             <div className="bg-white rounded-xl p-6 shadow-sm border border-[#e7f3e9]">
               <h3 className="font-bold text-xl mb-6 text-[#0d1b10]">
-                Order Summary
+                Tổng đơn hàng
               </h3>
 
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-sm text-gray-600">
-                  <span>Subtotal</span>
+                  <span>Tạm tính</span>
                   <span className="font-medium text-[#0d1b10]">
                     ${calculatedTotal}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm text-gray-600">
-                  <span>Shipping estimate</span>
-                  <span className="font-medium text-primary">Free</span>
+                  <span>Phí vận chuyển dự kiến</span>
+                  <span className="font-medium text-primary">Miễn phí</span>
                 </div>
               </div>
 
               <div className="border-t border-[#e7f3e9] my-4 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-[#0d1b10]">
-                    Total
+                    Tổng
                   </span>
                   <span className="text-2xl font-black text-[#0d1b10]">
                     ${calculatedTotal}
@@ -190,7 +190,7 @@ const Cart = () => {
                   disabled={flatCartItems.length === 0}
                   className="w-full bg-primary disabled:bg-gray-300 text-[#102213] text-lg font-bold py-3.5 rounded-lg hover:bg-[#10d430] active:scale-[0.99] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                 >
-                  <span>Checkout</span>
+                  <span>Thanh toán</span>
                   <span className="material-symbols-outlined text-[20px]">
                     arrow_forward
                   </span>

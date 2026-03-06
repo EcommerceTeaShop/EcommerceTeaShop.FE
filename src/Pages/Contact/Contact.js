@@ -5,9 +5,9 @@ const Contact = () => {
     <div className="flex-1 w-full max-w-[1440px] mx-auto px-4 md:px-10 py-12 lg:py-20 font-display bg-background-light text-[#0d1b10] min-h-screen">
       
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">We'd love to hear from you</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">Rất mong nghe từ bạn</h1>
         <p className="text-gray-600 text-lg md:text-xl font-medium leading-relaxed">
-          Have a question about our teas? Want to learn more about our sustainable practices? We're here to help.
+          Bạn có thắc mắc về trà? Muốn biết thêm về cách làm bền vững của chúng tôi? Chúng tôi luôn sẵn sàng hỗ trợ.
         </p>
       </div>
 
@@ -18,7 +18,7 @@ const Contact = () => {
           </div>
           <h3 className="font-black text-lg mb-2">Hotline</h3>
           <p className="font-bold text-[#0d1b10] text-lg mb-1">0357 130 804</p>
-          <p className="text-xs text-gray-500 font-medium">Available during business hours</p>
+          <p className="text-xs text-gray-500 font-medium">Hoạt động trong giờ hành chính</p>
         </div>
 
         <div className="bg-white rounded-3xl p-8 flex flex-col items-center text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
@@ -27,14 +27,14 @@ const Contact = () => {
           </div>
           <h3 className="font-black text-lg mb-2">Email</h3>
           <p className="font-bold text-[#0d1b10] text-base mb-1">teavault2025@gmail.com</p>
-          <p className="text-xs text-gray-500 font-medium">We respond within 24 hours</p>
+          <p className="text-xs text-gray-500 font-medium">Phản hồi trong 24 giờ</p>
         </div>
 
         <div className="bg-white rounded-3xl p-8 flex flex-col items-center text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
           <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary mb-6">
             <span className="material-symbols-outlined text-3xl">location_on</span>
           </div>
-          <h3 className="font-black text-lg mb-2">Address</h3>
+          <h3 className="font-black text-lg mb-2">Địa chỉ</h3>
           <p className="font-bold text-[#0d1b10] text-sm mb-1">65D, 63 Lò Lu, P. Trường Thạnh</p>
           <p className="text-xs text-gray-500 font-medium">TP. Thủ Đức, Hồ Chí Minh</p>
         </div>
@@ -43,22 +43,22 @@ const Contact = () => {
           <div className="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center text-primary mb-6">
             <span className="material-symbols-outlined text-3xl">schedule</span>
           </div>
-          <h3 className="font-black text-lg mb-2">Working Hours</h3>
-          <p className="font-bold text-[#0d1b10] text-sm mb-1">Mon-Sat: 8:00 AM - 5:00 PM</p>
-          <p className="text-xs text-gray-500 font-medium">Sunday: Closed</p>
+          <h3 className="font-black text-lg mb-2">Giờ làm việc</h3>
+          <p className="font-bold text-[#0d1b10] text-sm mb-1">Thứ 2-Thứ 7: 8:00 - 17:00</p>
+          <p className="text-xs text-gray-500 font-medium">Chủ nhật: Đóng cửa</p>
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 bg-white rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-gray-100">
         
         <div className="flex-1 lg:pr-8">
-          <h2 className="text-3xl font-black mb-8 text-[#0d1b10]">Send us a message</h2>
+          <h2 className="text-3xl font-black mb-8 text-[#0d1b10]">Gửi lời nhắn</h2>
           <form className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-black uppercase tracking-widest text-gray-400">Name</label>
+              <label className="text-xs font-black uppercase tracking-widest text-gray-400">Tên</label>
               <input 
                 type="text" 
-                placeholder="Your full name" 
+                placeholder="Họ tên đầy đủ" 
                 className="w-full h-14 px-5 rounded-xl bg-surface-light border-none focus:ring-2 focus:ring-primary outline-none transition-all text-[#0d1b10] font-medium placeholder:text-gray-400"
               />
             </div>
@@ -71,9 +71,9 @@ const Contact = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-black uppercase tracking-widest text-gray-400">Message</label>
+              <label className="text-xs font-black uppercase tracking-widest text-gray-400">Nội dung</label>
               <textarea 
-                placeholder="Tell us what's on your mind..." 
+                placeholder="Chia sẻ điều bạn đang nghĩ..." 
                 rows="5"
                 className="w-full p-5 rounded-xl bg-surface-light border-none focus:ring-2 focus:ring-primary outline-none transition-all text-[#0d1b10] font-medium placeholder:text-gray-400 resize-none"
               ></textarea>
@@ -82,7 +82,7 @@ const Contact = () => {
               type="button" 
               className="mt-2 w-full bg-primary text-[#0d1b10] h-14 rounded-xl font-black tracking-wide shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              Send Message
+              Gửi tin
             </button>
           </form>
         </div>
@@ -94,7 +94,7 @@ const Contact = () => {
             allowFullScreen="" 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
-            title="Tea Vault Location"
+            title="Vị trí Tea Vault"
           ></iframe>
         </div>
 

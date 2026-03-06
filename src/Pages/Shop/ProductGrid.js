@@ -10,7 +10,7 @@ const ProductGrid = ({ displayedProducts }) => {
         ))
       ) : (
         <div className="col-span-full py-20 text-center text-gray-500 font-bold">
-          No teas found matching your filters.
+          Không tìm thấy trà phù hợp với bộ lọc.
         </div>
       )}
     </div>

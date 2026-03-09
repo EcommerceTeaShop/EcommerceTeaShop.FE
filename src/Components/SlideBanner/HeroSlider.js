@@ -1,29 +1,57 @@
-// ...existing code...
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import homeHeroBanners from "../../data/homeHeroBanners";
+
+const STORAGE_KEY = "homeHeroBanners.v3";
+const FALLBACK_IMAGE = "https://images.pexels.com/photos/2173176/pexels-photo-2173176.jpeg?auto=compress&cs=tinysrgb&w=1600";
+
+const readBanners = () => {
+  if (typeof window === "undefined") return homeHeroBanners;
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : homeHeroBanners;
+  } catch (error) {
+    console.warn("Không thể đọc banner khách hàng", error);
+    return homeHeroBanners;
+  }
+};
 
 const HeroSlider = () => {
-  const slides = [
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBQ-QEld4X1S--97xb7ejRo6k_02uYaxCC0rOOg4Mjin2J2IgK2uXKllg86nAnAzmMSCtJaqz2RRdeFMI7OvThqK1U0jw2QjrMYbI0DClDdptWqHUY3QkZoNzwtnuh0vqdM-qwM4wNBSc-4_HXGPjw5gxxhoasQamB9fnAiD9KTynNNE32ch7mU3wmTv7ctr773EJnpRi_qfNEepRt4Vko4SzNq4MwV3JXEZpjnWIcZw3kj1aYfRWKZnLuuFIrFAx2fwonTsnrikICw",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDeHbsJYGeTazYnwl-9JLA4yHKMpi11TvuMEWwpMuhnvevsR4Zw68n46KfsTp_3Q-3K_r3_XCQ3wdUmVialHw94vZfO_ACknPdfsavNcrDM2eap4tVA8K6desQj_BNYdCjFKwLBgvd77Prt7zsD1t7DMePlmPpODWJWAytD3i-wq7nmJi1lKpX3fhjsQQcWosks-q6lCAKgrc_RfQQWqTcEKchC6VGj9QyNSZwK6oo2URDkoSYV0QpM9oBGzyxHjo7i7703AL6u13n2",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBpbD9wGvMcg8GLVEn_SGumiks7WdyN7x6V1pcQLB0jIoZYHTTPC0tUQjihU9ZMA8tfswjnbZ0fgrGXacs7tzEXpl4rln6hXUSyRmm_oKAxcJmBjYpHHpfJkRgkQbk0UJiEb4qm4enu2OSsuytmcilwX8UdwOGrvpW2J-0NVQWkZElJcvxzbceyOrHWeNYE3RA3JOEpDfl3kLma4IWTEs9yhWIuVi1mftFaRthUurRlMHlPCHHSNyrUx177SfX-J_nJkiBQwww_nIdf",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCGRiK3XSIGRHorzk6WWg_gNXQCYfizZCV1UYhOrBxi3X50YKI69KQ_pItdDsslTOYmMYEHvt3nzN6TFx3g20N7hlpMbLyAm-4BcHz2c1WFIrukUZnDBpYelR09-_FEjUn7wru4JF3Ot8T820Nr2m_bzPmCqjj3i1Tv00ectZMMMtOXK0kUOBWOEjUgIMzvyX3TGQWkpOQse_3xhBDGKz16ak8qCcNDvPET8xBnuBikvakH4lcq8MPeNilOnpVPxPqkHeM0vPu6C4Pa",
-  ];
-
+  const [slides, setSlides] = useState(readBanners);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || slides.length === 0) return;
     timerRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, 4000);
     return () => clearInterval(timerRef.current);
   }, [paused, slides.length]);
 
-  const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
-  const next = () => setIndex((i) => (i + 1) % slides.length);
+  useEffect(() => {
+    const handleSync = () => {
+      const data = readBanners();
+      setSlides(data);
+      setIndex((prev) => (data.length === 0 ? 0 : prev % data.length));
+    };
+    window.addEventListener("homeHeroBannersUpdated", handleSync);
+    return () => window.removeEventListener("homeHeroBannersUpdated", handleSync);
+  }, []);
+
+  const prev = () => {
+    if (!slides.length) return;
+    setIndex((i) => (i - 1 + slides.length) % slides.length);
+  };
+  const next = () => {
+    if (!slides.length) return;
+    setIndex((i) => (i + 1) % slides.length);
+  };
+  const activeSlide = slides[index] || slides[0];
+  const titleSegments = activeSlide?.title
+    ? activeSlide.title.split("\n")
+    : ["Trải nghiệm", "nghệ thuật bình yên"];
 
   return (
     <div
@@ -31,30 +59,35 @@ const HeroSlider = () => {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {slides.map((src, i) => (
+      {slides.map((slide, i) => {
+        const imageSrc = slide?.image || FALLBACK_IMAGE;
+        return (
         <div
           key={i}
           className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${i === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
           style={{
-            backgroundImage: `linear-gradient(rgba(16,34,19,0.4), rgba(16,34,19,0.7)), url("${src}")`,
+            backgroundImage: `linear-gradient(rgba(16,34,19,0.3), rgba(16,34,19,0.6)), url("${imageSrc}")`,
           }}
           aria-hidden={i !== index}
         />
-      ))}
+        );
+      })}
 
       <div className="relative z-20 text-center px-4 max-w-3xl">
         <h1 className="text-white text-5xl md:text-7xl font-black mb-6 leading-tight drop-shadow-sm">
-          Trải nghiệm <br />
-          <span className="text-primary">nghệ thuật bình yên</span>
+          {titleSegments.map((line, idx) => (
+            <span key={`${line}-${idx}`} className={idx === 1 ? "block text-primary" : "block"}>
+              {line}
+            </span>
+          ))}
         </h1>
         <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto font-medium">
-          Trà hữu cơ được tuyển chọn từ những vườn tốt nhất, giao tận tay
-          đến nhà bạn.
+          {activeSlide?.description}
         </p>
         <div className="flex gap-4 justify-center">
-          <Link to="/shop">
+          <Link to={activeSlide?.link || "/shop"}>
             <button className="bg-primary hover:bg-primary/90 text-[#0d1b10] px-8 py-3 rounded-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/25">
-              Xem bộ sưu tập
+              {activeSlide?.cta || "Khám phá"}
             </button>
           </Link>
           <Link to="/about">

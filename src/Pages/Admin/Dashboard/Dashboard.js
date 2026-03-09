@@ -2,17 +2,15 @@ import React from 'react';
 
 const Dashboard = () => {
   const recentOrders = [
-    { id: '#ORD-0012', customer: 'Alex Morgan', type: 'Hộp quà tùy chỉnh', date: 'Oct 24, 2023', amount: '$48.00', status: 'Hoàn tất', statusColor: 'bg-green-100 text-green-800' },
-    { id: '#ORD-0011', customer: 'Sarah Jones', type: 'Tiêu chuẩn', date: 'Oct 23, 2023', amount: '$32.00', status: 'Chờ xử lý', statusColor: 'bg-yellow-100 text-yellow-800' },
-    { id: '#ORD-0010', customer: 'Michael Chen', type: 'Quà doanh nghiệp', date: 'Oct 23, 2023', amount: '$285.00', status: 'Đang đóng gói', statusColor: 'bg-blue-100 text-blue-800' },
-    { id: '#ORD-0009', customer: 'Emma Wilson', type: 'Tiêu chuẩn', date: 'Oct 22, 2023', amount: '$16.00', status: 'Hoàn tất', statusColor: 'bg-green-100 text-green-800' }
+    { id: '#ORD-0012', customer: 'Alex Morgan', type: 'Trà', date: 'Oct 24, 2023', amount: '$48.00', status: 'Hoàn tất', statusColor: 'bg-green-100 text-green-800' },
+    { id: '#ORD-0011', customer: 'Sarah Jones', type: 'Thiết kế trà', date: 'Oct 23, 2023', amount: '$132.00', status: 'Chờ xử lý', statusColor: 'bg-yellow-100 text-yellow-800' },
+    { id: '#ORD-0010', customer: 'Michael Chen', type: 'Trà', date: 'Oct 23, 2023', amount: '$85.00', status: 'Đang đóng gói', statusColor: 'bg-blue-100 text-blue-800' },
+    { id: '#ORD-0009', customer: 'Emma Wilson', type: 'Thiết kế trà', date: 'Oct 22, 2023', amount: '$216.00', status: 'Hoàn tất', statusColor: 'bg-green-100 text-green-800' }
   ];
 
-  const contentAlerts = [
-    { title: 'Tết Holiday Banner', type: 'Hero động', status: 'Đã lên lịch', icon: 'animation' },
-    { title: 'Spring Matcha Sale', type: 'Voucher/Giảm giá', status: 'Đang chạy', icon: 'sell' },
-    { title: 'Oolong Origin Guide', type: 'Nội dung blog', status: 'Chờ duyệt', icon: 'article' },
-    { title: 'Uji Matcha Matrix', type: 'So sánh trà', status: 'Đã cập nhật', icon: 'tune' }
+  const productMix = [
+    { label: 'Đơn Trà', percent: 68, trend: '+8% MoM', bar: 'bg-emerald-500' },
+    { label: 'Đơn Thiết kế', percent: 32, trend: '+4% MoM', bar: 'bg-sky-500' }
   ];
 
   return (
@@ -44,21 +42,23 @@ const Dashboard = () => {
           <div className="p-6 rounded-xl bg-white border border-gray-100 shadow-sm">
             <div className="flex justify-between items-start mb-4">
               <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
-                <span className="material-symbols-outlined">local_shipping</span>
+                <span className="material-symbols-outlined">local_cafe</span>
               </div>
+              <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">+6%</span>
             </div>
-            <p className="text-sm font-medium text-gray-500">Đơn hàng đang xử lý</p>
+            <p className="text-sm font-medium text-gray-500">Đơn Trà đang xử lý</p>
             <h3 className="text-2xl font-bold mt-1">342</h3>
           </div>
 
           <div className="p-6 rounded-xl bg-white border border-gray-100 shadow-sm">
             <div className="flex justify-between items-start mb-4">
-              <div className="p-2 rounded-lg bg-purple-50 text-purple-600">
-                <span className="material-symbols-outlined">redeem</span>
+              <div className="p-2 rounded-lg bg-sky-50 text-sky-600">
+                <span className="material-symbols-outlined">design_services</span>
               </div>
+              <span className="text-xs font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full">+12%</span>
             </div>
-            <p className="text-sm font-medium text-gray-500">Gói quà tùy chỉnh</p>
-            <h3 className="text-2xl font-bold mt-1">128</h3>
+            <p className="text-sm font-medium text-gray-500">Đơn Thiết kế đang xử lý</p>
+            <h3 className="text-2xl font-bold mt-1">118</h3>
           </div>
 
           <div className="p-6 rounded-xl bg-white border border-gray-100 shadow-sm">
@@ -108,18 +108,20 @@ const Dashboard = () => {
           <div className="flex flex-col gap-6">
             
             <div className="flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm p-6">
-              <h3 className="font-bold text-lg mb-6">Điều khiển media & chiến dịch</h3>
-              <div className="flex flex-col gap-5">
-                {contentAlerts.map((alert, index) => (
-                  <div key={index} className="flex items-center gap-4 border-b border-gray-50 pb-3 last:border-0 last:pb-0">
-                    <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-gray-500 shrink-0">
-                      <span className="material-symbols-outlined">{alert.icon}</span>
+              <h3 className="font-bold text-lg mb-6">Phân bổ mặt hàng</h3>
+              <div className="flex flex-col gap-4">
+                {productMix.map((item) => (
+                  <div key={item.label} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-bold text-gray-700">{item.label}</p>
+                        <p className="text-xs text-gray-500">{item.trend}</p>
+                      </div>
+                      <span className="text-lg font-black text-gray-900">{item.percent}%</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-bold truncate">{alert.title}</p>
-                      <p className="text-xs text-gray-500">{alert.type}</p>
+                    <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
+                      <div className={`h-full ${item.bar}`} style={{ width: `${item.percent}%` }}></div>
                     </div>
-                    <span className="text-xs font-bold text-blue-600">{alert.status}</span>
                   </div>
                 ))}
               </div>
@@ -166,7 +168,7 @@ const Dashboard = () => {
                 <tr>
                   <th className="px-6 py-4">Mã đơn</th>
                   <th className="px-6 py-4">Khách hàng</th>
-                  <th className="px-6 py-4">Hình thức xử lý</th>
+                  <th className="px-6 py-4">Loại sản phẩm</th>
                   <th className="px-6 py-4">Ngày</th>
                   <th className="px-6 py-4">Số tiền</th>
                   <th className="px-6 py-4">Trạng thái</th>

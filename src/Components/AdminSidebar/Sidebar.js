@@ -19,9 +19,10 @@ function Sidebar() {
       ]
     },
     {
-      title: "Marketing",
+      title: "Thiết kế & UI",
       items: [
-        { path: "/admin/campaigns", label: "Banner & Mã giảm giá", icon: "campaign" },
+        { path: "/admin/campaigns", label: "Banner Studio", icon: "brush" },
+        { path: "/admin/design-library", label: "Thiết kế đặt riêng", icon: "stylus_note" },
       ]
     },
     {

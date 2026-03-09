@@ -1,275 +1,235 @@
 import React, { useState } from 'react';
+import homeHeroBanners from '../../../data/homeHeroBanners';
+
+const STORAGE_KEY = 'homeHeroBanners.v3';
+
+const getStoredBanners = () => {
+  if (typeof window === 'undefined') return homeHeroBanners;
+  try {
+    const cached = window.localStorage.getItem(STORAGE_KEY);
+    return cached ? JSON.parse(cached) : homeHeroBanners;
+  } catch (error) {
+    console.warn('Không thể đọc banner từ localStorage', error);
+    return homeHeroBanners;
+  }
+};
+
+const persistBanners = (payload) => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    window.dispatchEvent(new Event('homeHeroBannersUpdated'));
+  } catch (error) {
+    console.warn('Không thể lưu banner xuống localStorage', error);
+  }
+};
+
+const initialHistory = [
+  { id: '#HIS-021', title: 'Hero Tết 2025', duration: 'Jan 2025 - Feb 2025', owner: 'Uyên', status: 'Đã kết thúc' },
+  { id: '#HIS-019', title: 'Popup Mid Autumn', duration: 'Aug 2024 - Oct 2024', owner: 'Khoa', status: 'Đã kết thúc' },
+  { id: '#HIS-017', title: 'Hero thiết kế bespoke', duration: 'Apr 2024 - Jul 2024', owner: 'Thư', status: 'Đã kết thúc' },
+];
 
 const Campaigns = () => {
-  const [isCampaignModalOpen, setIsCampaignModalOpen] = useState(false);
-  const [isAssetModalOpen, setIsAssetModalOpen] = useState(false);
-  const [isVoucherModalOpen, setIsVoucherModalOpen] = useState(false);
+  const [liveBanners, setLiveBanners] = useState(getStoredBanners);
+  const [history, setHistory] = useState(initialHistory);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    title: '',
+    note: '',
+    description: '',
+    image: '',
+    cta: '',
+    link: '',
+  });
 
-  const banners = [
-    { id: 1, title: 'Tết Holiday Hero (Animated)', type: 'Hero trang chủ', status: 'Đã lên lịch', date: 'Feb 10 - Feb 24', color: 'bg-gradient-to-r from-red-500 to-orange-400' },
-    { id: 2, title: 'Spring Matcha Collection', type: 'Banner danh mục', status: 'Đang chạy', date: 'Hiện tại', color: 'bg-gradient-to-r from-green-400 to-emerald-600' },
-    { id: 3, title: 'Oolong Flash Sale', type: 'Tài sản popup', status: 'Bản nháp', date: 'TBD', color: 'bg-gradient-to-r from-blue-400 to-indigo-500' }
-  ];
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingIndex(null);
+    setFormData({ title: '', note: '', description: '', image: '', cta: '', link: '' });
+  };
 
-  const vouchers = [
-    { code: 'TETTEA20', discount: 'Giảm 20%', usage: '0 / 500', status: 'Đã lên lịch' },
-    { code: 'SPRINGFREESHIP', discount: 'Miễn phí vận chuyển', usage: '342 / ∞', status: 'Đang hoạt động' },
-    { code: 'WELCOME10', discount: 'Giảm 10%', usage: '1,205 / ∞', status: 'Đang hoạt động' }
-  ];
+  const openEditModal = (index) => {
+    setEditingIndex(index);
+    setFormData({
+      title: liveBanners[index]?.title || '',
+      note: liveBanners[index]?.note || '',
+      description: liveBanners[index]?.description || '',
+      image: liveBanners[index]?.image || '',
+      cta: liveBanners[index]?.cta || '',
+      link: liveBanners[index]?.link || '',
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleSaveEdit = () => {
+    if (editingIndex === null) return;
+    if (!formData.title || !formData.image) {
+      alert('Nhập tối thiểu tiêu đề và link ảnh');
+      return;
+    }
+    const updated = liveBanners.map((banner, idx) =>
+      idx === editingIndex
+        ? {
+            ...banner,
+            title: formData.title,
+            note: formData.note,
+            description: formData.description,
+            image: formData.image,
+            cta: formData.cta,
+            link: formData.link,
+            lastUpdated: new Date().toLocaleDateString('vi-VN'),
+          }
+        : banner,
+    );
+    setLiveBanners(updated);
+    persistBanners(updated);
+    setHistory((prev) => [
+      {
+        id: `#HIS-${prev.length + 22}`,
+        title: `${formData.title} (thay slide ${editingIndex + 1})`,
+        duration: 'Đang chờ áp dụng',
+        owner: 'Bạn',
+        status: 'Vừa cập nhật',
+      },
+      ...prev,
+    ]);
+    handleCloseModal();
+  };
 
   return (
-    <div className="flex-1 overflow-y-scroll p-4 md:p-8 bg-gray-50 text-slate-900 min-h-screen relative">
-      
-      {isCampaignModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity p-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-lg shadow-2xl border border-slate-100">
-            <div className="flex justify-between items-center mb-5">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">campaign</span>
-                Tạo chiến dịch mới
+    <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50 text-slate-900 min-h-screen">
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-xl shadow-2xl border border-slate-100">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <span className="material-symbols-outlined text-blue-600">edit</span>
+                Chỉnh banner Home
               </h3>
-              <button onClick={() => setIsCampaignModalOpen(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
+              <button onClick={handleCloseModal} className="text-slate-400 hover:text-slate-600">
                 <span className="material-symbols-outlined">close</span>
               </button>
             </div>
-            
             <div className="space-y-4 mb-6">
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-1">Tên chiến dịch</label>
-                <input type="text" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="vd. Summer Iced Tea Promo" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Đính kèm tài sản</label>
-                  <select className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                    <option>Chọn từ thư viện...</option>
-                    <option>Tết Holiday Hero (Animated)</option>
-                    <option>Spring Matcha Collection</option>
-                    <option>Oolong Flash Sale</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Lịch chạy</label>
-                  <input type="text" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="MM/DD - MM/DD" />
-                </div>
+              <input
+                value={formData.title}
+                onChange={(e) => setFormData((prev) => ({ ...prev, title: e.target.value }))}
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm"
+                placeholder="Tiêu đề"
+              />
+              <textarea
+                value={formData.note}
+                onChange={(e) => setFormData((prev) => ({ ...prev, note: e.target.value }))}
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm"
+                rows={2}
+                placeholder="Ghi chú (ví dụ slide nào, thông điệp)"
+              />
+              <textarea
+                value={formData.description}
+                onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm"
+                rows={3}
+                placeholder="Mô tả hiển thị dưới tiêu đề"
+              />
+              <input
+                value={formData.image}
+                onChange={(e) => setFormData((prev) => ({ ...prev, image: e.target.value }))}
+                className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm"
+                placeholder="Link ảnh"
+              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  value={formData.cta}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, cta: e.target.value }))}
+                  className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm"
+                  placeholder="CTA"
+                />
+                  <input
+                    value={formData.link}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, link: e.target.value }))}
+                  className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm"
+                  placeholder="Đường dẫn"
+                />
               </div>
             </div>
-
             <div className="flex gap-3">
-              <button onClick={() => setIsCampaignModalOpen(false)} className="flex-1 py-2.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors">
+              <button onClick={handleCloseModal} className="flex-1 py-2.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm">
                 Hủy
               </button>
-              <button 
-                onClick={() => {
-                  alert("Đang mô phỏng lên lịch chiến dịch...");
-                  setIsCampaignModalOpen(false);
-                }} 
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors"
-              >
-                Lên lịch chiến dịch
+                <button onClick={handleSaveEdit} className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white font-bold text-sm">
+                  Lưu banner
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {isAssetModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity p-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl border border-slate-100">
-            <div className="flex justify-between items-center mb-5">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">wallpaper</span>
-                Tải tài sản đồ họa
-              </h3>
-              <button onClick={() => setIsAssetModalOpen(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
-                <span className="material-symbols-outlined">close</span>
-              </button>
-            </div>
-            
-            <div className="space-y-4 mb-6">
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-1">Tên tài sản nội bộ</label>
-                <input type="text" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="vd. Spring Matcha Final v2" />
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-1">Vị trí hiển thị</label>
-                <select className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                  <option>Hero trang chủ</option>
-                  <option>Banner danh mục</option>
-                  <option>Popup động</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-1">Tệp thiết kế</label>
-                <label className="flex flex-col items-center justify-center w-full h-32 rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
-                  <span className="material-symbols-outlined text-slate-400 text-3xl mb-1">cloud_upload</span>
-                  <span className="text-sm font-bold text-slate-600">Nhấn để tải banner (PNG, GIF)</span>
-                  <input type="file" className="hidden" />
-                </label>
-              </div>
-            </div>
-
-            <div className="flex gap-3">
-              <button onClick={() => setIsAssetModalOpen(false)} className="flex-1 py-2.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors">
-                Hủy
-              </button>
-              <button 
-                onClick={() => {
-                  alert("Đang mô phỏng lưu tài sản vào thư viện...");
-                  setIsAssetModalOpen(false);
-                }} 
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors"
-              >
-                Tải lên thư viện
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {isVoucherModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity p-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl border border-slate-100">
-            <div className="flex justify-between items-center mb-5">
-              <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">local_activity</span>
-                Tạo mã giảm giá
-              </h3>
-              <button onClick={() => setIsVoucherModalOpen(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
-                <span className="material-symbols-outlined">close</span>
-              </button>
-            </div>
-            
-            <div className="space-y-4 mb-6">
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-1">Mã voucher</label>
-                <input type="text" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm font-mono uppercase tracking-widest" placeholder="vd. FRESHTEA20" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Ưu đãi giảm giá</label>
-                  <input type="text" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="vd. Giảm 20% hoặc Free Ship" />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Giới hạn sử dụng</label>
-                  <input type="number" className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="Để trống nếu không giới hạn" />
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-3">
-              <button onClick={() => setIsVoucherModalOpen(false)} className="flex-1 py-2.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors">
-                Hủy
-              </button>
-              <button 
-                onClick={() => {
-                  alert("Đang mô phỏng tạo voucher lên backend...");
-                  setIsVoucherModalOpen(false);
-                }} 
-                className="flex-1 py-2.5 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors"
-              >
-                Kích hoạt mã
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-7xl mx-auto space-y-6">
-
+      <div className="max-w-6xl mx-auto space-y-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Chiến dịch & media</h1>
-            <p className="mt-1 text-slate-500">Điều phối tài sản thiết kế, sự kiện mùa vụ và voucher giảm giá.</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => setIsCampaignModalOpen(true)}
-              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-sm"
-            >
-              <span className="material-symbols-outlined text-[18px]">campaign</span>
-              Chiến dịch mới
-            </button>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Banner trang chủ</h1>
+            <p className="mt-1 text-slate-500">Chọn một banner để chỉnh sửa nội dung.</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <span className="material-symbols-outlined text-blue-600">wallpaper</span> Thư viện tài sản đồ họa
-            </h3>
-            <button onClick={() => setIsAssetModalOpen(true)} className="text-sm font-bold text-blue-600 hover:text-blue-700">Tải tài sản</button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {banners.map((banner) => (
-              <div key={banner.id} className="flex flex-col group cursor-pointer" onClick={() => setIsAssetModalOpen(true)}>
-                <div className={`w-full aspect-[21/9] rounded-lg ${banner.color} mb-3 flex items-center justify-center shadow-inner relative overflow-hidden group-hover:shadow-md transition-all`}>
-                  <span className="text-white/80 font-black tracking-widest uppercase text-xl mix-blend-overlay">Xem trước</span>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                    <span className="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity text-3xl drop-shadow-md">edit</span>
-                  </div>
-                </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">{banner.title}</h4>
-                    <p className="text-xs text-slate-500 font-medium">{banner.type} • {banner.date}</p>
-                  </div>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${banner.status === 'Đang chạy' ? 'bg-green-50 text-green-700 border-green-200' : banner.status === 'Đã lên lịch' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-slate-100 text-slate-600 border-slate-200'}`}>
-                    {banner.status}
-                  </span>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {liveBanners.map((banner, index) => (
+            <div key={banner.id} className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col">
+              <div className="aspect-video bg-slate-100">
+                <img src={banner.image} alt={banner.title} className="w-full h-full object-cover" />
               </div>
-            ))}
-          </div>
+              <div className="p-4 flex flex-col gap-2">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">{banner.note}</p>
+                <h3 className="text-lg font-black text-slate-900 line-clamp-2">{banner.title}</h3>
+                <p className="text-sm text-slate-500 line-clamp-2">{banner.description}</p>
+                <div className="flex items-center justify-between text-xs text-slate-500">
+                  <span>Cập nhật {banner.lastUpdated}</span>
+                  <span className="font-bold text-blue-600">{banner.cta}</span>
+                </div>
+                <button
+                        onClick={() => openEditModal(index)}
+                  className="mt-1 inline-flex items-center gap-1 text-sm font-bold text-blue-600"
+                >
+                  <span className="material-symbols-outlined text-[16px]">edit</span>
+                  Chỉnh sửa
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
-          <div className="p-6 border-b border-slate-200 flex justify-between items-center">
-            <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <span className="material-symbols-outlined text-blue-600">local_activity</span> Công cụ voucher & giảm giá
-            </h3>
-            <button 
-              onClick={() => setIsVoucherModalOpen(true)}
-              className="flex items-center gap-1 text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50"
-            >
-              <span className="material-symbols-outlined text-[16px]">add</span> Tạo mã
-            </button>
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="p-4 border-b border-slate-100 flex items-center justify-between">
+            <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <span className="material-symbols-outlined text-blue-600">history</span>
+              Lịch sử banner
+            </h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Gần đây</span>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse table-fixed min-w-[600px]">
-              <thead>
-                <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="p-4 pl-6 text-sm font-semibold text-slate-600 w-[30%]">Mã voucher</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[25%]">Ưu đãi</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Giới hạn</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[15%]">Trạng thái</th>
-                  <th className="p-4 pr-6 text-sm font-semibold text-slate-600 w-[10%] text-right">Thao tác</th>
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-50 text-slate-500 font-medium">
+                <tr>
+                  <th className="px-6 py-3">Mã</th>
+                  <th className="px-6 py-3">Tiêu đề</th>
+                  <th className="px-6 py-3">Thời gian chạy</th>
+                  <th className="px-6 py-3">Phụ trách</th>
+                  <th className="px-6 py-3">Trạng thái</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {vouchers.map((voucher, idx) => (
-                  <tr key={idx} className="group hover:bg-slate-50 transition-colors">
-                    <td className="p-4 pl-6 truncate">
-                      <span className="font-mono font-bold text-slate-900 bg-slate-100 px-2 py-1 rounded tracking-wide border border-slate-200">{voucher.code}</span>
-                    </td>
-                    <td className="p-4 text-sm font-bold text-blue-600 truncate">
-                      {voucher.discount}
-                    </td>
-                    <td className="p-4 text-sm font-medium text-slate-500 truncate">
-                      {voucher.usage}
-                    </td>
-                    <td className="p-4 truncate">
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border ${voucher.status === 'Đang hoạt động' ? 'bg-green-100 text-green-800 border-green-200' : 'bg-blue-100 text-blue-800 border-blue-200'}`}>
-                        {voucher.status}
+                {history.map((item) => (
+                  <tr key={item.id} className="hover:bg-slate-50">
+                    <td className="px-6 py-4 font-mono text-sm font-bold text-slate-700">{item.id}</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">{item.title}</td>
+                    <td className="px-6 py-4 text-slate-500">{item.duration}</td>
+                    <td className="px-6 py-4 text-slate-500">{item.owner}</td>
+                    <td className="px-6 py-4">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600">
+                        {item.status}
                       </span>
-                    </td>
-                    <td className="p-4 pr-6 text-right">
-                      <button 
-                        onClick={() => setIsVoucherModalOpen(true)}
-                        className="text-slate-400 hover:text-blue-600 transition-colors p-1 rounded-md hover:bg-blue-50"
-                      >
-                        <span className="material-symbols-outlined text-[20px]">edit</span>
-                      </button>
                     </td>
                   </tr>
                 ))}
@@ -277,7 +237,6 @@ const Campaigns = () => {
             </table>
           </div>
         </div>
-
       </div>
     </div>
   );

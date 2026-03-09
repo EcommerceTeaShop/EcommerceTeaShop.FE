@@ -7,29 +7,27 @@ const Orders = () => {
   
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortOption, setSortOption] = useState('Mới nhất');
-  const [isExportOpen, setIsExportOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   
   const itemsPerPage = 5;
 
   const allOrders = [
-    { id: '#TV-1024', customer: 'Alice Green', email: 'alice@example.com', type: 'Gói quà tùy chỉnh', date: 'Oct 24, 2023', time: '10:23 AM', status: 'Đóng gói tùy chỉnh', amount: '$85.00', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
-    { id: '#TV-1023', customer: 'Bob Herbal', email: 'bob@herbal.com', type: 'Tiêu chuẩn', date: 'Oct 24, 2023', time: '09:15 AM', status: 'Chờ xử lý', amount: '$22.50', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
-    { id: '#TV-1022', customer: 'Charlie Chai', email: 'charlie@tea.co', type: 'Lô quà doanh nghiệp', date: 'Oct 23, 2023', time: '04:45 PM', status: 'Đang giao', amount: '$450.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' },
-    { id: '#TV-1021', customer: 'Diana Darjeeling', email: 'diana@outlook.com', type: 'Tiêu chuẩn', date: 'Oct 23, 2023', time: '02:30 PM', status: 'Đã giao', amount: '$15.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: '#TV-1019', customer: 'Fiona Fruit', email: 'fiona@fruit.com', type: 'Gói quà tùy chỉnh', date: 'Oct 22, 2023', time: '08:00 AM', status: 'Đã giao', amount: '$112.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: '#TV-1018', customer: 'George Glass', email: 'george@glass.com', type: 'Tiêu chuẩn', date: 'Oct 21, 2023', time: '11:20 AM', status: 'Đã giao', amount: '$34.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
-    { id: '#TV-1017', customer: 'Hannah Honey', email: 'hannah@honey.com', type: 'Lô quà doanh nghiệp', date: 'Oct 21, 2023', time: '09:00 AM', status: 'Chờ xử lý', amount: '$890.00', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
-    { id: '#TV-1016', customer: 'Ian Ice', email: 'ian@ice.com', type: 'Gói quà tùy chỉnh', date: 'Oct 20, 2023', time: '01:15 PM', status: 'Đang giao', amount: '$65.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' }
+    { id: '#TR-2045', customer: 'Alice Green', email: 'alice@example.com', type: 'Trà', date: 'Oct 24, 2023', time: '10:23 AM', status: 'Đang pha chế', amount: '$85.00', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
+    { id: '#TK-2034', customer: 'Bob Herbal', email: 'bob@herbal.com', type: 'Thiết kế trà', date: 'Oct 24, 2023', time: '09:15 AM', status: 'Chờ phê duyệt', amount: '$122.50', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
+    { id: '#TR-2032', customer: 'Charlie Chai', email: 'charlie@tea.co', type: 'Trà', date: 'Oct 23, 2023', time: '04:45 PM', status: 'Đang giao', amount: '$45.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' },
+    { id: '#TR-2031', customer: 'Diana Darjeeling', email: 'diana@outlook.com', type: 'Trà', date: 'Oct 23, 2023', time: '02:30 PM', status: 'Đã giao', amount: '$35.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: '#TK-2029', customer: 'Fiona Fruit', email: 'fiona@fruit.com', type: 'Thiết kế trà', date: 'Oct 22, 2023', time: '08:00 AM', status: 'Đang phối mẫu', amount: '$212.00', statusColor: 'bg-blue-100 text-blue-800 border-blue-200' },
+    { id: '#TR-2028', customer: 'George Glass', email: 'george@glass.com', type: 'Trà', date: 'Oct 21, 2023', time: '11:20 AM', status: 'Đã giao', amount: '$64.00', statusColor: 'bg-green-100 text-green-800 border-green-200' },
+    { id: '#TK-2027', customer: 'Hannah Honey', email: 'hannah@honey.com', type: 'Thiết kế trà', date: 'Oct 21, 2023', time: '09:00 AM', status: 'Chờ xử lý', amount: '$190.00', statusColor: 'bg-orange-100 text-orange-800 border-orange-200' },
+    { id: '#TR-2026', customer: 'Ian Ice', email: 'ian@ice.com', type: 'Trà', date: 'Oct 20, 2023', time: '01:15 PM', status: 'Đang giao', amount: '$25.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' }
   ];
 
   const filteredOrders = useMemo(() => {
     let result = allOrders.filter(order => {
       const matchesTab = 
         activeTab === 'Tất cả đơn' ||
-        (activeTab === 'Tiêu chuẩn' && order.type.includes('Tiêu chuẩn')) ||
-        (activeTab === 'Quà tùy chỉnh' && order.type.includes('Gói quà')) ||
-        (activeTab === 'Doanh nghiệp' && order.type.includes('doanh nghiệp'));
+        (activeTab === 'Trà' && order.type === 'Trà') ||
+        (activeTab === 'Thiết kế trà' && order.type === 'Thiết kế trà');
 
       const matchesSearch = 
         order.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -60,38 +58,6 @@ const Orders = () => {
 
   return (
     <div className="flex-1 overflow-y-scroll p-4 md:p-8 bg-gray-50 text-slate-900 min-h-screen relative">
-      
-      {isExportOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl border border-slate-100 transform scale-100">
-            <div className="flex items-center justify-center size-12 rounded-full bg-blue-50 text-blue-600 mb-4 mx-auto">
-              <span className="material-symbols-outlined text-2xl">receipt_long</span>
-            </div>
-            <h3 className="text-lg font-bold text-center text-slate-900 mb-2">Đang xuất báo cáo</h3>
-            <p className="text-sm text-slate-500 text-center mb-6">
-              Đang tổng hợp lịch sử đơn hàng và trạng thái giao dịch vào báo cáo PDF...
-            </p>
-            <div className="flex gap-3">
-              <button 
-                onClick={() => setIsExportOpen(false)}
-                className="flex-1 py-2 rounded-lg bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors"
-              >
-                Hủy
-              </button>
-              <button 
-                onClick={() => {
-                  setTimeout(() => setIsExportOpen(false), 800);
-                  alert("Bắt đầu tải xuống! (Mock)");
-                }}
-                className="flex-1 py-2 rounded-lg bg-blue-600 text-white font-bold text-sm hover:bg-blue-700 transition-colors flex justify-center items-center gap-2"
-              >
-                <span className="material-symbols-outlined text-[18px] animate-bounce">download</span>
-                Lưu PDF
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {selectedOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity p-4">
@@ -164,16 +130,7 @@ const Orders = () => {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">Quản lý đơn hàng</h1>
-            <p className="mt-1 text-slate-500">Theo dõi trạng thái xử lý và quản lý giao hàng cho khách.</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => setIsExportOpen(true)}
-              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 text-sm font-medium hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all shadow-sm"
-            >
-              <span className="material-symbols-outlined text-[18px]">download</span>
-              Xuất báo cáo
-            </button>
+            <p className="mt-1 text-slate-500">Tách rõ đơn Trà và đơn Thiết kế để dễ kiểm soát.</p>
           </div>
         </div>
 
@@ -183,12 +140,12 @@ const Orders = () => {
             <h3 className="text-2xl font-bold text-slate-900 mt-2">1,248</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Đang chờ xử lý</p>
-            <h3 className="text-2xl font-bold text-slate-900 mt-2">12</h3>
+            <p className="text-slate-500 text-sm font-medium">Đơn Trà đang xử lý</p>
+            <h3 className="text-2xl font-bold text-slate-900 mt-2">342</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
-            <p className="text-slate-500 text-sm font-medium">Đang đóng gói tùy chỉnh</p>
-            <h3 className="text-2xl font-bold text-slate-900 mt-2">45</h3>
+            <p className="text-slate-500 text-sm font-medium">Đơn Thiết kế đang xử lý</p>
+            <h3 className="text-2xl font-bold text-slate-900 mt-2">118</h3>
           </div>
           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
             <p className="text-slate-500 text-sm font-medium">Giao thành công</p>
@@ -198,7 +155,7 @@ const Orders = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
-            {['Tất cả đơn', 'Tiêu chuẩn', 'Quà tùy chỉnh', 'Doanh nghiệp'].map((tab) => (
+            {['Tất cả đơn', 'Trà', 'Thiết kế trà'].map((tab) => (
               <button 
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -266,7 +223,7 @@ const Orders = () => {
                 <tr className="bg-slate-50 border-b border-slate-200">
                   <th className="p-4 pl-6 text-sm font-semibold text-slate-600 w-[12%]">Mã đơn</th>
                   <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Khách hàng</th>
-                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Hình thức xử lý</th>
+                  <th className="p-4 text-sm font-semibold text-slate-600 w-[20%]">Loại sản phẩm</th>
                   <th className="p-4 text-sm font-semibold text-slate-600 w-[16%]">Ngày ghi nhận</th>
                   <th className="p-4 text-sm font-semibold text-slate-600 w-[14%]">Trạng thái</th>
                   <th className="p-4 text-sm font-semibold text-slate-600 w-[10%]">Tổng</th>

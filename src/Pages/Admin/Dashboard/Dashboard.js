@@ -24,7 +24,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="p-6 rounded-xl bg-white border border-gray-100 shadow-sm">
             <div className="flex justify-between items-start mb-4">
               <div className="p-2 rounded-lg bg-green-50 text-green-600">
@@ -61,18 +61,6 @@ const Dashboard = () => {
             <h3 className="text-2xl font-bold mt-1">118</h3>
           </div>
 
-          <div className="p-6 rounded-xl bg-white border border-gray-100 shadow-sm">
-            <div className="flex justify-between items-start mb-4">
-              <div className="p-2 rounded-lg bg-orange-50 text-orange-600">
-                <span className="material-symbols-outlined">inventory_2</span>
-              </div>
-              <span className="flex items-center text-sm font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-                Cần xử lý
-              </span>
-            </div>
-            <p className="text-sm font-medium text-gray-500">Tồn kho thấp / Nhà cung cấp</p>
-            <h3 className="text-2xl font-bold mt-1">5 mục</h3>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -124,26 +112,6 @@ const Dashboard = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col rounded-xl bg-white border border-gray-100 shadow-sm p-6">
-              <h3 className="font-bold text-lg mb-4">Hỗ trợ & phản hồi</h3>
-              <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-center p-3 bg-yellow-50/50 rounded-lg border border-yellow-100">
-                  <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-yellow-600 text-[20px]">star_half</span>
-                    <span className="text-sm font-bold text-gray-700">Đánh giá chờ duyệt</span>
-                  </div>
-                  <span className="px-2.5 py-1 bg-yellow-100 text-yellow-800 rounded-md text-xs font-black">12 chờ</span>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-red-50/50 rounded-lg border border-red-100">
-                  <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-red-500 text-[20px]">support_agent</span>
-                    <span className="text-sm font-bold text-gray-700">Yêu cầu hỗ trợ</span>
-                  </div>
-                  <span className="px-2.5 py-1 bg-red-100 text-red-700 rounded-md text-xs font-black">3 khẩn cấp</span>
-                </div>
               </div>
             </div>
 

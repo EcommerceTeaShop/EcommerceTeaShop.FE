@@ -39,7 +39,7 @@ const DesignLibrary = () => {
 
   const handleSaveVariant = () => {
     if (!formData.label || !formData.name || !formData.heroImage) {
-      alert("Vui lòng nhập đầy đủ tên, label và link ảnh.");
+      alert("Vui lòng nhập đầy đủ tên, label và chọn ảnh.");
       return;
     }
 
@@ -139,12 +139,17 @@ const DesignLibrary = () => {
                 ></textarea>
               </div>
               <div>
-                <label className="block text-sm font-bold text-slate-700 mb-1">Link ảnh preview</label>
+                <label className="block text-sm font-bold text-slate-700 mb-1">Ảnh preview</label>
                 <input
-                  value={formData.heroImage}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, heroImage: e.target.value }))}
-                  className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  placeholder="https://..."
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files && e.target.files[0];
+                    if (!file) return;
+                    const previewUrl = URL.createObjectURL(file);
+                    setFormData((prev) => ({ ...prev, heroImage: previewUrl }));
+                  }}
+                  className="w-full rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:border-blue-500 focus:ring-blue-500 sm:text-sm file:mr-3 file:rounded-md file:border-0 file:bg-slate-900 file:px-3 file:py-1.5 file:text-xs file:font-bold file:text-white hover:file:bg-slate-800"
                 />
               </div>
             </div>

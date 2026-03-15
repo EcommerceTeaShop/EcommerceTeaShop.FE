@@ -138,33 +138,27 @@ const ProductDetail = () => {
 
   const relatedProducts = [
     {
-      name: "Bamboo Whisk",
-      price: "$18.00",
-      desc: "Dùng để đánh matcha bông mịn",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7K55ZdjQhjrz3iGZFvNhFp_-nIEP9DRGCnnBOMC_qS0YKyGE1PSVzYpXHKsAJiDihpwWf65cuo6_7QvAkZxd5zkdfP8nLC9obhbyi8DvajJOU9-B_EmaY2jYUdDfWQkWJ_gR0Yi9ycMWW8rfPoPgjFBnP3e4NO5dJ-ALG9R_CdEgqm1hj-iOB_71mko5CAawd7ZAkfmrz6EVEUfgLwbgW125m8tnesbSydLVv92PX3WDwu8jCQQpCKZ8pU97KiRbl6kIA8WFyLkbG",
     },
     {
-      name: "Premium Sencha",
-      price: "$21.00",
-      desc: "Trà xanh hấp kỹ",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuClFQShTmxw7hwEMBY6fTuihtXKdb8cLCDa7-4MqLFRQYL3g26XwjrrPhQdlx4ayRY26TFo0yapDrVhdDsAJAVr1749hymQkacV5uRoDSemPzhgfvz8sN1VoEFHGfX6dHWBt6NwZxUQcowo2pQsZJekIC2mPs12d-S9Yyk7fZeYMmN-CQCjII0_zwur77XfESn__4nj5OgStk4IUa4lq_AslorAJBjuZ_7DsmhXbA1oB43YW7IXiZjoHiBAdSlIazj_V8s5vNqWe0Z1",
     },
     {
-      name: "Matcha Bowl",
-      price: "$45.00",
-      desc: "Chế tác thủ công tại Nhật Bản",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-zVYAk4QZeGjW0XvSG9WcVBv2-9JjE-uPtrRutJuy0FkdjX7ttyTlcbLMg93qioKFrx418DoWysF19rkXerO7LANFlbxmfu1tmWpKYTD1Ag5d6jsLHzeNTHYGKsU1B45MrjPMuLorCJa7f__-1YGKEsiKVnYoAqWTV2tS8qEMx3_432O4vY6iSdGSD1xiBcjnhtnb0dp1r-yT0ZO2-c7N8spaX1BB822R_srXNS67eqZK9x9dVPkegUQP2Cd9UCI5FGjJOJcrzUcq",
     },
     {
-      name: "Hojicha Powder",
-      price: "$19.00",
-      desc: "Bột trà xanh rang",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZtsxL1UZXLjLFyqm0zo4308WfmgHLmVhu90k-DDPYkPaQ1qkk5XUMZIRtBvwiL1U29CMe8kFJ7OMLeVUwQddWhAQzKvtnlxEYze2qUmvR5XmR-vwFIxCZYM4FMuQJ4O1OJudvK4MmpIYzNn2BpnhlRRib28QzO8k9CtLBB4XLzW1n0GcKBs75gb-9QklWjTo_9DqChKhUUm0T6CVd2v2GRhliC-7_mS4JhBluTK3OXKYStvK86g1G03_7z_firDUxmTfsHjb3C7Wf",
-    },
-    {
-      name: "Hojicha Powder",
-      price: "$19.00",
-      desc: "Bột trà xanh rang",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZtsxL1UZXLjLFyqm0zo4308WfmgHLmVhu90k-DDPYkPaQ1qkk5XUMZIRtBvwiL1U29CMe8kFJ7OMLeVUwQddWhAQzKvtnlxEYze2qUmvR5XmR-vwFIxCZYM4FMuQJ4O1OJudvK4MmpIYzNn2BpnhlRRib28QzO8k9CtLBB4XLzW1n0GcKBs75gb-9QklWjTo_9DqChKhUUm0T6CVd2v2GRhliC-7_mS4JhBluTK3OXKYStvK86g1G03_7z_firDUxmTfsHjb3C7Wf",
     },
   ];

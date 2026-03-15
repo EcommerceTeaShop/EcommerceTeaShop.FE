@@ -24,29 +24,28 @@ const Home = () => {
 
   const favorites = [
     {
-      name: "Imperial Matcha",
-      price: "$24.00",
-      desc: "Hạng lễ nghi, Nhật Bản",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       tag: "BÁN CHẠY",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBpbD9wGvMcg8GLVEn_SGumiks7WdyN7x6V1pcQLB0jIoZYHTTPC0tUQjihU9ZMA8tfswjnbZ0fgrGXacs7tzEXpl4rln6hXUSyRmm_oKAxcJmBjYpHHpfJkRgkQbk0UJiEb4qm4enu2OSsuytmcilwX8UdwOGrvpW2J-0NVQWkZElJcvxzbceyOrHWeNYE3RA3JOEpDfl3kLma4IWTEs9yhWIuVi1mftFaRthUurRlMHlPCHHSNyrUx177SfX-J_nJkiBQwww_nIdf",
     },
     {
-      name: "Earl Grey Supreme",
-      price: "$16.50",
-      desc: "Trà đen với bergamot",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZBLHGSEEmSnk0iYNldBAfSDUfolpZ47Mqqj0pxPZ3lPCzXkcHTZO9iEvqyQ_3NzP_hyr9VCzvXeAzPVzXSIULvKG2x8PqmZM2m9Am_GgimYvyu4lQEyjse5S8qxPpZEKXwXa-kYaWkIBttkUpXnWViYaJToPbB5EkU_ECzf8d39JmqBkvPwk8th9amNRCo5Fqd7b59a-9XvhHF2QcGEwpYgJGWrtJbmgMUjR15wOblXSwAPfpHRF2um0TjvqgD0YOztyyl17Qjz30",
     },
     {
-      name: "Jasmine Pearls",
-      price: "$22.00",
-      desc: "Trà xanh vò tay",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGRiK3XSIGRHorzk6WWg_gNXQCYfizZCV1UYhOrBxi3X50YKI69KQ_pItdDsslTOYmMYEHvt3nzN6TFx3g20N7hlpMbLyAm-4BcHz2c1WFIrukUZnDBpYelR09-_FEjUn7wru4JF3Ot8T820Nr2m_bzPmCqjj3i1Tv00ectZMMMtOXK0kUOBWOEjUgIMzvyX3TGQWkpOQse_3xhBDGKz16ak8qCcNDvPET8xBnuBikvakH4lcq8MPeNilOnpVPxPqkHeM0vPu6C4Pa",
     },
     {
-      name: "Aged Pu-erh",
-      price: "$35.00",
-      desc: "Lên men, niên vụ 2018",
-      tag: "MỚI",
+      name: "Trà Tân Cương Signature",
+      price: "$25.00",
+      desc: "Tân Cương, Thái Nguyên",
       img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGJxOODM_82_HKHum5B4_AEkuPro07maHXKTdOy8eI8FAFT_HDBKqURKZacXn3GItP2XvGQrLX-GDHtfHZeoELQ89s7nqPh_a5IaBMEy0QUQ6f2VBwjkYf_PzErc12fYok_8P0Gv0r2boe4mFYCgfCasE-1yqvUzAy0hQiQCKxmS7xxjHlpoo-m1_vOP-B--TTkI05JcyNeyape3sss8jbucTrPxMkYc9RuYyCXQIfnDgOwrZFRI5X-OVrTESe-A5T_Kszax1TKXT4",
     },
   ];

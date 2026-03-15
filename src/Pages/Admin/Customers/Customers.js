@@ -164,12 +164,7 @@ const Customers = () => {
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">Người dùng & đánh giá</h1>
             <p className="mt-1 text-slate-500">Quản lý tài khoản, theo dõi giá trị vòng đời và duyệt phản hồi công khai.</p>
           </div>
-          <div className="flex items-center gap-3">
-            <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-sm">
-              <span className="material-symbols-outlined text-[18px]">person_add</span>
-              Mời người dùng
-            </button>
-          </div>
+          <div className="flex items-center gap-3"></div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

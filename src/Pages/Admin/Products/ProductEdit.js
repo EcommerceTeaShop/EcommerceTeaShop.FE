@@ -75,28 +75,6 @@ const ProductEdit = () => {
                   />
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="sku">Theo dõi SKU</label>
-                    <input 
-                      className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm font-mono uppercase" 
-                      id="sku" 
-                      type="text" 
-                      defaultValue={isAddMode ? '' : "TEA-GRN-JAS-001"}
-                      placeholder={isAddMode ? 'TEA-XXX-000' : ''}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1" htmlFor="origin">Nguồn gốc</label>
-                    <input 
-                      className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
-                      id="origin" 
-                      type="text" 
-                      defaultValue={isAddMode ? '' : "Fujian Province, China"}
-                      placeholder={isAddMode ? 'vd. Kyoto, Japan' : ''}
-                    />
-                  </div>
-                </div>
                 
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-1">Mô tả cửa hàng</label>
@@ -120,52 +98,6 @@ const ProductEdit = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-blue-200 p-6 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
-              <h3 className="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">tune</span> Ma trận so sánh trà
-              </h3>
-              <p className="text-xs text-slate-500 mb-6">Các chỉ số cốt lõi này trực tiếp chi phối thuật toán hiển thị.</p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Hương thơm</label>
-                  <select className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                    {isAddMode && <option value="" disabled selected>Chọn hồ sơ...</option>}
-                    <option>Hoa & ngọt</option>
-                    <option>Thổ & gỗ</option>
-                    <option>Rang & hạt</option>
-                    <option>Tươi & thảo mộc</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Nốt vị chính</label>
-                  <input 
-                    className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" 
-                    type="text" 
-                    defaultValue={isAddMode ? '' : "Jasmine, Honey, Light Grass"}
-                    placeholder={isAddMode ? 'vd. Umami, Tảo biển, Ngọt' : ''}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Kiểu pha</label>
-                  <select className="w-full rounded-lg border-slate-200 bg-slate-50 text-slate-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                    {isAddMode && <option value="" disabled selected>Chọn kiểu...</option>}
-                    <option>Lá rời cuộn</option>
-                    <option>Lá rời tiêu chuẩn</option>
-                    <option>Bột / Matcha</option>
-                    <option>Bánh nén</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 mb-1">Xếp hạng uy tín (1-5)</label>
-                  <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
-                    <input type="range" min="1" max="5" defaultValue={isAddMode ? "3" : "5"} className="w-full accent-blue-600" />
-                    <span className="font-bold text-slate-900">{isAddMode ? "3.0" : "5.0"}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
@@ -224,22 +156,6 @@ const ProductEdit = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">redeem</span> Quà tặng tùy chỉnh
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-sm font-bold text-slate-900 block">Bật gói đồ họa</span>
-                    <span className="text-xs text-slate-500">Cho phép người dùng chọn bao bì thiết kế sẵn cho trà này.</span>
-                  </div>
-                  <button className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${isAddMode ? 'bg-slate-300' : 'bg-blue-600'}`} type="button">
-                    <span className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${isAddMode ? 'translate-x-0' : 'translate-x-5'}`}></span>
-                  </button>
-                </div>
-              </div>
-            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">

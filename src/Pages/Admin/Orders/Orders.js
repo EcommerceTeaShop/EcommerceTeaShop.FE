@@ -22,12 +22,29 @@ const Orders = () => {
     { id: '#TR-2026', customer: 'Ian Ice', email: 'ian@ice.com', type: 'Trà', date: 'Oct 20, 2023', time: '01:15 PM', status: 'Đang giao', amount: '$25.00', statusColor: 'bg-purple-100 text-purple-800 border-purple-200' }
   ];
 
+  const customersWithBothTypes = useMemo(() => {
+    const typeByCustomer = new Map();
+    allOrders.forEach((order) => {
+      if (!typeByCustomer.has(order.customer)) {
+        typeByCustomer.set(order.customer, new Set());
+      }
+      typeByCustomer.get(order.customer).add(order.type);
+    });
+
+    return new Set(
+      Array.from(typeByCustomer.entries())
+        .filter(([, types]) => types.has('Trà') && types.has('Thiết kế trà'))
+        .map(([customer]) => customer)
+    );
+  }, [allOrders]);
+
   const filteredOrders = useMemo(() => {
     let result = allOrders.filter(order => {
       const matchesTab = 
         activeTab === 'Tất cả đơn' ||
         (activeTab === 'Trà' && order.type === 'Trà') ||
-        (activeTab === 'Thiết kế trà' && order.type === 'Thiết kế trà');
+        (activeTab === 'Thiết kế trà' && order.type === 'Thiết kế trà') ||
+        (activeTab === 'Cả trà & thiết kế' && customersWithBothTypes.has(order.customer));
 
       const matchesSearch = 
         order.customer.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -47,7 +64,7 @@ const Orders = () => {
     }
 
     return result;
-  }, [activeTab, searchQuery, sortOption]);
+  }, [activeTab, searchQuery, sortOption, customersWithBothTypes]);
 
   const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
   const currentOrders = filteredOrders.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
@@ -155,7 +172,7 @@ const Orders = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
-            {['Tất cả đơn', 'Trà', 'Thiết kế trà'].map((tab) => (
+            {['Tất cả đơn', 'Trà', 'Thiết kế trà', 'Cả trà & thiết kế'].map((tab) => (
               <button 
                 key={tab}
                 onClick={() => setActiveTab(tab)}

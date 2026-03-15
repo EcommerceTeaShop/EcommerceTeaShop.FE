@@ -22,8 +22,7 @@ const DesignLibrary = () => {
   const summary = useMemo(() => {
     const total = variants.length;
     const avgPrice = total ? variants.reduce((sum, item) => sum + Number(item.unitPrice), 0) / total : 0;
-    const heroCount = variants.filter((item) => item.placement.includes("Hero")).length;
-    return { total, avgPrice: avgPrice.toFixed(2), heroCount };
+    return { total, avgPrice: avgPrice.toFixed(2) };
   }, [variants]);
 
   const handleOpenModal = (variant = null) => {
@@ -203,7 +202,7 @@ const DesignLibrary = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
             <p className="text-sm font-medium text-slate-500">Số thiết kế đang bán</p>
             <p className="text-3xl font-black text-slate-900 mt-2">{summary.total}</p>
@@ -211,10 +210,6 @@ const DesignLibrary = () => {
           <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
             <p className="text-sm font-medium text-slate-500">Giá trung bình</p>
             <p className="text-3xl font-black text-slate-900 mt-2">${summary.avgPrice}</p>
-          </div>
-          <div className="p-5 rounded-xl border border-slate-200 bg-white shadow-sm">
-            <p className="text-sm font-medium text-slate-500">Dành cho hero</p>
-            <p className="text-3xl font-black text-slate-900 mt-2">{summary.heroCount}</p>
           </div>
         </div>
 

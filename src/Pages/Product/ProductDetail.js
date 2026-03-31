@@ -54,7 +54,11 @@ function getProductImages(item) {
 
   const direct = directCandidates.find((value) => Boolean(value));
 
-  const arraySources = [item?.images, item?.productImages, item?.imageResponses];
+  const arraySources = [
+    item?.images,
+    item?.productImages,
+    item?.imageResponses,
+  ];
   const mapped = [];
 
   for (const source of arraySources) {
@@ -63,7 +67,12 @@ function getProductImages(item) {
     }
 
     const main = source.find((image) =>
-      Boolean(image?.isMain || image?.isPrimary || image?.isDefault || image?.isMainImage),
+      Boolean(
+        image?.isMain ||
+        image?.isPrimary ||
+        image?.isDefault ||
+        image?.isMainImage,
+      ),
     );
     const mainUrl = extractImageUrl(main);
     if (mainUrl) {
@@ -98,8 +107,11 @@ function normalizeProduct(item) {
         variant?.id ||
         `${item.productId}-variant-${index}`;
 
-      const weight = Number(variant?.gram ?? variant?.weight ?? variant?.size ?? 100);
-      const unit = variant?.sizeLabel || variant?.unit || variant?.weightUnit || "g";
+      const weight = Number(
+        variant?.gram ?? variant?.weight ?? variant?.size ?? 100,
+      );
+      const unit =
+        variant?.sizeLabel || variant?.unit || variant?.weightUnit || "g";
 
       return {
         id: variantId,
@@ -108,7 +120,9 @@ function normalizeProduct(item) {
         weight,
         sizeLabel: unit,
         unitPrice: Number(variant?.price || item.price || 0),
-        stockQuantity: Number(variant?.stock ?? variant?.stockQuantity ?? item.stockQuantity ?? 0),
+        stockQuantity: Number(
+          variant?.stock ?? variant?.stockQuantity ?? item.stockQuantity ?? 0,
+        ),
         sku: variant?.sku || variantId,
       };
     })
@@ -165,7 +179,9 @@ const ProductDetail = () => {
           getProductsApi({ pageNumber: 1, pageSize: 100 }),
         ]);
 
-        const mappedList = (listResponse?.data?.items || []).map(normalizeProduct);
+        const mappedList = (listResponse?.data?.items || []).map(
+          normalizeProduct,
+        );
         setAllProducts(mappedList);
 
         const detailData = detailResponse?.data || {};
@@ -173,7 +189,9 @@ const ProductDetail = () => {
 
         setProduct(detailProduct);
         setSelectedDetail(detailProduct.productDetails[0]);
-        setSelectedImage(detailProduct.thumbnails[0] || detailProduct.img || FALLBACK_IMAGE);
+        setSelectedImage(
+          detailProduct.thumbnails[0] || detailProduct.img || FALLBACK_IMAGE,
+        );
         setQuantity(1);
       } catch (apiError) {
         setError(apiError?.message || "Không tải được thông tin sản phẩm.");
@@ -188,8 +206,9 @@ const ProductDetail = () => {
   }, [id]);
 
   const selectedProductDetail =
-    product?.productDetails.find((detail) => detail.id === selectedDetail?.id) ||
-    product?.productDetails[0];
+    product?.productDetails.find(
+      (detail) => detail.id === selectedDetail?.id,
+    ) || product?.productDetails[0];
 
   const selectedDetailId = selectedProductDetail?.id;
   const selectedDetailStock = selectedProductDetail?.stockQuantity;
@@ -386,7 +405,9 @@ const ProductDetail = () => {
                 className="w-10 h-full flex items-center justify-center hover:bg-gray-100 text-gray-500 transition-colors"
                 onClick={() => setQuantity((qty) => Math.max(1, qty - 1))}
               >
-                <span className="material-symbols-outlined text-sm">remove</span>
+                <span className="material-symbols-outlined text-sm">
+                  remove
+                </span>
               </button>
               <input
                 type="text"
@@ -398,10 +419,19 @@ const ProductDetail = () => {
                 className="w-10 h-full flex items-center justify-center hover:bg-gray-100 text-gray-500 transition-colors"
                 onClick={() =>
                   setQuantity((qty) =>
-                    Math.min(qty + 1, Math.max(1, Number(selectedProductDetail?.stockQuantity || 1))),
+                    Math.min(
+                      qty + 1,
+                      Math.max(
+                        1,
+                        Number(selectedProductDetail?.stockQuantity || 1),
+                      ),
+                    ),
                   )
                 }
-                disabled={quantity >= Math.max(1, Number(selectedProductDetail?.stockQuantity || 1))}
+                disabled={
+                  quantity >=
+                  Math.max(1, Number(selectedProductDetail?.stockQuantity || 1))
+                }
               >
                 <span className="material-symbols-outlined text-sm">add</span>
               </button>
@@ -412,7 +442,7 @@ const ProductDetail = () => {
               className="flex-1 h-14 bg-primary hover:bg-primary/90 text-[#0d1b10] font-black text-lg rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-95"
             >
               <span className="material-symbols-outlined">shopping_bag</span>
-              Them vao gio
+              Thêm vào giỏ
             </button>
           </div>
         </div>
@@ -515,7 +545,9 @@ const ProductDetail = () => {
                     {formatVnd(item.productDetails[0]?.unitPrice)}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 font-medium">{item.origin}</p>
+                <p className="text-sm text-gray-500 font-medium">
+                  {item.origin}
+                </p>
               </div>
             </Link>
           ))}

@@ -47,55 +47,6 @@ const Home = () => {
     },
   ];
 
-  useEffect(() => {
-    let mounted = true;
-
-    async function loadFavorites() {
-      setFavoritesLoading(true);
-      try {
-        const response = await getProductsApi({ pageNumber: 1, pageSize: 8 });
-        const list = Array.isArray(response?.data) ? response.data : [];
-        const mapped = list.map(mapFavoriteProduct).slice(0, 4);
-        if (mounted) {
-          setFavorites(mapped);
-        }
-      } catch (error) {
-        if (mounted) {
-          setFavorites([]);
-        }
-      } finally {
-        if (mounted) {
-          setFavoritesLoading(false);
-        }
-      }
-    }
-
-    loadFavorites();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
-  const favoriteCards = useMemo(() => {
-    if (!favoritesLoading && favorites.length > 0) {
-      return favorites;
-    }
-
-    return Array.from({ length: 4 }).map((_, index) => ({
-      id: `skeleton-${index}`,
-      name: favoritesLoading ? "Đang tải..." : "Chưa có sản phẩm",
-      price: 0,
-      desc: favoritesLoading
-        ? "Vui lòng đợi trong giây lát"
-        : "Vui lòng quay lại sau",
-      tag: "",
-      img:
-        "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=900&q=80",
-      isPlaceholder: true,
-    }));
-  }, [favorites, favoritesLoading]);
-
   return (
     <div className="bg-background-light text-[#0d1b10] font-display">
       <HeroSlider></HeroSlider>
@@ -126,62 +77,6 @@ const Home = () => {
                 <p className="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors">
                   {cat.name}
                 </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="max-w-[1440px] mx-auto px-4 md:px-10 pb-20">
-        <div className="flex justify-between items-end mb-8">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Yêu thích trong tuần
-            </h2>
-            <p className="text-gray-500 mt-2">
-              Tuyển chọn hoàn hảo cho tách trà lý tưởng.
-            </p>
-          </div>
-          <Link
-            to="/shop"
-            className="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"
-          >
-            Xem tất cả{" "}
-            <span className="material-symbols-outlined text-sm">
-              arrow_forward
-            </span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {favoriteCards.map((item, i) => (
-            <Link
-              to={item.isPlaceholder ? "/shop" : `/product/${item.id}`}
-              key={item.id || i}
-              className={`flex flex-col gap-3 group ${item.isPlaceholder ? "pointer-events-none" : ""}`}
-            >
-              <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-light">
-                {item.tag && (
-                  <span
-                    className={`absolute top-3 left-3 text-xs font-bold px-2 py-1 rounded-sm z-10 ${item.tag === "BÁN CHẠY" ? "bg-primary text-[#0d1b10]" : "bg-white/90 text-[#0d1b10] backdrop-blur-md"}`}
-                  >
-                    {item.tag}
-                  </span>
-                )}
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-bold text-lg group-hover:text-primary transition-colors cursor-pointer">
-                    {item.name}
-                  </h3>
-                  <span className="font-bold">{formatCurrency(item.price)}</span>
-                </div>
-                <p className="text-sm text-gray-500">{item.desc}</p>
               </div>
             </Link>
           ))}

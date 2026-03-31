@@ -25,7 +25,9 @@ async function requestWithAuth(path, options = {}, retry = true) {
     typeof FormData !== "undefined" && options?.body instanceof FormData;
 
   const buildHeaders = (token) => ({
-    ...(hasBody && !isFormDataBody ? { "Content-Type": "application/json" } : {}),
+    ...(hasBody && !isFormDataBody
+      ? { "Content-Type": "application/json" }
+      : {}),
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...(options?.headers || {}),
   });
@@ -67,7 +69,9 @@ async function requestWithAuth(path, options = {}, retry = true) {
 
       return retried;
     } catch (error) {
-      console.log("[ProductApi] Refresh failed while requesting product/category API.");
+      console.log(
+        "[ProductApi] Refresh failed while requesting product/category API.",
+      );
       return response;
     }
   }
@@ -101,10 +105,13 @@ export function getProductDetailApi(productId) {
 }
 
 export function searchProductsApi({ keyword, pageNumber = 1, pageSize = 10 }) {
-  const encodedKeyword = encodeURIComponent(keyword || "");
-  return get(
-    `/product/search?keyword=${encodedKeyword}&pageNumber=${pageNumber}&pageSize=${pageSize}`,
-  );
+  const params = new URLSearchParams({
+    keyword: keyword || "",
+    pageNumber: pageNumber.toString(),
+    pageSize: pageSize.toString(),
+  });
+
+  return get(`/product/search?${params.toString()}`);
 }
 
 export function getProductsByCategoryApi({
@@ -133,7 +140,9 @@ export function searchCategoriesApi({
 }
 
 export function getAdminProductsApi({ pageNumber = 1, pageSize = 10 } = {}) {
-  return get(`/AdminProduct/list?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+  return get(
+    `/AdminProduct/list?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+  );
 }
 
 export function getAdminCategoriesApi({ pageNumber = 1, pageSize = 10 } = {}) {

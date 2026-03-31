@@ -19,26 +19,18 @@ const FALLBACK_TEA_TYPES = [
 
 const ITEMS_PER_PAGE = 6;
 const PUBLIC_API_BLOCKED_MESSAGE =
-  "Du lieu san pham tam thoi chua duoc mo cong khai. Vui long quay lai sau.";
+  "Dữ liệu sản phẩm tạm thời chưa được mở công khai. Vui lòng quay lại sau.";
 
+// --- Helper Functions ---
 function isUnauthorizedError(error) {
   const message = String(error?.message || "").toLowerCase();
   return message.includes("401") || message.includes("unauthorized");
 }
 
 function extractImageUrl(image) {
-  if (!image) {
-    return null;
-  }
-
-  if (typeof image === "string") {
-    return image;
-  }
-
-  if (typeof image !== "object") {
-    return null;
-  }
-
+  if (!image) return null;
+  if (typeof image === "string") return image;
+  if (typeof image !== "object") return null;
   return (
     image.imageUrl ||
     image.url ||
@@ -59,36 +51,31 @@ function getProductFirstImage(item) {
     item?.mainImage,
     item?.image,
   ];
-
   const direct = directCandidates.find((value) => Boolean(value));
-  if (direct) {
-    return direct;
-  }
+  if (direct) return direct;
 
-  const arraySources = [item?.images, item?.productImages, item?.imageResponses];
-
+  const arraySources = [
+    item?.images,
+    item?.productImages,
+    item?.imageResponses,
+  ];
   for (const source of arraySources) {
-    if (!Array.isArray(source)) {
-      continue;
-    }
-
+    if (!Array.isArray(source)) continue;
     const main = source.find((image) =>
-      Boolean(image?.isMain || image?.isPrimary || image?.isDefault || image?.isMainImage),
+      Boolean(
+        image?.isMain ||
+        image?.isPrimary ||
+        image?.isDefault ||
+        image?.isMainImage,
+      ),
     );
-
     const fromMain = extractImageUrl(main);
-    if (fromMain) {
-      return fromMain;
-    }
-
+    if (fromMain) return fromMain;
     for (const image of source) {
       const fromItem = extractImageUrl(image);
-      if (fromItem) {
-        return fromItem;
-      }
+      if (fromItem) return fromItem;
     }
   }
-
   return null;
 }
 
@@ -120,56 +107,47 @@ function mapProduct(item) {
 
 async function enrichProductsWithVariantData(items) {
   const safeItems = Array.isArray(items) ? items : [];
-
   const enriched = await Promise.all(
     safeItems.map(async (item) => {
       const hasBasePrice = Number(item?.price || 0) > 0;
       const hasStock = Number(item?.stockQuantity || 0) > 0;
       const hasImage = Boolean(getProductFirstImage(item));
-
-      if ((hasBasePrice || hasStock) && hasImage) {
-        return item;
-      }
+      if ((hasBasePrice || hasStock) && hasImage) return item;
 
       try {
         const response = await getProductDetailApi(item.productId);
         const detail = response?.data || {};
-        const variants = Array.isArray(detail?.variants)
-          ? detail.variants
-          : [];
-
+        const variants = Array.isArray(detail?.variants) ? detail.variants : [];
         const detailImage = getProductFirstImage(detail);
-
         const prices = variants
-          .map((variant) => Number(variant?.price || 0))
-          .filter((price) => price > 0);
-
-        const stocks = variants.map((variant) => Number(variant?.stock || 0));
+          .map((v) => Number(v?.price || 0))
+          .filter((p) => p > 0);
+        const stocks = variants.map((v) => Number(v?.stock || 0));
 
         return {
           ...item,
           images:
-            detailImage && (!Array.isArray(item.images) || item.images.length === 0)
+            detailImage &&
+            (!Array.isArray(item.images) || item.images.length === 0)
               ? [detailImage]
               : item.images,
           imageUrl: item.imageUrl || detail.imageUrl || detailImage || null,
-          thumbnail: item.thumbnail || detail.thumbnail || null,
-          price: prices.length > 0 ? Math.min(...prices) : Number(item?.price || 0),
+          price:
+            prices.length > 0 ? Math.min(...prices) : Number(item?.price || 0),
           stockQuantity:
             stocks.length > 0
-              ? stocks.reduce((sum, value) => sum + (Number.isFinite(value) ? value : 0), 0)
+              ? stocks.reduce((sum, v) => sum + (Number.isFinite(v) ? v : 0), 0)
               : Number(item?.stockQuantity || 0),
           isActive:
             Boolean(item?.isActive) ||
             prices.length > 0 ||
-            stocks.some((stock) => Number(stock) > 0),
+            stocks.some((s) => Number(s) > 0),
         };
       } catch (error) {
         return item;
       }
     }),
   );
-
   return enriched;
 }
 
@@ -183,21 +161,7 @@ function normalizeText(value) {
     .trim();
 }
 
-function matchesCategoryKey(type, categoryKey) {
-  const normalizedType = normalizeText(type);
-  const key = normalizeText(categoryKey);
-
-  const keywordMap = {
-    green: ["green", "tra xanh", "xanh"],
-    fruit: ["fruit", "fruity", "tra trai cay", "trai cay"],
-    herbal: ["herbal", "thao moc", "hoa", "flower", "chamomile"],
-    oolong: ["oolong", "o long", "olong"],
-  };
-
-  const candidates = keywordMap[key] || [];
-  return candidates.some((word) => normalizedType.includes(word));
-}
-
+// --- Main Component ---
 const Shop = () => {
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
@@ -205,18 +169,31 @@ const Shop = () => {
   const [sortBy, setSortBy] = useState("Nổi bật");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
   const [appliedKeyword, setAppliedKeyword] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [publicApiBlocked, setPublicApiBlocked] = useState(false);
 
+  // 1. DATA CATCHER: Sync component state with Navigation State (from Header search)
+  useEffect(() => {
+    const incomingItems = location.state?.results || location.state?.result;
+    const incomingQuery = location.state?.query || "";
+
+    if (incomingItems) {
+      setProducts(incomingItems.map(mapProduct));
+      setAppliedKeyword(incomingQuery);
+      setSelectedTypes([]); // Reset categories when a global search is performed
+      setLoading(false);
+      setCurrentPage(1);
+    }
+  }, [location.state]);
+
   const handleReset = () => {
     setCurrentPage(1);
     setSelectedTypes([]);
     setSortBy("Nổi bật");
-    setSearchInput("");
     setAppliedKeyword("");
+    window.history.replaceState({}, document.title); // Clean up state
   };
 
   const toggleFilter = (item, list, setList) => {
@@ -228,30 +205,31 @@ const Shop = () => {
 
   useEffect(() => {
     const loadCategories = async () => {
-      if (publicApiBlocked) {
-        setCategories([]);
-        return;
-      }
-
       try {
-        const response = await getCategoriesApi({ pageNumber: 1, pageSize: 50 });
-        const items = response?.data?.items || [];
-        setCategories(items);
-      } catch (apiError) {
-        if (isUnauthorizedError(apiError)) {
-          setPublicApiBlocked(true);
-          return;
-        }
-        console.log("[Shop] Không tải được category API, dùng fallback.");
-        setCategories([]);
+        const response = await getCategoriesApi({
+          pageNumber: 1,
+          pageSize: 50,
+        });
+        setCategories(response?.data?.items || []);
+      } catch (err) {
+        setPublicApiBlocked(true);
       }
     };
-
     loadCategories();
-  }, [publicApiBlocked]);
+  }, []);
 
   useEffect(() => {
     const loadProducts = async () => {
+      const hasStateData = location.state?.results || location.state?.result;
+      const isInitialSearchState =
+        hasStateData &&
+        selectedTypes.length === 0 &&
+        appliedKeyword === (location.state?.query || "");
+
+      if (isInitialSearchState && products.length > 0) {
+        return;
+      }
+
       if (publicApiBlocked) {
         setProducts([]);
         setError(PUBLIC_API_BLOCKED_MESSAGE);
@@ -262,37 +240,47 @@ const Shop = () => {
       try {
         setLoading(true);
         setError("");
-
         let sourceItems = [];
 
         if (selectedTypes.length === 1) {
+          const selectedName = selectedTypes[0].trim().toLowerCase();
           const selectedCategory = categories.find(
-            (cat) => cat.name === selectedTypes[0],
+            (cat) => cat.name.trim().toLowerCase() === selectedName,
           );
 
           if (selectedCategory?.categoryId) {
-            const response = await getProductsByCategoryApi({
+            const res = await getProductsByCategoryApi({
               categoryId: selectedCategory.categoryId,
               pageNumber: 1,
               pageSize: 100,
             });
-            sourceItems = response?.data || [];
+            sourceItems = res?.data?.items || res?.data || [];
           } else {
-            const response = await getProductsApi({ pageNumber: 1, pageSize: 100 });
-            sourceItems = response?.data?.items || [];
+            const res = await getProductsApi({ pageNumber: 1, pageSize: 100 });
+            const allItems = res?.data?.items || [];
+
+            sourceItems = allItems.filter(
+              (item) =>
+                item.categoryName?.trim().toLowerCase() === selectedName,
+            );
           }
         } else {
-          const response = await getProductsApi({ pageNumber: 1, pageSize: 100 });
-          sourceItems = response?.data?.items || [];
+          const res = await getProductsApi({ pageNumber: 1, pageSize: 100 });
+          sourceItems = res?.data?.items || [];
+
+          if (selectedTypes.length > 1) {
+            const normalizedSelected = selectedTypes.map((t) =>
+              t.trim().toLowerCase(),
+            );
+            sourceItems = sourceItems.filter((item) =>
+              normalizedSelected.includes(
+                item.categoryName?.trim().toLowerCase(),
+              ),
+            );
+          }
         }
 
-        if (selectedTypes.length > 1) {
-          sourceItems = sourceItems.filter((item) =>
-            selectedTypes.includes(item.categoryName || "Khác"),
-          );
-        }
-
-        if (appliedKeyword.trim()) {
+        if (appliedKeyword && appliedKeyword.trim() !== "") {
           const keyword = normalizeText(appliedKeyword);
           sourceItems = sourceItems.filter((item) => {
             const target = normalizeText(
@@ -302,15 +290,14 @@ const Shop = () => {
           });
         }
 
+        // 5. ENRICH & MAP
         const enrichedItems = await enrichProductsWithVariantData(sourceItems);
         setProducts(enrichedItems.map(mapProduct));
       } catch (apiError) {
-        setProducts([]);
+        console.error("Fetch Error:", apiError);
         if (isUnauthorizedError(apiError)) {
           setPublicApiBlocked(true);
           setError(PUBLIC_API_BLOCKED_MESSAGE);
-        } else {
-          setError(apiError?.message || "Khong tai duoc danh sach san pham.");
         }
       } finally {
         setLoading(false);
@@ -318,67 +305,27 @@ const Shop = () => {
     };
 
     loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appliedKeyword, selectedTypes, categories, publicApiBlocked]);
 
   const teaTypes = useMemo(() => {
     const categoryTypes = categories.map((item) => item.name).filter(Boolean);
-    const dynamicTypes = categoryTypes.length
-      ? categoryTypes
-      : [...new Set(products.map((item) => item.type).filter(Boolean))];
-    return dynamicTypes.length > 0 ? dynamicTypes : FALLBACK_TEA_TYPES;
-  }, [categories, products]);
+    return categoryTypes.length > 0 ? categoryTypes : FALLBACK_TEA_TYPES;
+  }, [categories]);
 
   let processedProducts = [...products];
-
-  if (sortBy === "Giá: Thấp đến cao") {
-    processedProducts.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-  } else if (sortBy === "Giá: Cao đến thấp") {
-    processedProducts.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
-  } else if (sortBy === "Mới nhất") {
+  if (sortBy === "Giá: Thấp đến cao")
+    processedProducts.sort((a, b) => a.price - b.price);
+  else if (sortBy === "Giá: Cao đến thấp")
+    processedProducts.sort((a, b) => b.price - a.price);
+  else if (sortBy === "Mới nhất")
     processedProducts.sort((a, b) => String(b.id).localeCompare(String(a.id)));
-  }
 
   const totalPages = Math.ceil(processedProducts.length / ITEMS_PER_PAGE) || 1;
   const displayedProducts = processedProducts.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE,
   );
-
-  const activeFilters = [...selectedTypes];
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const categoryKey = params.get("categoryKey");
-    const categoryFromQuery = params.get("category");
-
-    if (!categoryFromQuery && !categoryKey) {
-      return;
-    }
-
-    let matchedType = null;
-
-    if (categoryKey) {
-      matchedType = teaTypes.find((type) => matchesCategoryKey(type, categoryKey));
-    }
-
-    if (!matchedType && categoryFromQuery) {
-      const normalizedQuery = normalizeText(categoryFromQuery);
-      matchedType = teaTypes.find(
-        (type) => normalizeText(type) === normalizedQuery,
-      );
-    }
-
-    if (!matchedType) {
-      return;
-    }
-
-    if (selectedTypes.length === 1 && selectedTypes[0] === matchedType) {
-      return;
-    }
-
-    setSelectedTypes([matchedType]);
-    setCurrentPage(1);
-  }, [location.search, teaTypes, selectedTypes]);
 
   return (
     <div className="flex flex-col items-center w-full min-h-screen pb-20 font-display bg-background-light text-[#0d1b10]">
@@ -388,7 +335,7 @@ const Shop = () => {
             to="/"
             className="text-gray-500 hover:text-primary transition-colors"
           >
-            Trang chu
+            Trang chủ
           </Link>
           <span className="material-symbols-outlined !text-[14px] text-gray-400">
             chevron_right
@@ -405,14 +352,14 @@ const Shop = () => {
             </h3>
             <button
               onClick={handleReset}
-              className="text-xs text-gray-500 hover:text-primary font-bold"
+              className="text-xs text-gray-400 hover:text-red-500 transition-colors font-bold uppercase tracking-wider"
             >
               Đặt lại
             </button>
           </div>
 
           <div>
-            <h4 className="text-xs font-black mb-4 uppercase tracking-widest text-gray-400">
+            <h4 className="text-[11px] font-black mb-4 uppercase tracking-[0.2em] text-gray-400">
               Loại trà
             </h4>
             <div className="space-y-3">
@@ -421,15 +368,33 @@ const Shop = () => {
                   key={type}
                   className="flex items-center gap-3 cursor-pointer group"
                 >
-                  <input
-                    type="checkbox"
-                    checked={selectedTypes.includes(type)}
-                    onChange={() =>
-                      toggleFilter(type, selectedTypes, setSelectedTypes)
-                    }
-                    className="rounded border-gray-300 text-primary focus:ring-primary/20 bg-transparent"
-                  />
-                  <span className="text-sm font-medium group-hover:text-primary transition-colors">
+                  <div className="relative flex items-center">
+                    <input
+                      type="checkbox"
+                      checked={selectedTypes.includes(type)}
+                      onChange={() =>
+                        toggleFilter(type, selectedTypes, setSelectedTypes)
+                      }
+                      // FIXED CLASSES BELOW:
+                      className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 bg-white checked:bg-primary checked:border-primary transition-all focus:ring-offset-0 focus:ring-2 focus:ring-primary/20"
+                    />
+                    {/* Custom Checkmark Icon (Optional but looks better) */}
+                    <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3.5 w-3.5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">
                     {type}
                   </span>
                 </label>
@@ -442,7 +407,22 @@ const Shop = () => {
           <div className="flex flex-col gap-4 mb-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex flex-wrap gap-2 items-center">
-                {activeFilters.map((filter) => (
+                {appliedKeyword && (
+                  <div className="flex h-8 items-center justify-center gap-x-2 rounded-full border border-primary/30 bg-primary/10 pl-3 pr-2">
+                    <p className="text-[#0d1b10] text-xs font-bold">
+                      Tìm kiếm: {appliedKeyword}
+                    </p>
+                    <button
+                      onClick={() => setAppliedKeyword("")}
+                      className="hover:text-red-500 flex items-center"
+                    >
+                      <span className="material-symbols-outlined !text-[16px]">
+                        close
+                      </span>
+                    </button>
+                  </div>
+                )}
+                {selectedTypes.map((filter) => (
                   <div
                     key={filter}
                     className="flex h-8 items-center justify-center gap-x-2 rounded-full border border-primary/30 bg-primary/10 pl-3 pr-2"
@@ -460,19 +440,11 @@ const Shop = () => {
                     </button>
                   </div>
                 ))}
-
-                {activeFilters.length > 0 && (
-                  <button
-                    onClick={handleReset}
-                    className="text-xs font-bold underline text-gray-500 hover:text-primary ml-1"
-                  >
-                    Xóa tất cả
-                  </button>
-                )}
               </div>
-
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-500 font-medium">Sắp xếp:</span>
+                <span className="text-sm text-gray-500 font-medium">
+                  Sắp xếp:
+                </span>
                 <select
                   value={sortBy}
                   onChange={(e) => {
@@ -488,40 +460,22 @@ const Shop = () => {
                 </select>
               </div>
             </div>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setCurrentPage(1);
-                setAppliedKeyword(searchInput);
-              }}
-              className="flex gap-2"
-            >
-              <input
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Tìm theo tên sản phẩm..."
-                className="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-              />
-              <button
-                type="submit"
-                className="rounded-xl bg-primary px-4 py-2 text-sm font-bold text-[#0d1b10] hover:bg-primary/90"
-              >
-                Tìm
-              </button>
-            </form>
           </div>
 
           {loading ? (
-            <div className="py-20 text-center text-gray-500 font-bold">Đang tải sản phẩm...</div>
+            <div className="py-20 text-center text-gray-500 font-bold">
+              Đang tải sản phẩm...
+            </div>
           ) : error ? (
-            <div className="py-20 text-center text-amber-600 font-bold">{error}</div>
+            <div className="py-20 text-center text-amber-600 font-bold">
+              {error}
+            </div>
           ) : (
             <ProductGrid displayedProducts={displayedProducts} />
           )}
 
           {!loading && !error && totalPages > 1 && (
-            <Pagination totalPages={totalPages} onPageChange={setCurrentPage}></Pagination>
+            <Pagination totalPages={totalPages} onPageChange={setCurrentPage} />
           )}
         </div>
       </div>
